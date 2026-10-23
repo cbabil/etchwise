@@ -6,6 +6,7 @@ mod background;
 pub mod cli;
 mod cli_plan;
 mod deeplink;
+mod launch_args;
 mod monitor;
 mod state;
 mod write_job;
@@ -69,14 +70,19 @@ fn imager(
     Ok(Value::Null)
 }
 
-fn load_state() -> State {
+fn load_state(repo: Option<String>) -> State {
     let config = dirs::config_dir().unwrap_or_default().join(APP_DIR);
     let settings =
         Settings::load(config.join("settings.json")).unwrap_or_else(|_| Settings::in_memory());
-    State::new(
+    let mut state = State::new(
         settings,
         dirs::cache_dir().unwrap_or_default().join(APP_DIR),
-    )
+    );
+    if let Some(repo) = repo {
+        state.repo_display.clone_from(&repo);
+        state.repo = repo;
+    }
+    state
 }
 
 /// Builds and runs the Tauri application.
@@ -84,7 +90,12 @@ fn load_state() -> State {
 /// # Panics
 /// Panics if the Tauri runtime fails to start, which leaves nothing to recover.
 pub fn run() {
-    let shared: Shared = Arc::new(Mutex::new(load_state()));
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    let repo = launch_args::repo_from_args(&args).unwrap_or_else(|error| {
+        eprintln!("{error}");
+        std::process::exit(1);
+    });
+    let shared: Shared = Arc::new(Mutex::new(load_state(repo)));
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())

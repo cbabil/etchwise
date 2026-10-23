@@ -23,8 +23,12 @@ help:            ## List targets
 install:         ## Install JS dependencies and the git hooks
 	$(BUN) install
 
-dev:             ## Run the desktop app with hot reload
-	cd $(DESKTOP) && $(BUN) run tauri dev
+# Optional custom OS list for `make dev`, e.g. REPO=repos/intel-nuc.json.
+REPO ?=
+DEV_ARGS := $(if $(REPO),-- -- --repo $(abspath $(REPO)),)
+
+dev:             ## Run the desktop app with hot reload (REPO=file.json for a custom OS list)
+	cd $(DESKTOP) && $(BUN) run tauri dev $(DEV_ARGS)
 
 build:           ## Build the release .app
 	cd $(DESKTOP) && $(BUN) run tauri build --bundles app

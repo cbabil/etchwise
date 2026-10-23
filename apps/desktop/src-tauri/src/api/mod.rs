@@ -11,6 +11,8 @@ mod source;
 mod write;
 
 #[cfg(test)]
+mod nuc_repo;
+#[cfg(test)]
 mod ui_contract;
 
 use serde_json::Value;

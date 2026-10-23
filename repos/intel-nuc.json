@@ -1,0 +1,64 @@
+{
+  "imager": {
+    "devices": [
+      {
+        "name": "Intel NUC",
+        "tags": ["x86-64"],
+        "description": "Intel NUC and other x86-64 PCs (UEFI, boot from the USB stick)",
+        "matching_type": "exclusive",
+        "default": true,
+        "capabilities": []
+      }
+    ]
+  },
+  "os_list": [
+    {
+      "name": "Ubuntu Server 26.04.1 LTS",
+      "description": "Installer for Ubuntu Server, supported until 2031",
+      "url": "https://releases.ubuntu.com/26.04.1/ubuntu-26.04.1-live-server-amd64.iso",
+      "extract_size": 2927861760,
+      "extract_sha256": "cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927",
+      "image_download_size": 2927861760,
+      "image_download_sha256": "cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927",
+      "release_date": "2026-08-26",
+      "devices": ["x86-64"],
+      "capabilities": []
+    },
+    {
+      "name": "Ubuntu Desktop 26.04.1 LTS",
+      "description": "Live session and installer for Ubuntu Desktop",
+      "url": "https://releases.ubuntu.com/26.04.1/ubuntu-26.04.1-desktop-amd64.iso",
+      "extract_size": 6482409472,
+      "extract_sha256": "601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f",
+      "image_download_size": 6482409472,
+      "image_download_sha256": "601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f",
+      "release_date": "2026-08-26",
+      "devices": ["x86-64"],
+      "capabilities": []
+    },
+    {
+      "name": "Debian 13.7 (netinst)",
+      "description": "Small Debian Trixie installer that downloads packages during install",
+      "url": "https://cdimage.debian.org/debian-cd/13.7.0/amd64/iso-cd/debian-13.7.0-amd64-netinst.iso",
+      "extract_size": 792723456,
+      "extract_sha256": "a7ef94ac2fb9a7fec454552abd629b7cc9d5155c886165a45649f5ce6167e355",
+      "image_download_size": 792723456,
+      "image_download_sha256": "a7ef94ac2fb9a7fec454552abd629b7cc9d5155c886165a45649f5ce6167e355",
+      "release_date": "2026-09-12",
+      "devices": ["x86-64"],
+      "capabilities": []
+    },
+    {
+      "name": "Proxmox VE 9.2",
+      "description": "Installer for the Proxmox virtualisation platform",
+      "url": "https://enterprise.proxmox.com/iso/proxmox-ve_9.2-1.iso",
+      "extract_size": 1706178560,
+      "extract_sha256": "4e88fe416df9b527624a175f24c9aa07c714d3332afb1ee3dbf3879573ef2c6c",
+      "image_download_size": 1706178560,
+      "image_download_sha256": "4e88fe416df9b527624a175f24c9aa07c714d3332afb1ee3dbf3879573ef2c6c",
+      "release_date": "2026-05-21",
+      "devices": ["x86-64"],
+      "capabilities": []
+    }
+  ]
+}
