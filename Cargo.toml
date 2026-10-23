@@ -1,0 +1,21 @@
+[workspace]
+resolver = "3"
+members = ["crates/imager-core", "crates/imager-platform", "crates/imager-rpiboot", "apps/desktop/src-tauri"]
+
+[workspace.package]
+version = "2.0.7"
+edition = "2024"
+license = "Apache-2.0"
+rust-version = "1.98"
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+unwrap_used = "deny"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

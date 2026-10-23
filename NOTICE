@@ -1,0 +1,5 @@
+pi-imager-rs is a Rust/Tauri port of Raspberry Pi Imager v2.0.7
+(https://github.com/raspberrypi/rpi-imager), Copyright (C) 2020 Raspberry Pi Ltd,
+licensed under the Apache License 2.0 (see LICENSE). Data files under
+crates/imager-core/data/ and the UI translations are taken from that project.
+"Raspberry Pi" is a trademark of Raspberry Pi Ltd; this port is not affiliated with it.

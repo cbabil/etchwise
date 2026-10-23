@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Blocks secrets, tokens and email addresses, then formats and lints.
+set -e
+scripts/scan-leaks.sh
+make fmt-check lint

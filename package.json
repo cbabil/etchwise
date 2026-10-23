@@ -1,0 +1,11 @@
+{
+  "name": "pi-imager-rs",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
