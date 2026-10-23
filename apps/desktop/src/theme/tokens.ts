@@ -68,6 +68,9 @@ export const spacing = {
 
 export const sizes = {
   buttonHeight: 40,
+  /** Qt Material Button `topInset` / `bottomInset`: the background is drawn
+   * this far inside the 40px button, so it shows 28px tall. */
+  buttonInset: 6,
   buttonMinWidth: 120,
   buttonSkipWidth: 150,
   buttonRadius: 4,

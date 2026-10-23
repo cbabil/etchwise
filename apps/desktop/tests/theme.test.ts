@@ -22,6 +22,7 @@ describe('Style.qml tokens', () => {
     expect(spacing).toMatchObject({ xSmall: 5, small: 10, medium: 15, large: 20 })
     expect(sizes).toMatchObject({
       buttonHeight: 40,
+      buttonInset: 6,
       buttonMinWidth: 120,
       sidebarWidth: 200,
       sidebarMinWidth: 150,

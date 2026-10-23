@@ -10,7 +10,15 @@ describe('ImButton / ImButtonRed', () => {
     render(<ImButton>Back</ImButton>)
     const button = screen.getByRole('button', { name: 'Back' })
     const style = getComputedStyle(button)
-    expect(style.height).toBe('40px')
+    // Qt Material draws the background 6px inside a 40px button (topInset /
+    // bottomInset), so the visible box is 28px in a 40px row.
+    expect(style.height).toBe('28px')
+    expect(style.marginTop).toBe('6px')
+    expect(style.marginBottom).toBe('6px')
+    // One line centred vertically (upstream Text.AlignVCenter).
+    expect(style.paddingTop).toBe('0px')
+    expect(style.paddingBottom).toBe('0px')
+    expect(style.lineHeight).toBe('28px')
     expect(style.minWidth).toBe('120px')
     expect(style.textTransform).toBe('uppercase')
     expect(style.borderRadius).toBe('4px')
@@ -24,6 +32,7 @@ describe('ImButton / ImButtonRed', () => {
     const style = getComputedStyle(screen.getByRole('button', { name: 'Next' }))
     expect(style.backgroundColor).toBe('rgb(171, 30, 58)')
     expect(style.color).toBe('rgb(255, 255, 255)')
+    expect(style.height).toBe('28px')
   })
 
   it('combines the label with the accessible description and clicks', () => {

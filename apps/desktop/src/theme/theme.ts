@@ -29,7 +29,8 @@ export const theme = createTheme({
       defaultProps: { disableElevation: true },
       styleOverrides: {
         root: {
-          height: sizes.buttonHeight,
+          height: sizes.buttonHeight - 2 * sizes.buttonInset,
+          marginBlock: sizes.buttonInset,
           minWidth: sizes.buttonMinWidth,
           transition: 'none',
           boxShadow: 'none',

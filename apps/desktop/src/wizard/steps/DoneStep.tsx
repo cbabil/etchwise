@@ -15,7 +15,7 @@ import { useWizard } from '../WizardContext'
 import { DoneContent } from './done/DoneContent'
 import { finish, useDoneInfo } from './done/useDoneInfo'
 
-const buttonSx = { minWidth: sizes.buttonMinWidth, height: sizes.buttonHeight }
+const buttonSx = { minWidth: sizes.buttonMinWidth }
 
 function DoneButtons({ embedded }: { embedded: boolean }) {
   const tr = useTr('DoneStep')

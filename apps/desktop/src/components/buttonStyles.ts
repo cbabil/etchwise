@@ -1,6 +1,8 @@
 /**
- * Shared look of upstream's ImButton / ImButtonRed / ImToggleTab: 40px
- * high, at least 120px wide, 4px radius, 14px ALL CAPS text. Qt's
+ * Shared look of upstream's ImButton / ImButtonRed / ImToggleTab: a 40px
+ * button whose background Qt Material insets by 6px top and bottom (so a
+ * 28px box with 6px margins), at least 120px wide, 4px radius, 14px ALL
+ * CAPS text. Qt's
  * `activeFocus` (tab focus only) maps to `:focus-visible`. No ripple,
  * shadow or transition.
  */
@@ -11,8 +13,15 @@ import { colors, fontFamily, fontSize, sizes } from '@/theme/tokens'
 const disabledBackground = 'rgba(0, 0, 0, 0.1)'
 const disabledForeground = 'rgba(0, 0, 0, 0.3)'
 
+const visibleHeight = sizes.buttonHeight - 2 * sizes.buttonInset
+
 const base = {
-  height: sizes.buttonHeight,
+  height: visibleHeight,
+  my: `${sizes.buttonInset}px`,
+  // One line centred vertically (upstream Text.AlignVCenter); block layout
+  // keeps the ellipsis for labels too long for the button.
+  py: 0,
+  lineHeight: `${visibleHeight}px`,
   minWidth: sizes.buttonMinWidth,
   px: 2,
   borderRadius: `${sizes.buttonRadius}px`,
