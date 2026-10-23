@@ -1,0 +1,36 @@
+[package]
+name = "imager-core"
+description = "Platform-independent core of the Pi Imager port: OS list, write pipeline, customisation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+bzip2 = "0.5"
+crc32fast = "1"
+fatfs = "0.3"
+flate2 = "1"
+hex = "0.4"
+pbkdf2 = { version = "0.12", default-features = false, features = ["hmac"] }
+rand = "0.9"
+regex = "1"
+rsa = { version = "0.9", features = ["sha2"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "http2", "macos-system-configuration"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sha1 = "0.10"
+sha2 = "0.10"
+thiserror = "2"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+liblzma = { version = "0.4", features = ["static", "parallel"] }
+zstd = "0.13"
+
+[build-dependencies]
+cc = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[lints]
+workspace = true
