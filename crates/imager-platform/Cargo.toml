@@ -1,0 +1,27 @@
+[package]
+name = "imager-platform"
+description = "OS-specific drive, raw-disk, Wi-Fi and power access for the Pi Imager port"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+imager-core = { path = "../imager-core" }
+thiserror = "2"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+core-foundation = "0.10"
+core-foundation-sys = "0.8"
+libc = "0.2"
+security-framework = "3"
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", features = ["NSString", "NSArray"] }
+objc2-core-wlan = { version = "0.3", features = ["CWWiFiClient", "CWInterface"] }
+objc2-core-location = { version = "0.3", features = ["CLLocationManager"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[lints]
+workspace = true
