@@ -1,0 +1,336 @@
+{
+  "AppOptionsDialog": {
+    "App Options": "אפשרויות היישום",
+    "Content Repository": "מאגר תוכן",
+    "Disable warnings": "השבתת אזהרות",
+    "Disable warnings?": "להשבית אזהרות?",
+    "Edit": "עריכה",
+    "Eject media when finished": "לשלוף את אמצעי האחסון עם סיום הפעולה",
+    "Enable anonymous statistics (telemetry)": "הפעלת סטטיסטיקה אלמונית (מדדים)",
+    "If you disable warnings, Raspberry Pi Imager will <b>not show confirmation prompts before writing images</b>. You will still be required to <b>type the exact name</b> when selecting a system drive.": "השבתת אזהרות תוביל לכך שצורב הדמויות של Raspberry Pi <b>לא יציג בקשות אישור לפני צריבת דמויות</b>. עדיין יהיה עליך <b>להקליד את השם במדויק</b> בעת בחירה בכונן מערכת.",
+    "Play sound when finished": "להשמיע צליל עם הסיום",
+    "Save": "שמירה",
+    "What is this?": "מה זה?"
+  },
+  "CommonStrings": {
+    "All files (*)": "כל הקבצים (*)",
+    "Back": "חזרה",
+    "Browse": "עיון",
+    "Cancel": "ביטול",
+    "Continue": "המשך",
+    "Device:": "התקן:",
+    "Finish": "סיום",
+    "Hostname configured": "שם המארח הוגדר",
+    "I2C enabled": "I2C הופעל",
+    "Image files (%1)": "קובצי דמויות (%1)",
+    "Imager Repository Files (*.json)": "קובצי מאגר של צורב הדמויות (‎*.json)",
+    "No": "לא",
+    "No device selected": "לא נבחר התקן",
+    "No image selected": "לא נבחרה דמות",
+    "No storage selected": "לא נבחר אחסון",
+    "Only proceed if you fully understand the risks.": "להמשיך רק אם הסיכונים ברורים לך לחלוטין.",
+    "Password:": "סיסמה:",
+    "Public Key files (*.pub)": "קובצי מפתח ציבורי (‎*.pub)",
+    "Raspberry Pi Connect enabled": "Raspberry Pi Connect הופעל",
+    "SPI enabled": "SPI הופעל",
+    "SSH enabled": "SSH הופעל",
+    "Select image": "נא לבחור דמות",
+    "Selecting the wrong drive will permanently erase data and can render your computer inoperable.": "בחירה בכונן השגוי תמחק את כל הנתונים לצמיתות ואולי אף תפגע ביכולת של המחשב שלך להעלות את מערכת ההפעלה.",
+    "Storage:": "אחסון:",
+    "System drives typically contain files essential to the operation of your computer, and may include your personal files (photos, videos, documents).": "כונני המערכת בדרך כלל מכילים קבצים חיוניים לפעולת המחשב שלך ועשויים גם להכיל את הקבצים האישיים שלך (תמונות, סרטונים, מסמכים).",
+    "User account configured": "חשבון המשתמש הוגדר",
+    "Wi‑Fi configured": "הרשת האלחוטית הוגדרה",
+    "Yes": "כן"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CANCEL": "ביטול",
+    "CONTINUE": "המשך",
+    "Mounted as: %1": "מעוגן בתור: %1",
+    "Not mounted": "לא מעוגן",
+    "Size: %1": "גודל: %1",
+    "To continue, type the exact drive name below:": "כדי להמשיך נא להקליד את שם הכונן במדויק להלן:",
+    "Type drive name exactly as shown above": "נא להקליד את שם הכונן בדיוק כמו שמופיע לעיל"
+  },
+  "ConfirmUnfilterDialog": {
+    "By disabling system drive filtering, <b>system drives will be shown</b> in the list.": "השבתת סינון כונני מערכת תרגום ל<b>הצגת כונני המערכת</b> ברשימה.",
+    "KEEP FILTER ON": "להשאיר את המסנן פעיל",
+    "SHOW SYSTEM DRIVES": "להציג כונני מערכת"
+  },
+  "DeviceSelectionStep": {
+    "Select your Raspberry Pi device": "נא לבחור את התקן ה־Raspberry Pi שלך"
+  },
+  "DoneStep": {
+    "Customisations applied:": "ההתאמות חלו:",
+    "Operating system:": "מערכת הפעלה:",
+    "Please eject the storage device before removing it from your computer.": "נא לשלוף את התקן האחסון בטרם הסרתו מהמחשב שלך.",
+    "Reboot": "הפעלה מחדש",
+    "Storage:": "אחסון:",
+    "The storage device was ejected automatically. You can now remove it safely.": "התקן האחסון נשלף אוטומטית. כעת ניתן להסיר אותו בבטחה.",
+    "Write Another": "לצרוב אחד נוסף",
+    "Write complete!": "הצריבה הושלמה!",
+    "Your choices:": "הבחירות שלך:"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "שגיאה במעבר לתיקייה ‚%1’",
+    "Error extracting archive: %1": "שגיאה בחילוץ ארכיון: %1",
+    "Error mounting FAT32 partition": "שגיאה בעיגון מחיצת FAT32",
+    "Error reading from storage.<br>SD card may be broken.": "שגיאת קריאה מאחסון.<br>כנראה שכרטיס ה־SD פגום.",
+    "Operating system did not mount FAT32 partition": "מערכת ההפעלה לא עיגנה מחיצת FAT32",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "וידוא הצריבה נכשל. תוכן כרטיס ה־SD שונה ממה שלכאורה נצרב אליו."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "הגישה נדחתה תוך כדי הצריבה לכונן.",
+    "Cached file is corrupt. SHA256 hash does not match expected value.<br>The cache file will be removed and the download will restart.": "הקובץ שבמטמון פגום. גיבוב ה־SHA256 לא תואם לערך שאמור להיות.<br>קובץ המטמון יוסר וההורדה תתחיל מחדש.",
+    "Cannot open storage device '%1'.": "לא ניתן לפתוח את התקן האחסון ‚%1’.",
+    "Cleaning disk...": "הכונן מתנקה…",
+    "Controlled Folder Access seems to be enabled. Please add rpi-imager.exe to the list of allowed apps and try again.": "נראה שגישה מבוקרת לתיקיות פעילה. נא להוסיף את rpi-imager.exe לרשימת היישומים המורשים ולנסות שוב.",
+    "Customising OS...": "מערכת ההפעלה עוברת התאמה…",
+    "Discarding existing data on drive...": "הנתונים הקיימים בכונן מסולקים…",
+    "Disk is full. Please use a larger storage device.": "הכונן מלא. נא להשתמש בהתקן אחסון גדול יותר.",
+    "Download appears to be corrupt. SHA256 hash does not match.<br>Expected: %1<br>Actual: %2<br>Please check your network connection and try again.": "נראה שההורדה פגומה. גיבוב ה־SHA256 לא תואם.<br>אמור להיות: %1<br>בפועל: %2<br>נא לבדוק האם החיבור שלך לרשת תקין ולנסות שוב.",
+    "Error downloading: %1": "שגיאת הורדה: %1",
+    "Error getting device size": "שגיאה בקבלת גודל ההתקן",
+    "Error opening disk device '%1'": "שגיאה בפתיחת התקן האחסון ‚%1’",
+    "Error reading from storage.<br>SD card may be broken.": "שגיאת קריאה מאחסון.<br>כנראה שכרטיס ה־SD פגום.",
+    "Error writing first block (partition table)": "שגיאה בכתיבה לבלוק הראשון (טבלת מחיצות)",
+    "Error writing to storage (while flushing)": "שגיאת צריבה לאחסון (במהלך מחיקה מוחלטת)",
+    "Error writing to storage (while fsync)": "שגיאת צריבה לאחסון (במהלך fsync)",
+    "Error writing to storage device. Please check if the device is writable, has sufficient space, and is not write-protected.": "שגיאה בצריבה להתקן האחסון. נא לבדוק אם ההתקן זמין לכתיבה, האם יש בו מספיק מקום ושאין עליו הגנה מפני כתיבה.",
+    "Error: Multiple partitions found on disk. Please ensure the disk is completely clean.": "שגיאה: נמצאו מגוון מחיצות בכונן. נא לוודא שהכונן נקי לחלוטין.",
+    "I/O device error. The storage device may have been disconnected or is malfunctioning.": "שגיאת התקן קלט/פלט. יכול להיות שהתקן האחסון נותק או שהוא פגום.",
+    "Invalid disk parameter. The storage device may not be properly recognized. Please try reconnecting the device.": "משתנה שגוי לכונן. התקן האחסון כנראה לא מזוהה כראוי. נא לנסות לחבר אותו שוב.",
+    "Local file is corrupt or has incorrect SHA256 hash.<br>Expected: %1<br>Actual: %2": "הקובץ המקומי פגום או שגיבוב ה־SHA256 שלו שגוי.<br>אמור להיות: %1<br>בפועל: %2",
+    "Media error detected. The storage device may be damaged or counterfeit. Please try a different device.": "התגלתה שגיאת אמצעי אחסון. התקן האחסון פגום או שעבר חבלה. נא לנסות התקן אחר.",
+    "Opening drive...": "הכונן נפתח…",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "נא לוודא ש־‚Raspberry Pi Imager (צורב קובצי דמות)’ מורשה לגשת ל‚כרכים נתיקים' בהגדרות הפרטיות (תחת ‚קבצים ותיקיות’ או לחלופין להעניק לו ‚גישה מלאה לכוננים’).",
+    "Starting download...": "ההורדה מתחילה…",
+    "The disk is write-protected. Please check if the disk has a physical write-protect switch or is read-only.": "התקן האחסון מוגן מפני כתיבה. נא לבדוק אם להתקן האחסון יש מתג הגנת כתיבה פיזי או שהוא לקריאה בלבד.",
+    "The disk may be write-protected or in use by another application. Please ensure the disk is not mounted and try again.": "נראה שהכונן מוגן מפני כתיבה או שיישום אחר משתמש בו. נא לוודא שהכונן אינו מעוגן ואז לנסות שוב.",
+    "Unmounting drive...": "עיגון הכונן מנותק…",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "וידוא הצריבה נכשל. תוכן כרטיס ה־SD שונה ממה שלכאורה נצרב אליו.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "שגיאת צריבה במהלך הניסיון למלא את החלק הסופי של הכרטיס באפסים.<br>יכול להיות שהכרטיס מפרסם על עצמו נפח שגוי (כנראה זיוף).",
+    "Write error while zero'ing out MBR": "שגיאת כתיבה במהלך כתיבת אפסים ל־MBR (רשומת טעינה עיקרית)",
+    "Writing image...": "הדמות נצרבת…",
+    "Zero'ing out first and last MB of drive...": "המגה בתים הראשון והאחרון בכונן מתמלאים באפסים…"
+  },
+  "DriveFormatThread": {
+    "Cleaning disk...": "הכונן מתנקה…",
+    "Error opening device for formatting": "שגיאה בפתיחת ההתקן לפרמוט",
+    "Error seeking on device during formatting": "שגיאת חתירה בהתקן במהלך פרמוט",
+    "Error writing to device during formatting": "שגיאה בצריבה להתקן במהלך פרמוט",
+    "Insufficient space on device": "אין מספיק מקום בכונן",
+    "Invalid parameters for formatting": "משתנים שגויים לפרמוט",
+    "Preparing disk for formatting...": "מתבצעת הכנת הכונן לפרמוט…",
+    "Unknown formatting error": "שגיאת פרמוט לא ידועה",
+    "Writing filesystem...": "מערכת הקבצים נצרבת…"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "נא לבחור מכשיר"
+  },
+  "HostnameCustomizationStep": {
+    "A hostname is a unique name that identifies your Raspberry Pi on the network. It should contain only letters, numbers, and hyphens.": "שם מארח הוא שם ייחודי שעוזר לזהות את ה־Raspberry Pi שלך ברשת. הוא אמור להכיל תווים, ספרות ומינוסים בלבד.",
+    "Customisation: Choose hostname": "התאמה אישית: בחירת שם מארח"
+  },
+  "IfAndFeaturesCustomizationStep": {
+    "Console": "מסוף",
+    "Customisation: Interfaces & Features": "התאמה אישית: ממשקים ויכולות",
+    "Enable I2C": "הפעלת I2C",
+    "Enable SPI": "הפעלת SPI",
+    "Enable Serial:": "הפעלת חיבור טורי:",
+    "Enable USB Gadget Mode": "הפעלת מצב חפיץ USB",
+    "Enable hardware interfaces and connectivity options.": "הפעלת ממשקי חומרה ואפשרויות קישוריות.",
+    "Features": "יכולות",
+    "I understand, continue": "ברור לי, אפשר להמשיך",
+    "Interfaces": "ממשקים",
+    "Learn more about USB Gadget Mode": "מידע נוסף על מצב חפיץ USB",
+    "Only continue if you are sure you know what you are doing.": "כדאי להמשיך רק אם ברור לך לחלוטין מה הן ההשלכות של המעשים שלך.",
+    "Please review the <a href='%1'>documentation</a> before proceeding.": "נא לפנות ל<a href='%1'>תיעוד</a> לפני המשך התהליך.",
+    "USB Gadget Mode can change how your device behaves and may impact connectivity and host interaction.": "מצב חפיץ USB יכול לשנות את איך שההתקן שלך מתנהג ועלול להשפיע על חיבורים והתפעול מצד המארח."
+  },
+  "ImFileDialog": {
+    "Enter path or URL…": "נא למלא נתיב או כתובת…",
+    "Folders": "תיקיות",
+    "Go up a folder": "עלייה תיקייה אחת למעלה",
+    "No files in this folder": "אין קבצים בתיקייה הזאת",
+    "Open": "פתיחה",
+    "Removable drives": "כוננים נתיקים",
+    "Save": "שמירה",
+    "Select File": "בחירת קובץ"
+  },
+  "ImageWriter": {
+    " or ": " או ",
+    "%1 %2": "%1 %2",
+    "%1.%2 %3": "%1.%2 %3",
+    "B": "ב׳",
+    "Cannot start write. %1": "לא ניתן להתחיל בצריבה. %1",
+    "GB": "ג״ב",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "קובץ הקלט אינו דמות כונן תקנית.<br>גודל הקובץ על סך %1 בתים הוא לא מכפלה של 512 בתים.",
+    "KB": "ק״ב",
+    "MB": "מ״ב",
+    "No %1 selected.": "לא נבחר %1.",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "STP (פרוטוקול העץ הפורש) פעיל בציוד התקשורת שלך. קבלת כתובת IP תארוך זמן רב.",
+    "Select image": "נא לבחור דמות",
+    "Source file is not readable: %1": "קובץ המקור אינו קריא: %1",
+    "Source file not found: %1": "קובץ המקור לא נמצא: %1",
+    "Source is not a regular file: %1": "המקור איננו קובץ רגיל: %1",
+    "Storage capacity is not large enough.<br>Needs to be at least %1.": "נפח האחסון לא גדול מספיק.<br>חייב להיות %1 לפחות.",
+    "TB": "ט״ב",
+    "Unknown precondition failure.": "תנאי מוקדם לא ידוע נכשל.",
+    "image": "דמות",
+    "storage device": "התקן אחסון",
+    "valid storage device (device no longer available)": "התקן אחסון תקף (ההתקן לא זמין עוד)"
+  },
+  "KeychainPermissionDialog": {
+    "Keychain Access": "גישה למחזיק מפתחות",
+    "This will require administrator authentication on macOS.": "הפעולה הזאת תדרוש אימות הנהלת מערכת ב־macOS.",
+    "Would you like to prefill the Wi‑Fi password from the system keychain?": "למלא את סיסמת הרשת האלחוטית ממחזיק המפתחות של המערכת?"
+  },
+  "LanguageSelectionStep": {
+    "Choose your language for Raspberry Pi Imager": "נא לבחור את שפת צורב הדמויות ל־Raspberry Pi",
+    "Language:": "שפה:",
+    "Welcome": "ברוך בואך"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "שגיאה בפתיחת קובץ דמות",
+    "Error reading from image file": "שגיאה בקריאה מקובץ דמות",
+    "Error writing to device": "שגיאה בכתיבה להתקן",
+    "Failed to read complete image file": "קריאת קובץ הדמות במלואו נכשלה",
+    "Opening image file...": "קובץ הדמות נפתח…",
+    "Starting extraction...": "החילוץ מתחיל…"
+  },
+  "LocaleCustomizationStep": {
+    "Capital city:": "עיר הבירה:",
+    "Customisation: Localisation": "התאמה אישית: הגדרות שפה ואזור",
+    "Keyboard layout:": "פריסת מקלדת:",
+    "Select your location for suggested time zone and keyboard layout": "נא לבחור את אזור המחייה שלך לקבלת הצעות לאזור זמן ופריסת מקלדת",
+    "Time zone:": "אזור זמן:"
+  },
+  "OSListModel": {
+    "Recommended": "מומלצת"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "שמור במטמון במחשב שלך",
+    "Choose operating system": "בחירת מערכת הפעלה",
+    "Go back to main menu": "חזרה לתפריט הראשי",
+    "Local - %1": "מקומי - %1",
+    "Local file": "קובץ מקומי",
+    "Online - %1 download": "מקוון - הורדה של %1",
+    "Select an operating system to install on your Raspberry Pi": "נא לבחור מערכת הפעלה להתקנה ל־Raspberry Pi שלך",
+    "Select image": "נא לבחור דמות"
+  },
+  "PiConnectCustomizationStep": {
+    "Customisation: Raspberry Pi Connect": "התאמה אישית: Raspberry Pi Connect",
+    "Enable Raspberry Pi Connect": "הפעלת Raspberry Pi Connect",
+    "OK": "אישור",
+    "Open Raspberry Pi Connect": "פתיחת Raspberry Pi Connect",
+    "Token received from browser": "התקבל אסימון מהדפדפן",
+    "What is Raspberry Pi Connect?": "מה זה Raspberry Pi Connect?"
+  },
+  "RemoteAccessStep": {
+    "Authentication mechanism:": "מנגנון אימות:",
+    "Configure SSH access": "הגדרת גישת SSH",
+    "Customisation: SSH authentication": "התאמה אישית: אימות SSH",
+    "Enable SSH": "הפעלת SSH",
+    "Learn about SSH": "מידע על SSH",
+    "Use password authentication": "להשתמש באימות עם סיסמה",
+    "Use public key authentication": "להשתמש באימות עם מפתח ציבורי"
+  },
+  "RepositoryDialog": {
+    "Apply & Restart": "החלה והפעלה מחדש",
+    "Content Repository": "מאגר תוכן",
+    "Please select a custom repository json file": "נא לבחור קובץ json למאגר מותאם אישית",
+    "Repository source:": "מקור מאגר:",
+    "Select Repository": "בחירת מאגר",
+    "Select custom repository": "בחירת מאגר מותאם אישית",
+    "Use custom file": "להשתמש בקובץ מותאם אישית"
+  },
+  "SshKeyManager": {
+    "Select SSH Public Key": "בחירת מפתח SSH ציבורי"
+  },
+  "StorageSelectionStep": {
+    "Exclude system drives": "החרגת כונני מערכת",
+    "Mounted as %1": "מעוגן בתור %1",
+    "No storage devices found": "לא נמצאו התקני אחסון",
+    "Read-only": "לקריאה בלבד",
+    "Select your storage device": "נא לבחור את התקן האחסון שלך"
+  },
+  "UpdateAvailableDialog": {
+    "There is a newer version of Imager available. Would you like to visit the website to download it?": "יש גרסה חדשה יותר של צורב הדמויות. לבקר באתר כדי להוריד אותה?",
+    "Update available": "יש עדכון"
+  },
+  "UserCustomizationStep": {
+    "Confirm password:": "אישור הסיסמה:",
+    "Create a user account for your Raspberry Pi": "יצירת חשבון משתמש ל־Raspberry Pi שלך",
+    "Customisation: Choose username": "התאמה אישית: בחירת שם משתמש",
+    "Enter password": "נא למלא סיסמה",
+    "Enter your username": "נא למלא את שם המשתמש שלך",
+    "Re-enter password": "נא למלא את הסיסמה שוב",
+    "Re-enter to change password": "נא למלא מחדש כדי לשנות את הסיסמה שלך",
+    "Saved (hidden) — leave blank to keep": "שמור (מוסתר) - יש לרוקן כדי להשאיר",
+    "The username must be lowercase and contain only letters, numbers, underscores, and hyphens.": "שם המשתמש חייב להיות באותיות קטנות ולהכיל רק תווים, ספרות, קווים תחתיים ומינוסים.",
+    "Username:": "שם משתמש:"
+  },
+  "WifiCustomizationStep": {
+    "Confirm password:": "אישור הסיסמה:",
+    "Customisation: Choose Wi‑Fi": "התאמה אישית: בחירת רשת אלחוטית",
+    "Hidden SSID": "רשת מוסתרת (BSSID)",
+    "Network name": "שם הרשת",
+    "Network password": "סיסמת הרשת",
+    "Re-enter password": "נא למלא את הסיסמה שוב",
+    "Re-enter to change password": "נא למלא מחדש כדי לשנות את הסיסמה שלך",
+    "SSID:": "שם רשת (SSID):",
+    "Saved (hidden) — leave blank to keep": "שמור (מוסתר) - יש לרוקן כדי להשאיר"
+  },
+  "WizardContainer": {
+    "App Options": "אפשרויות היישום",
+    "Customisation": "התאמה אישית",
+    "Device": "התקן",
+    "Done": "הסתיימה",
+    "Hostname": "שם מארח",
+    "Interfaces & Features": "ממשק ויכולות",
+    "Localisation": "הגדרות שפה ואזור",
+    "OS": "מערכת הפעלה",
+    "Remote access": "גישה מרחוק",
+    "Setup steps": "שלבי הגדרה",
+    "Storage": "אחסון",
+    "User": "משתמש",
+    "Wi‑Fi": "רשת אלחוטית",
+    "Writing": "צריבה"
+  },
+  "WizardStepBase": {
+    "Next": "הבא",
+    "Skip customisation": "דילוג על התאמה אישית"
+  },
+  "WritingStep": {
+    "Customisations to apply:": "התאמות אישיות להחלה:",
+    "Finalising...": "התהליך מסתיים…",
+    "I understand, erase and write": "ברור לי, אפשר למחוק ולצרוב",
+    "Operating system:": "מערכת הפעלה:",
+    "Please wait...": "נא להמתין…",
+    "Review your choices and write the image to the storage device": "מעבר שוב על הבחירות שלך וצריבת הדמות להתקן האחסון",
+    "Starting write process...": "תהליך הצריבה מתחיל…",
+    "Summary": "סיכום",
+    "This action is PERMANENT and CANNOT be undone.": "הפעולה הזאת היא לצמיתות והיא בלתי הפיכה.",
+    "Verifying... %1%": "מתבצע אימות… %1%",
+    "Write": "צריבה",
+    "Write completed successfully!": "הצריבה הושלמה בהצלחה!",
+    "Write failed: %1": "הצריבה נכשלה: %1",
+    "Write image": "צריבת דמות",
+    "Writing... %1%": "מתבצעת צריבה… %1%",
+    "You are about to ERASE all data on: %1": "הפעולה הזאת תמחק את כל הנתונים שעל: %1",
+    "the storage device": "התקן האחסון"
+  },
+  "main": {
+    "All files (*)": "כל הקבצים (*)",
+    "Are you sure you want to quit?": "לצאת?",
+    "Erase": "מחיקה",
+    "Error": "שגיאה",
+    "Format card as FAT32": "פרמוט הכרטיס כ־FAT32",
+    "OK": "אישור",
+    "Raspberry Pi Imager is still busy. Are you sure you want to quit?": "צורב הדמויות ל־Raspberry Pi עדיין עסוק. לצאת?",
+    "Select a custom .img from your computer": "בחירת קובץ ‎.img מותאם מהמחשב שלך",
+    "Storage device removed": "התקן האחסון הוסר",
+    "The storage device was removed while writing, so the operation was cancelled. Please reinsert the device or select a different one to continue.": "התקן האחסון הוסר תוך כדי כתיבה, לכן הפעולה בוטלה. נא להכניס את ההתקן או לבחור בהתקן אחר כדי להמשיך.",
+    "Use custom": "להשתמש בהתאמה אישית"
+  }
+}

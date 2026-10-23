@@ -1,0 +1,89 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "Витягнути накопичувач після завершення",
+    "Play sound when finished": "Відтворити звук після завершення"
+  },
+  "CommonStrings": {
+    "Back": "Назад",
+    "Password:": "Пароль:",
+    "Select image": "Обрати образ"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "ПРОДОВЖИТИ"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Помилка при зміні каталогу на '%1'",
+    "Error extracting archive: %1": "Помилка розпакування архіва: %1",
+    "Error mounting FAT32 partition": "Помилка монтування FAT32 розділу",
+    "Error reading from storage.<br>SD card may be broken.": "Помилка читання накопичувача.<br>SD-карта пам'яті може бути пошкоджена.",
+    "Operating system did not mount FAT32 partition": "Операційна система не монтувала FAT32 розділ",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Помилка перевірки запису. Зміст SD-карти пам'яті відрізняється від того, що було записано туди."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Помилка доступу при записі файлу на диск.",
+    "Cannot open storage device '%1'.": "Не вдалося відкрити накопичувач '%1'.",
+    "Error downloading: %1": "Помилка завантаження: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Помилка читання накопичувача.<br>SD-карта пам'яті може бути пошкоджена.",
+    "Error writing first block (partition table)": "Помилка під час запису першого блоку (таблиця розділів)",
+    "Error writing to storage (while flushing)": "Помилка запису на накопичувач (при скидуванні)",
+    "Error writing to storage (while fsync)": "Помилка запису на накопичувач (при виконанні fsync)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Переконайтеся, що у Raspberry Pi Imager у налаштуваннях приватності (у розділі \"файли та каталоги\") є доступ до змінних розділів. Або дайте програмі доступ до усього диску.",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Помилка перевірки запису. Зміст SD-карти пам'яті відрізняється від того, що було записано туди.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Помилка запису під час обнулювання останнього розділу карти пам'яті.<br>Можливо заявлений об'єм карти не збігається з реальним (можливо карта є підробленою).",
+    "Write error while zero'ing out MBR": "Помилка при обнулюванні MBR"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "ОБРАТИ ПРИСТРІЙ"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Обраний файл не є правильним образом диску.<br>Розмір файла %1 байт не є кратним 512 байт.",
+    "Select image": "Обрати образ"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Помилка при відкриванні файлу образу"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Розкладка клавіатури:"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "Кешовано на вашому комп'ютері",
+    "Go back to main menu": "Повернутися у головне меню",
+    "Local file": "Локальний файл",
+    "Select image": "Обрати образ"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "Увімкнути SSH",
+    "Use password authentication": "Використовувати аутентефікацію через пароль"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Примонтовано як %1"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "Доступно оновлення"
+  },
+  "UserCustomizationStep": {
+    "Username:": "Ім'я користувача:"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "Прихована SSID",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "Накопичувач"
+  },
+  "WizardStepBase": {
+    "Next": "Далі"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "Перевірка...%1%",
+    "Writing... %1%": "Записування...%1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "Бажаєте вийти?",
+    "Erase": "Видалити",
+    "Error": "Помилка",
+    "Format card as FAT32": "Форматувати карту у FAT32",
+    "Select a custom .img from your computer": "Обрати власний .img з вашого комп'ютера",
+    "Use custom": "Власний образ"
+  }
+}

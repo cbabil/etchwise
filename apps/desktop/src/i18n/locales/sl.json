@@ -1,0 +1,79 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "Izvrzi medij, ko končaš",
+    "Play sound when finished": "Zaigraj zvok, ko končaš"
+  },
+  "CommonStrings": {
+    "Back": "Nazaj",
+    "Password:": "Geslo:",
+    "Select image": "Izberite sliko"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "NADALJUJ"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Napaka spremembe direktorija '%1%'",
+    "Error extracting archive: %1": "Napaka razširjanja arhiva: %1",
+    "Error mounting FAT32 partition": "Napaka priklopa FAT32 particije",
+    "Error reading from storage.<br>SD card may be broken.": "Napaka branja iz diska.<br>SD kartica/disk je mogoče v okvari.",
+    "Operating system did not mount FAT32 partition": "Operacijski sistem, ni priklopil FAT32 particije",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Preverjanje pisanja spodletelo. Vsebina diska je drugačna, od tega, kar je bilo nanj zapisano."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Napaka zavrnitve dostopa med pisanjem na disk.",
+    "Cannot open storage device '%1'.": "Ne morem odpreti diska '%1'.",
+    "Error downloading: %1": "Napaka prenosa:%1",
+    "Error reading from storage.<br>SD card may be broken.": "Napaka branja iz diska.<br>SD kartica/disk je mogoče v okvari.",
+    "Error writing first block (partition table)": "Napaka pisanja prvega bloka (particijska tabela)",
+    "Error writing to storage (while flushing)": "Napaka pisanja na disk (med brisanjem)",
+    "Error writing to storage (while fsync)": "Napaka pisanja na disk (med fsync)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Prosim preverite če ima 'Raspberry Pi Imager' pravico dostopa do 'odstranljivih mediev' pod nastavitvami zasebnosti (pod 'datoteke in mape' ali pa mu dajte 'popolni dostop do diska').",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Preverjanje pisanja spodletelo. Vsebina diska je drugačna, od tega, kar je bilo nanj zapisano.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Napaka ničenja zadnjega dela diska.<br>Disk morebiti sporoča napačno velikost(možen ponaredek).",
+    "Write error while zero'ing out MBR": "Napaka zapisovanja med ničenjem MBR"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Vhodna datoteka ni veljavna slika diska.<br>Velikost datoteke %1 bajtov ni večkratnik od 512 bajtov.",
+    "Select image": "Izberite sliko"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Napaka odpiranja slike diska"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Razporeditev tipkovnice:"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "Predpolnjeno na vaš računalnik",
+    "Go back to main menu": "Pojdi nazaj na glavni meni",
+    "Local file": "Lokalna datoteka",
+    "Select image": "Izberite sliko"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "Omogoči SSH",
+    "Use password authentication": "Uporabi geslo za avtentifikacijo"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Priklopljen kot %1"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "Posodobitev na voljo"
+  },
+  "WifiCustomizationStep": {
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "SD kartica ali USB disk"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "Preverjam... %1%",
+    "Writing... %1%": "Pišem...%1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "A ste prepričani, da želite končat?",
+    "Erase": "Odstrani",
+    "Error": "Napaka",
+    "Format card as FAT32": "Formatiraj disk v FAT32",
+    "Select a custom .img from your computer": "Izberite drug .img iz vašega računalnika",
+    "Use custom": "Uporabi drugo"
+  }
+}

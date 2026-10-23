@@ -1,0 +1,91 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "完成時彈出媒體",
+    "Play sound when finished": "完成時播放聲音"
+  },
+  "CommonStrings": {
+    "Back": "返回",
+    "Password:": "密碼：",
+    "Select image": "選擇映像檔"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "繼續"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "變更至目錄 '%1' 時發生錯誤",
+    "Error extracting archive: %1": "解壓縮檔案時發生錯誤：%1",
+    "Error mounting FAT32 partition": "掛載 FAT32 分割區時發生錯誤",
+    "Error reading from storage.<br>SD card may be broken.": "從儲存裝置讀取時發生錯誤。<br>SD 卡可能已損壞。",
+    "Operating system did not mount FAT32 partition": "作業系統未掛載 FAT32 分割區",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "驗證寫入失敗。SD 卡的內容與寫入的內容不一致。"
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "寫入檔案至磁碟時存取被拒絕的錯誤。",
+    "Cannot open storage device '%1'.": "無法開啟儲存裝置 '%1'。",
+    "Error downloading: %1": "下載時發生錯誤：%1",
+    "Error reading from storage.<br>SD card may be broken.": "從儲存裝置讀取時發生錯誤。<br>SD 卡可能已損壞。",
+    "Error writing first block (partition table)": "寫入第一個區塊（分割表）時發生錯誤",
+    "Error writing to storage (while flushing)": "寫入儲存裝置時發生錯誤（在清除時）",
+    "Error writing to storage (while fsync)": "寫入儲存裝置時發生錯誤（在 fsync 時）",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "請確認在隱私設定中是否允許 'Raspberry Pi Imager' 存取 '可移除磁碟'（在 '檔案和資料夾' 下，或者給予它 '完全磁碟存取權'）。",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "驗證寫入失敗。SD 卡的內容與寫入的內容不一致。",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "嘗試將卡的最後部分清除時寫入錯誤。<br>卡可能在廣告錯誤的容量（可能是偽造的）。",
+    "Write error while zero'ing out MBR": "在將 MBR 清除時寫入錯誤"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "選擇裝置"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "輸入檔案不是有效的磁碟映像檔。<br>檔案大小 %1 位元組不是 512 位元組的倍數。",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "您的網路交換器已啟用 STP 功能，取得 IP 位址需要較長時間",
+    "Select image": "選擇映像檔"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "開啟映像檔時發生錯誤"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "鍵盤配置："
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "已在您的電腦上快取",
+    "Go back to main menu": "返回主選單",
+    "Local file": "本機檔案",
+    "Select image": "選擇映像檔"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "啟用 SSH",
+    "Use password authentication": "使用密碼驗證"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "已掛載為 %1",
+    "No storage devices found": "找不到儲存裝置"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "有可用的更新"
+  },
+  "UserCustomizationStep": {
+    "Username:": "使用者名稱："
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "隱藏 SSID",
+    "SSID:": "SSID："
+  },
+  "WizardContainer": {
+    "Storage": "儲存裝置"
+  },
+  "WizardStepBase": {
+    "Next": "下一步"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "正在驗證… %1%",
+    "Writing... %1%": "正在寫入… %1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "您確定要結束嗎？",
+    "Erase": "清除",
+    "Error": "錯誤",
+    "Format card as FAT32": "將記憶卡進行 FAT32 格式化",
+    "Select a custom .img from your computer": "從您的電腦選擇一個自訂的 .img 檔案",
+    "Use custom": "使用自訂映像檔"
+  }
+}

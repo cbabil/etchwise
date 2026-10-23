@@ -1,0 +1,91 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "Po skončení vysunúť médium",
+    "Play sound when finished": "Po skončení prehrať zvuk"
+  },
+  "CommonStrings": {
+    "Back": "Späť",
+    "Password:": "Heslo:",
+    "Select image": "Vyberte obraz"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "POKRAČOVAŤ"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Chyba pri vstupe do adresára '%1'",
+    "Error extracting archive: %1": "Chyba pri rozbaľovaní archívu: %1",
+    "Error mounting FAT32 partition": "Chyba pri pripájaní partície FAT32",
+    "Error reading from storage.<br>SD card may be broken.": "Chyba pri čítaní z úložiska.<br>Karta SD môže byť poškodená.",
+    "Operating system did not mount FAT32 partition": "Operačný systém nepripojil partíciu FAT32",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Overovanie zápisu skončilo s chybou. Obsah karty SD sa nezhoduje s tým, čo na ňu bolo zapísané."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Odopretý prístup pri zápise súboru na disk.",
+    "Cannot open storage device '%1'.": "Nepodarilo sa otvoriť zariadenie úložiska '%1'.",
+    "Error downloading: %1": "Chyba pri sťahovaní: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Chyba pri čítaní z úložiska.<br>Karta SD môže byť poškodená.",
+    "Error writing first block (partition table)": "Chyba pri zápise prvého bloku (tabuľky partícií)",
+    "Error writing to storage (while flushing)": "Chyba pri zápise na úložisko (počas volania flush)",
+    "Error writing to storage (while fsync)": "Chyba pri zápise na úložisko (počas volania fsync)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Preverte, prosím, či má 'Raspberry Pi Imager' prístup k 'vymeniteľným nosičom' v nastaveniach súkromia (pod 'súbormi a priečinkami', prípadne mu udeľte 'plný prístup k diskom').",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Overovanie zápisu skončilo s chybou. Obsah karty SD sa nezhoduje s tým, čo na ňu bolo zapísané.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Chyba zápisu pri prepisovaní poslednej časti karty nulami.<br>Karta pravdepodobne udáva nesprávnu kapacitu (a môže byť falošná).",
+    "Write error while zero'ing out MBR": "Chyba zápisu pri prepisovaní MBR nulami"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "VYBERTE ZARIADENIE"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Vstupný súbor nie je platným obrazom disku.<br>Veľkosť súboru %1 bajtov nie je násobkom 512 bajtov.",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "Na vašom sieťovom prepínači je povolený protokol STP. Získanie IP bude trvať dlhý čas.",
+    "Select image": "Vyberte obraz"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Chyba pri otváraní súboru s obrazom"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Rozloženie klávesnice:"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "Uložené na počítači",
+    "Go back to main menu": "Prejsť do hlavnej ponuky",
+    "Local file": "Miestny súbor",
+    "Select image": "Vyberte obraz"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "Povoliť SSH",
+    "Use password authentication": "Použiť heslo na prihlásenie"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Pripojená ako %1",
+    "No storage devices found": "Nenašli sa žiadne úložné zariadenia"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "Je dostupná aktualizácia"
+  },
+  "UserCustomizationStep": {
+    "Username:": "Meno používateľa:"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "Skryté SSID",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "SD karta"
+  },
+  "WizardStepBase": {
+    "Next": "Ďalej"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "Overujem... %1%",
+    "Writing... %1%": "Zapisujem... %1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "Skutočne chcete skončiť?",
+    "Erase": "Vymazať",
+    "Error": "Chyba",
+    "Format card as FAT32": "Formátovať kartu ako FAT32",
+    "Select a custom .img from your computer": "Použiť vlastný súbor img. na Vašom počítači",
+    "Use custom": "Použiť vlastný"
+  }
+}

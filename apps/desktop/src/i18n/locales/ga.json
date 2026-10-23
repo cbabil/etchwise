@@ -1,0 +1,111 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "Díbirt na meáin nuair a bheidh siad críochnaithe",
+    "Play sound when finished": "Seinn fuaim nuair a bheidh sé críochnaithe"
+  },
+  "CommonStrings": {
+    "Back": "Ar ais",
+    "Password:": "Pasfhocal:",
+    "Select image": "Roghnaigh íomhá"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CANCEL": "CEALAIGH",
+    "CONTINUE": "LEAN AR AGHAIDH"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Earráid ag athrú go dtí an eolaire '%1'",
+    "Error extracting archive: %1": "Earráid ag baint amach cartlainne: %1",
+    "Error mounting FAT32 partition": "Earráid ag gléasadh an deighilt FAT32",
+    "Error reading from storage.<br>SD card may be broken.": "Earráid ag léamh ón stóras.<br>B’fhéidir go bhfuil an cárta SD briste.",
+    "Operating system did not mount FAT32 partition": "Níor fheistiú an córas oibriúcháin an chuid FAT32",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Theip ar fhíorú an scríbhneoireachta. Tá ábhar an chárta SD difriúil ón méid a scríobhadh air."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Earráid rochtana diúltaithe agus comhad á scríobh chuig diosca.",
+    "Cached file is corrupt. SHA256 hash does not match expected value.<br>The cache file will be removed and the download will restart.": "Tá an comhad taisceáilte truaillithe. Ní mheaitseálann an hais SHA256 an luach ionchais.<br>Bainfear an comhad taisce agus atosófar an íoslódáil.",
+    "Cannot open storage device '%1'.": "Ní féidir gléas stórála '%1' a oscailt.",
+    "Controlled Folder Access seems to be enabled. Please add rpi-imager.exe to the list of allowed apps and try again.": "Is cosúil go bhfuil Rochtain Rialaithe ar Fhillteáin cumasaithe. Cuir rpi-imager.exe leis an liosta aipeanna ceadaithe agus déan iarracht arís.",
+    "Download appears to be corrupt. SHA256 hash does not match.<br>Expected: %1<br>Actual: %2<br>Please check your network connection and try again.": "Is cosúil go bhfuil an íoslódáil truaillithe. Ní hionann an hais SHA256.<br>Measadh: %1<br>Iarbhír: %2<br>Seiceáil do nasc líonra agus déan iarracht arís.",
+    "Error downloading: %1": "Earráid ag íoslódáil: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Earráid ag léamh ón stóras.<br>B’fhéidir go bhfuil an cárta SD briste.",
+    "Error writing first block (partition table)": "Earráid ag scríobh an chéad bhloc (tábla deighilte)",
+    "Error writing to storage (while flushing)": "Earráid ag scríobh chuig an stóras (agus é ag sruthlú)",
+    "Error writing to storage (while fsync)": "Earráid ag scríobh chuig stóras (le linn fsync)",
+    "Local file is corrupt or has incorrect SHA256 hash.<br>Expected: %1<br>Actual: %2": "Tá an comhad áitiúil truaillithe nó tá hais SHA256 mícheart ann.<br>Imshoilsithe: %1<br>Iarbhír: %2",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Deimhnigh le do thoil an bhfuil cead ag 'Raspberry Pi Imager' rochtain a fháil ar 'imleabhair inbhainte' i socruithe príobháideachta (faoi 'comhaid agus fillteáin' nó tabhair 'rochtain iomlán ar dhiosca' dó.",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Theip ar fhíorú an scríbhneoireachta. Tá ábhar an chárta SD difriúil ón méid a scríobhadh air.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Earráid scríbhneoireachta agus iarracht á déanamh an chuid dheireanach den chárta a bhaint amach.<br>D’fhéadfadh an cárta a bheith ag fógairt acmhainn mhícheart (góchumtha b’fhéidir).",
+    "Write error while zero'ing out MBR": "Earráid scríbhneoireachta agus MBR á nialáil"
+  },
+  "DriveFormatThread": {
+    "Error opening device for formatting": "Earráid ag oscailt an ghléis le haghaidh formáidithe",
+    "Error seeking on device during formatting": "Earráid ag cuardach ar an ngléas le linn formáidithe",
+    "Error writing to device during formatting": "Earráid ag scríobh chuig gléas le linn formáidithe",
+    "Insufficient space on device": "Easpa spáis ar an ngléas",
+    "Invalid parameters for formatting": "Paraiméadair neamhbhailí le haghaidh formáidithe",
+    "Unknown formatting error": "Earráid formáidithe anaithnid"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "ROGHNAIGH GLÉAS"
+  },
+  "ImageWriter": {
+    "GB": "GB",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Ní íomhá diosca bailí é an comhad ionchuir.<br>Ní iolraí de 512 beart é méid an chomhaid %1 beart.",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "Tá STP cumasaithe ar do lasc Ethernet. Tógfaidh sé tamall fada IP a fháil.",
+    "Select image": "Roghnaigh íomhá"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Earráid ag oscailt comhad íomhá",
+    "Error reading from image file": "Earráid ag léamh ón gcomhad íomhá",
+    "Error writing to device": "Earráid ag scríobh chuig gléas",
+    "Failed to read complete image file": "Theip ar an gcomhad íomhá iomlán a léamh"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Leagan amach méarchláir:"
+  },
+  "OSListModel": {
+    "Recommended": "Molta"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "Taisceadh ar do ríomhaire",
+    "Go back to main menu": "Téigh ar ais go dtí an príomh-roghchlár",
+    "Local file": "Comhad áitiúil",
+    "Select image": "Roghnaigh íomhá"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "Cumasaigh SSH",
+    "Use password authentication": "Úsáid fíordheimhniú pasfhocail"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Suiteáilte mar %1",
+    "No storage devices found": "Níor aimsíodh aon fheistí stórála"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "Nuashonrú ar fáil"
+  },
+  "UserCustomizationStep": {
+    "Username:": "Ainm úsáideora:"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "SSID i bhfolach",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "Stóráil"
+  },
+  "WizardStepBase": {
+    "Next": "Ar Aghaidh"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "Ag fíorú... %1%",
+    "Writing... %1%": "Scríbhneoireacht... %1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "An bhfuil tú cinnte gur mian leat éirí as?",
+    "Erase": "Scrios",
+    "Error": "Earráid",
+    "Format card as FAT32": "Formáidigh cárta mar FAT32",
+    "Select a custom .img from your computer": "Roghnaigh .img saincheaptha ó do ríomhaire",
+    "Use custom": "Úsáid saincheaptha"
+  }
+}

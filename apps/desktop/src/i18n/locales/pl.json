@@ -1,0 +1,284 @@
+{
+  "AppOptionsDialog": {
+    "App Options": "Ustawienia aplikacji",
+    "Disable warnings": "Wyłącz ostrzeżenia",
+    "Disable warnings?": "Wyłączyć ostrzeżenia?",
+    "Eject media when finished": "Wysuń nośnik po zakończeniu",
+    "Enable anonymous statistics (telemetry)": "Włącz anonimowe statystyki (telemetria)",
+    "If you disable warnings, Raspberry Pi Imager will <b>not show confirmation prompts before writing images</b>. You will still be required to <b>type the exact name</b> when selecting a system drive.": "Jeśli wyłączysz ostrzeżenia, program Raspberry Pi Imager <b>nie będzie wyświetlał monitów z prośbą o potwierdzenie przed zapisaniem obrazów</b>. Nadal będziesz musiał <b>wpisać dokładną nazwę</b>podczas wybierania dysku systemowego.",
+    "Play sound when finished": "Odegraj dźwięk po zakończeniu",
+    "Save": "Zapisz",
+    "What is this?": "Co to jest?"
+  },
+  "CommonStrings": {
+    "All files (*)": "Wszystkie pliki (*)",
+    "Back": "Cofnij",
+    "Browse": "Przeglądaj",
+    "Cancel": "Anuluj",
+    "Continue": "Kontynuuj",
+    "Device:": "Urządzenie:",
+    "Finish": "Zakończ",
+    "Image files (%1)": "Pliki obrazów (%1)",
+    "Imager Repository Files (*.json)": "Pliki repozytorium programu Imager (*.json)",
+    "No": "Nie",
+    "No storage selected": "Nie wybrano urządzenia pamięci masowej",
+    "Only proceed if you fully understand the risks.": "Kontynuuj tylko wtedy, gdy w pełni rozumiesz ryzyko.",
+    "Password:": "Hasło:",
+    "Public Key files (*.pub)": "Pliki klucza publicznego (*.pub)",
+    "Select image": "Wybierz obraz",
+    "Selecting the wrong drive will permanently erase data and can render your computer inoperable.": "Wybranie niewłaściwego dysku spowoduje trwałe usunięcie danych i może uniemożliwić działanie komputera.",
+    "Storage:": "Pamięć:",
+    "System drives typically contain files essential to the operation of your computer, and may include your personal files (photos, videos, documents).": "Dyski systemowe zazwyczaj zawierają pliki niezbędne do działania komputera i mogą zawierać pliki osobiste (zdjęcia, filmy, dokumenty).",
+    "Yes": "Tak"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CANCEL": "ANULUJ",
+    "CONTINUE": "KONTYNUUJ",
+    "Mounted as: %1": "Zamontowano jako: %1",
+    "Not mounted": "Nie zamontowano",
+    "Size: %1": "Rozmiar: %1",
+    "To continue, type the exact drive name below:": "Aby kontynuować, wpisz poniżej dokładną nazwę dysku:",
+    "Type drive name exactly as shown above": "Wpisz nazwę dysku dokładnie tak, jak pokazano powyżej"
+  },
+  "ConfirmUnfilterDialog": {
+    "By disabling system drive filtering, <b>system drives will be shown</b> in the list.": "Wyłączenie filtrowania dysków systemowych spowoduje <b>wyświetlenie dysków systemowych</b> na liście.",
+    "KEEP FILTER ON": "ZOSTAW FILTR WŁĄCZONY",
+    "SHOW SYSTEM DRIVES": "POKAŻ DYSKI SYSTEMOWE"
+  },
+  "DeviceSelectionStep": {
+    "Select your Raspberry Pi device": "Wybierz swoje urządzenie Raspberry Pi"
+  },
+  "DoneStep": {
+    "Customisations applied:": "Zastosowane dostosowania:",
+    "Operating system:": "System operacyjny:",
+    "Please eject the storage device before removing it from your computer.": "Przed wyjęciem urządzenia pamięci masowej z komputera należy je odłączyć.",
+    "Reboot": "Uruchom ponownie",
+    "Storage:": "Pamięć:",
+    "The storage device was ejected automatically. You can now remove it safely.": "Urządzenie pamięci zostało automatycznie wysunięte. Można je teraz bezpiecznie wyjąć.",
+    "Write Another": "Zapisz kolejny",
+    "Write complete!": "Zapis ukończony!",
+    "Your choices:": "Twój wybór:"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Błąd przejścia do katalogu '%1'",
+    "Error extracting archive: %1": "Błąd podczas wypakowywania archiwum: %1",
+    "Error mounting FAT32 partition": "Błąd montowania partycji FAT32",
+    "Error reading from storage.<br>SD card may be broken.": "Błąd odczytu z pamięci masowej.<br>Karta SD może być uszkodzona.",
+    "Operating system did not mount FAT32 partition": "System operacyjny nie zamontował partycji FAT32",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Weryfikacja zapisu nie powiodła się. Zawartość karty SD różni się od tego, co zostało na niej zapisane."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Odmowa dostępu podczas próby zapisu pliku na dysk.",
+    "Cached file is corrupt. SHA256 hash does not match expected value.<br>The cache file will be removed and the download will restart.": "Plik w pamięci podręcznej jest uszkodzony. Skrót SHA256 nie zgadza się z oczekiwaną wartością.<br>Plik w pamięci podręcznej zostanie usunięty, a pobieranie zostanie wznowione.",
+    "Cannot open storage device '%1'.": "Nie można otworzyć urządzenia pamięci masowej '%1'.",
+    "Cleaning disk...": "Czyszczenie dysku...",
+    "Controlled Folder Access seems to be enabled. Please add rpi-imager.exe to the list of allowed apps and try again.": "Wydaje się, że funkcja kontrolowanego dostępu do folderów jest włączona. Dodaj plik rpi-imager.exe do listy dozwolonych aplikacji i spróbuj ponownie.",
+    "Disk is full. Please use a larger storage device.": "Dysk jest pełny. Proszę użyć urządzenia o większej pojemności.",
+    "Download appears to be corrupt. SHA256 hash does not match.<br>Expected: %1<br>Actual: %2<br>Please check your network connection and try again.": "Pobieranie wydaje się być uszkodzone. Skrót SHA256 nie pasuje.<br>Oczekiwany: %1<br>Rzeczywisty: %2<br>Sprawdź połączenie sieciowe i spróbuj ponownie.",
+    "Error downloading: %1": "Błąd pobierania: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Błąd odczytu z pamięci masowej.<br>Karta SD może być uszkodzona.",
+    "Error writing first block (partition table)": "Błąd zapisu pierwszego bloku (tablica partycji)",
+    "Error writing to storage (while flushing)": "Błąd zapisu podczas wykonywania: flushing",
+    "Error writing to storage (while fsync)": "Błąd zapisu podczas wykonywania: fsync",
+    "Error: Multiple partitions found on disk. Please ensure the disk is completely clean.": "Błąd: Na dysku znaleziono wiele partycji. Upewnij się, że dysk jest całkowicie czysty.",
+    "I/O device error. The storage device may have been disconnected or is malfunctioning.": "Błąd urządzenia wejścia/wyjścia. Urządzenie pamięci masowej mogło zostać odłączone lub działa nieprawidłowo.",
+    "Invalid disk parameter. The storage device may not be properly recognized. Please try reconnecting the device.": "Nieprawidłowy parametr dysku. Urządzenie pamięci masowej może nie być prawidłowo rozpoznane. Spróbuj ponownie podłączyć urządzenie.",
+    "Local file is corrupt or has incorrect SHA256 hash.<br>Expected: %1<br>Actual: %2": "Plik lokalny jest uszkodzony lub ma nieprawidłowy skrót SHA256.<br>Oczekiwany: %1<br>Rzeczywisty: %2",
+    "Media error detected. The storage device may be damaged or counterfeit. Please try a different device.": "Wykryto błąd nośnika. Urządzenie pamięci masowej może być uszkodzone lub podrobione. Spróbuj użyć innego urządzenia.",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Sprawdź, czy 'Raspberry Pi Imager' ma dostęp do 'woluminów wymiennych' w ustawieniach prywatności (w 'plikach i folderach' lub alternatywnie daj mu 'pełny dostęp do dysku').",
+    "The disk is write-protected. Please check if the disk has a physical write-protect switch or is read-only.": "Dysk jest zabezpieczony przed zapisem. Sprawdź, czy dysk posiada fizyczny przełącznik zabezpieczenia przed zapisem lub czy jest tylko do odczytu.",
+    "The disk may be write-protected or in use by another application. Please ensure the disk is not mounted and try again.": "Dysk może być zabezpieczony przed zapisem lub używany przez inną aplikację. Upewnij się, że dysk nie jest zamontowany i spróbuj ponownie.",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Weryfikacja zapisu nie powiodła się. Zawartość karty SD różni się od tego, co zostało na niej zapisane.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Błąd zapisu podczas próby wyzerowania ostatniej części karty.<br>;Karta może pokazywać nieprawidłową pojemność (możliwe podróbki).",
+    "Write error while zero'ing out MBR": "Błąd zapisu podczas zerowania MBR"
+  },
+  "DriveFormatThread": {
+    "Cleaning disk...": "Czyszczenie dysku...",
+    "Error opening device for formatting": "Błąd podczas otwierania urządzenia w celu sformatowania",
+    "Error seeking on device during formatting": "Wystąpił błąd podczas wyszukiwania na urządzeniu podczas formatowania",
+    "Error writing to device during formatting": "Błąd podczas zapisywania na urządzeniu podczas formatowania",
+    "Insufficient space on device": "Niewystarczająca ilość miejsca na urządzeniu",
+    "Invalid parameters for formatting": "Nieprawidłowe parametry formatowania",
+    "Preparing disk for formatting...": "Przygotowywanie dysku do formatowania...",
+    "Unknown formatting error": "Nieznany błąd formatowania",
+    "Writing filesystem...": "Zapisywanie systemu plików..."
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "WYBIERZ MODEL"
+  },
+  "HostnameCustomizationStep": {
+    "A hostname is a unique name that identifies your Raspberry Pi on the network. It should contain only letters, numbers, and hyphens.": "Nazwa hosta to unikalna nazwa identyfikująca Raspberry Pi w sieci. Powinna zawierać wyłącznie litery, cyfry i myślniki.",
+    "Customisation: Choose hostname": "Wybierz nazwę hosta"
+  },
+  "IfAndFeaturesCustomizationStep": {
+    "Console": "Konsola",
+    "Enable SPI": "Włącz SPI",
+    "Enable Serial:": "Włącz Serial:",
+    "Enable USB Gadget Mode": "Włącz tryb gadżetu USB",
+    "Enable hardware interfaces and connectivity options.": "Włącz interfejsy sprzętowe i opcje łączności.",
+    "Features": "Funkcje",
+    "I understand, continue": "Rozumiem, kontynuuj",
+    "Interfaces": "Interfejsy",
+    "Learn more about USB Gadget Mode": "Dowiedz się więcej o trybie gadżetu USB",
+    "Only continue if you are sure you know what you are doing.": "Kontynuuj tylko wtedy, gdy jesteś pewien, że wiesz, co robisz.",
+    "Please review the <a href='%1'>documentation</a> before proceeding.": "Przed kontynuowaniem zapoznaj się z <a href='%1'>dokumentacją</a>.",
+    "USB Gadget Mode can change how your device behaves and may impact connectivity and host interaction.": "Tryb gadżeut USB może zmienić sposób działania urządzenia i wpłynąć na łączność oraz interakcję z hostem."
+  },
+  "ImFileDialog": {
+    "Enter path or URL…": "Wprowadź ścieżkę lub adres URL…",
+    "Folders": "Foldery",
+    "Open": "Otwórz",
+    "Save": "Zapisz",
+    "Select File": "Wybierz plik"
+  },
+  "ImageWriter": {
+    "Cannot start write. %1": "Nie można rozpocząć zapisu. %1",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Plik wejściowy nie jest prawidłowym obrazem dysku.<br>Rozmiar pliku %1 bajtów nie jest wielokrotnością 512 bajtów.",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "Funkcja STP jest włączona na przełączniku Ethernet. Uzyskanie adresu IP potrwa długo.",
+    "Select image": "Wybierz obraz",
+    "Source file is not readable: %1": "Nie można odczytać pliku źródłowego: %1",
+    "Source file not found: %1": "Nie znaleziono pliku źródłowego: %1",
+    "Source is not a regular file: %1": "Źródło nie jest zwykłym plikiem: %1",
+    "Storage capacity is not large enough.<br>Needs to be at least %1.": "Pojemność pamięci nie jest wystarczająca.<br>Powinna wynosić co najmniej %1.",
+    "Unknown precondition failure.": "Nieznany błąd warunków wstępnych."
+  },
+  "KeychainPermissionDialog": {
+    "Keychain Access": "Dostęp do pęku kluczy",
+    "This will require administrator authentication on macOS.": "W systemie macOS wymaga to uwierzytelnienia administratora.",
+    "Would you like to prefill the Wi‑Fi password from the system keychain?": "Czy chcesz wstępnie wypełnić hasło Wi‑Fi z pęku kluczy systemowych?"
+  },
+  "LanguageSelectionStep": {
+    "Choose your language for Raspberry Pi Imager": "Wybierz język dla programu Raspberry Pi Imager",
+    "Language:": "Język:",
+    "Welcome": "Witamy"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Błąd podczas otwierania pliku obrazu",
+    "Error reading from image file": "Błąd podczas odczytu pliku obrazu",
+    "Error writing to device": "Błąd podczas zapisu na urządzeniu",
+    "Failed to read complete image file": "Nie udało się odczytać całego pliku obrazu"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Układ klawiatury:",
+    "Time zone:": "Strefa czasowa:"
+  },
+  "OSListModel": {
+    "Recommended": "Zalecane"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "W pamięci podręcznej komputera",
+    "Choose operating system": "Wybierz system operacyjny",
+    "Go back to main menu": "Cofnij do głównego menu",
+    "Local - %1": "Lokalnie - %1",
+    "Local file": "Plik lokalny",
+    "Online - %1 download": "Online - %1 do pobrania",
+    "Select an operating system to install on your Raspberry Pi": "Wybierz system operacyjny do zainstalowania na Raspberry Pi",
+    "Select image": "Wybierz obraz"
+  },
+  "PiConnectCustomizationStep": {
+    "Customisation: Raspberry Pi Connect": "Raspberry Pi Connect",
+    "Enable Raspberry Pi Connect": "Włącz Raspberry Pi Connect",
+    "OK": "OK",
+    "Open Raspberry Pi Connect": "Otwórz Raspberry Pi Connect",
+    "Token received from browser": "Otrzymano token z przeglądarki",
+    "What is Raspberry Pi Connect?": "Czym jest Raspberry Pi Connect?"
+  },
+  "RemoteAccessStep": {
+    "Authentication mechanism:": "Mechanizm uwierzytelniania:",
+    "Configure SSH access": "Skonfiguruj dostęp SSH",
+    "Customisation: SSH authentication": "Uwierzytelnianie SSH",
+    "Enable SSH": "Włącz SSH",
+    "Learn about SSH": "Dowiedz się więcej o SSH",
+    "Use password authentication": "Użyj uwierzytelniania hasłem",
+    "Use public key authentication": "Użyj uwierzytelniania kluczem publicznym"
+  },
+  "RepositoryDialog": {
+    "Select Repository": "Wybierz repozytorium",
+    "Select custom repository": "Wybierz niestandardowe repozytorium"
+  },
+  "SshKeyManager": {
+    "Select SSH Public Key": "Wybierz klucz publiczny SSH"
+  },
+  "StorageSelectionStep": {
+    "Exclude system drives": "Wyklucz dyski systemowe",
+    "Mounted as %1": "Zamontowany jako %1",
+    "No storage devices found": "Nie znaleziono urządzeń pamięci masowej",
+    "Read-only": "Tylko do odczytu",
+    "Select your storage device": "Wybierz urządzenie pamięci masowej"
+  },
+  "UpdateAvailableDialog": {
+    "There is a newer version of Imager available. Would you like to visit the website to download it?": "Dostępna jest nowsza wersja programu Imager. Czy chcesz odwiedzić stronę internetową, aby ją pobrać?",
+    "Update available": "Dostępna aktualizacja"
+  },
+  "UserCustomizationStep": {
+    "Confirm password:": "Potwierdź hasło:",
+    "Create a user account for your Raspberry Pi": "Utwórz konto użytkownika dla swojego Raspberry Pi",
+    "Customisation: Choose username": "Wybierz nazwę użytkownika",
+    "Enter password": "Wprowadź hasło",
+    "Re-enter password": "Wprowadź hasło ponownie",
+    "Re-enter to change password": "Wprowadź ponownie, aby zmienić hasło",
+    "Saved (hidden) — leave blank to keep": "Zapisane (ukryte) — pozostaw puste, aby zachować",
+    "The username must be lowercase and contain only letters, numbers, underscores, and hyphens.": "Nazwa użytkownika musi być zapisana małymi literami i zawierać wyłącznie litery, cyfry, znaki podkreślenia i myślniki.",
+    "Username:": "Nazwa użytkownika:"
+  },
+  "WifiCustomizationStep": {
+    "Confirm password:": "Potwierdź hasło:",
+    "Customisation: Choose Wi‑Fi": "Wybierz Wi‑Fi",
+    "Hidden SSID": "Ukryte SSID",
+    "Network name": "Nazwa sieci",
+    "Network password": "Hasło sieci",
+    "Re-enter password": "Wprowadź hasło ponownie",
+    "Re-enter to change password": "Wprowadź ponownie, aby zmienić hasło",
+    "SSID:": "SSID:",
+    "Saved (hidden) — leave blank to keep": "Zapisane (ukryte) — pozostaw puste, aby zachować"
+  },
+  "WizardContainer": {
+    "App Options": "Ustawienia aplikacji",
+    "Customisation": "Dostosowywanie",
+    "Device": "Urządzenie",
+    "Done": "Koniec",
+    "Hostname": "Nazwa hosta",
+    "Interfaces & Features": "Interfejsy i funkcje",
+    "OS": "System operacyjny",
+    "Setup steps": "Kroki konfiguracji",
+    "Storage": "Pamięć",
+    "User": "Użytkownik",
+    "Writing": "Zapis"
+  },
+  "WizardStepBase": {
+    "Next": "Dalej",
+    "Skip customisation": "Pomiń"
+  },
+  "WritingStep": {
+    "Customisations to apply:": "Dostosowania do zastosowania:",
+    "Finalising...": "Finalizowanie...",
+    "I understand, erase and write": "Rozumiem, wymaż i zapis",
+    "Operating system:": "System operacyjny:",
+    "Please wait...": "Proszę czekać...",
+    "Review your choices and write the image to the storage device": "Zweryfikuj swój wybór i zapisz obraz na dysk",
+    "Starting write process...": "Rozpoczynanie procesu zapisu...",
+    "Summary": "Podsumowanie",
+    "This action is PERMANENT and CANNOT be undone.": "Ta czynność jest TRWAŁA i NIE MOŻNA jej cofnąć.",
+    "Verifying... %1%": "Weryfikowanie... %1%",
+    "Write": "Zapisz",
+    "Write completed successfully!": "Zapis zakończono z sukcesem!",
+    "Write failed: %1": "Zapis nieudany: %1",
+    "Write image": "Zapisz obraz",
+    "Writing... %1%": "Zapisywanie... %1%",
+    "You are about to ERASE all data on: %1": "Zamierasz WYMAZAĆ wszystkie dane z: %1",
+    "the storage device": "urządzenie pamięci masowej"
+  },
+  "main": {
+    "All files (*)": "Wszystkie pliki (*)",
+    "Are you sure you want to quit?": "Czy na pewno chcesz zakończyć?",
+    "Erase": "Wymaż",
+    "Error": "Błąd",
+    "Format card as FAT32": "Sformatuj kartę jako FAT32",
+    "OK": "OK",
+    "Raspberry Pi Imager is still busy. Are you sure you want to quit?": "Raspberry Pi Imager jest nadal zajęty. Czy na pewno chcesz wyjść?",
+    "Select a custom .img from your computer": "Wybierz plik .img z komputera",
+    "Storage device removed": "Dysk został usunięty",
+    "The storage device was removed while writing, so the operation was cancelled. Please reinsert the device or select a different one to continue.": "Dysk został usunięty podczas zapisywania, więc operacja została anulowana. Proszę włożyć dysk ponownie lub wybrać inny w celu kontynuacji.",
+    "Use custom": "Użyj innego obrazu"
+  }
+}

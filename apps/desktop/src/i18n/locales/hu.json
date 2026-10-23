@@ -1,0 +1,256 @@
+{
+  "AppOptionsDialog": {
+    "App Options": "Alkalmazás beállításai",
+    "Disable warnings": "Figyelmeztetések letiltása",
+    "Disable warnings?": "Letiltja a figyelmeztetéseket?",
+    "Eject media when finished": "Adathordozó kiadása befejezéskor",
+    "Enable anonymous statistics (telemetry)": "Névtelen statisztikák engedélyezése (telemetria)",
+    "If you disable warnings, Raspberry Pi Imager will <b>not show confirmation prompts before writing images</b>. You will still be required to <b>type the exact name</b> when selecting a system drive.": "Ha letiltja a figyelmeztetéseket, a Raspberry Pi Imager <b>nem jelenít meg megerősítést az írás előtt</b>. Rendszermeghajtó kiválasztásakor továbbra is <b>pontosan be kell írnia</b> a nevét.",
+    "Play sound when finished": "Hang lejátszása befejezéskor",
+    "Save": "Mentés",
+    "What is this?": "Mi ez?"
+  },
+  "CommonStrings": {
+    "Back": "Vissza",
+    "Browse": "Böngészés",
+    "Cancel": "Mégse",
+    "Continue": "Folytatás",
+    "Device:": "Eszköz:",
+    "Finish": "Befejezés",
+    "No": "Nem",
+    "No device selected": "Nincs eszköz kiválasztva",
+    "No image selected": "Nincs kép kiválasztva",
+    "No storage selected": "Nincs tároló kiválasztva",
+    "Only proceed if you fully understand the risks.": "Csak akkor folytassa, ha teljes mértékben érti a kockázatokat.",
+    "Password:": "Jelszó:",
+    "Select image": "Kép kiválasztása",
+    "Selecting the wrong drive will permanently erase data and can render your computer inoperable.": "A rossz meghajtó kiválasztása véglegesen törölheti az adatokat, és működésképtelenné teheti a számítógépet.",
+    "Storage:": "Tároló:",
+    "System drives typically contain files essential to the operation of your computer, and may include your personal files (photos, videos, documents).": "A rendszermeghajtók általában a számítógép működéséhez szükséges fájlokat tartalmazzák, és személyes fájlokat (fotók, videók, dokumentumok) is tartalmazhatnak.",
+    "Yes": "Igen"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CANCEL": "MÉGSE",
+    "CONTINUE": "FOLYTATÁS",
+    "Mounted as: %1": "Csatolási pont: %1",
+    "Not mounted": "Nincs csatolva",
+    "Size: %1": "Méret: %1",
+    "To continue, type the exact drive name below:": "A folytatáshoz írja be alább a meghajtó pontos nevét:",
+    "Type drive name exactly as shown above": "Írja be a meghajtó nevét pontosan a fentiek szerint"
+  },
+  "ConfirmUnfilterDialog": {
+    "By disabling system drive filtering, <b>system drives will be shown</b> in the list.": "A rendszermeghajtók szűrésének letiltásával a <b>rendszermeghajtók megjelennek</b> a listában.",
+    "KEEP FILTER ON": "SZŰRŐ MARAD",
+    "SHOW SYSTEM DRIVES": "RENDSZERMEGHAJTÓK MUTATÁSA"
+  },
+  "DoneStep": {
+    "Customisations applied:": "Alkalmazott testreszabások:",
+    "Please eject the storage device before removing it from your computer.": "Kérjük, a tárolóeszközt eltávolítás előtt adja ki.",
+    "Reboot": "Újraindítás",
+    "Storage:": "Tároló:",
+    "The storage device was ejected automatically. You can now remove it safely.": "A tárolóeszköz automatikusan ki lett adva. Most már biztonságosan eltávolíthatja.",
+    "Write Another": "Újabb írás",
+    "Write complete!": "Az írás befejeződött!",
+    "Your choices:": "Választásai:"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Hiba a(z) '%1' könyvtárba lépéskor",
+    "Error extracting archive: %1": "Hiba az archívum kibontásakor: %1",
+    "Error mounting FAT32 partition": "Hiba a FAT32 partíció csatolásakor",
+    "Error reading from storage.<br>SD card may be broken.": "Hiba az olvasás során.<br>Lehet, hogy sérült az SD-kártya.",
+    "Operating system did not mount FAT32 partition": "Az operációs rendszer nem csatolta a FAT32 partíciót",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Az írás ellenőrzése sikertelen. Az SD-kártya tartalma eltér a ráírt adatoktól."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Hozzáférés megtagadva a fájl lemezre írásakor.",
+    "Cached file is corrupt. SHA256 hash does not match expected value.<br>The cache file will be removed and the download will restart.": "A gyorsítótárban lévő fájl sérült. A SHA256 hash nem egyezik a várt értékkel.<br>A gyorsítótár fájl törlődik, és a letöltés újraindul.",
+    "Cannot open storage device '%1'.": "A(z) '%1' tárolóeszköz nem nyitható meg.",
+    "Cleaning disk...": "Lemez tisztítása...",
+    "Controlled Folder Access seems to be enabled. Please add rpi-imager.exe to the list of allowed apps and try again.": "Úgy tűnik, a Vezérelt mappa-hozzáférés engedélyezve van. Adja hozzá a rpi-imager.exe fájlt az engedélyezett alkalmazások listájához, majd próbálja újra.",
+    "Disk is full. Please use a larger storage device.": "A lemez megtelt. Használjon nagyobb tárolóeszközt.",
+    "Download appears to be corrupt. SHA256 hash does not match.<br>Expected: %1<br>Actual: %2<br>Please check your network connection and try again.": "A letöltés sérültnek tűnik. A SHA256 hash nem egyezik.<br>Várt: %1<br>Tényleges: %2<br>Ellenőrizze a hálózati kapcsolatot, és próbálja újra.",
+    "Error downloading: %1": "Letöltési hiba: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Hiba az olvasás során.<br>Lehet, hogy sérült az SD-kártya.",
+    "Error writing first block (partition table)": "Hiba az első blokk (partíciós tábla) írásakor",
+    "Error writing to storage (while flushing)": "Hiba az írásnál (kiírás közben)",
+    "Error writing to storage (while fsync)": "Hiba az írásnál (fsync közben)",
+    "Error: Multiple partitions found on disk. Please ensure the disk is completely clean.": "Hiba: Több partíció található a lemezen. Kérem, teljesen tisztítsa meg a lemezt.",
+    "I/O device error. The storage device may have been disconnected or is malfunctioning.": "I/O eszközhiba. A tárolóeszköz lecsatlakozhatott vagy meghibásodott.",
+    "Invalid disk parameter. The storage device may not be properly recognized. Please try reconnecting the device.": "Érvénytelen lemezparaméter. A tárolóeszközt nem ismerte fel megfelelően. Csatlakoztassa újra.",
+    "Local file is corrupt or has incorrect SHA256 hash.<br>Expected: %1<br>Actual: %2": "A helyi fájl sérült vagy hibás a SHA256 hash.<br>Várt: %1<br>Tényleges: %2",
+    "Media error detected. The storage device may be damaged or counterfeit. Please try a different device.": "Adathordozó hiba észlelve. A tárolóeszköz sérült vagy hamis lehet. Próbáljon másik eszközt.",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Ellenőrizze, hogy a 'Raspberry Pi Imager' hozzáférhet-e az 'eltávolítható kötetekhez' az adatvédelmi beállításokban (a 'fájlok és mappák' alatt), vagy adjon 'teljes lemezhozzáférést'.",
+    "The disk is write-protected. Please check if the disk has a physical write-protect switch or is read-only.": "A lemez írásvédett. Ellenőrizze, hogy van-e fizikai írásvédő kapcsoló, illetve nem csak olvasható-e.",
+    "The disk may be write-protected or in use by another application. Please ensure the disk is not mounted and try again.": "A lemez írásvédett vagy más alkalmazás használja. Ellenőrizze, hogy nincs-e csatolva, majd próbálja újra.",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Az írás ellenőrzése sikertelen. Az SD-kártya tartalma eltér a ráírt adatoktól.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Íráshiba a kártya utolsó részének kinullázásakor.<br>Előfordulhat, hogy a kártya hibás kapacitást jelez (esetleg hamisítvány).",
+    "Write error while zero'ing out MBR": "Íráshiba az MBR kinullázásakor"
+  },
+  "DriveFormatThread": {
+    "Cleaning disk...": "Lemez tisztítása...",
+    "Error opening device for formatting": "Hiba az eszköz megnyitásakor formázáshoz",
+    "Error seeking on device during formatting": "Hiba a pozicionáláskor formázás közben",
+    "Error writing to device during formatting": "Hiba az eszközre íráskor formázás közben",
+    "Insufficient space on device": "Elégtelen tárhely az eszközön",
+    "Invalid parameters for formatting": "Érvénytelen formázási paraméterek",
+    "Preparing disk for formatting...": "Lemez előkészítése a formázáshoz...",
+    "Unknown formatting error": "Ismeretlen formázási hiba",
+    "Writing filesystem...": "Fájlrendszer írása..."
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "ESZKÖZ VÁLASZTÁSA"
+  },
+  "HostnameCustomizationStep": {
+    "A hostname is a unique name that identifies your Raspberry Pi on the network. It should contain only letters, numbers, and hyphens.": "A gépnév egyedi név, amely azonosítja a Raspberry Pi-t a hálózaton. Csak betűket, számokat és kötőjelet tartalmazhat.",
+    "Customisation: Choose hostname": "Testreszabás: Gépnév kiválasztása"
+  },
+  "ImFileDialog": {
+    "Enter path or URL…": "Írja be az elérési utat vagy URL-t…",
+    "Folders": "Mappák",
+    "Open": "Megnyitás",
+    "Save": "Mentés",
+    "Select File": "Fájl kiválasztása"
+  },
+  "ImageWriter": {
+    "%1 %2": "%1 %2",
+    "%1.%2 %3": "%1.%2 %3",
+    "B": "B",
+    "Cannot start write. %1": "Nem indítható az írás. %1",
+    "GB": "GB",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "A bemeneti fájl nem érvényes lemezkép.<br>A fájlméret (%1 bájt) nem 512 bájt többszöröse.",
+    "KB": "KB",
+    "MB": "MB",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "Az STP engedélyezve van az Ethernet kapcsolón. Az IP-cím megszerzése hosszabb ideig tarthat.",
+    "Select image": "Kép kiválasztása",
+    "Source file is not readable: %1": "A forrásfájl nem olvasható: %1",
+    "Source file not found: %1": "A forrásfájl nem található: %1",
+    "Source is not a regular file: %1": "A forrás nem szabályos fájl: %1",
+    "Storage capacity is not large enough.<br>Needs to be at least %1.": "A tároló kapacitása nem elegendő.<br>Legalább %1 szükséges.",
+    "TB": "TB",
+    "Unknown precondition failure.": "Ismeretlen előfeltétel-hiba."
+  },
+  "KeychainPermissionDialog": {
+    "Keychain Access": "Kulcskarika-hozzáférés",
+    "This will require administrator authentication on macOS.": "Ez macOS-en rendszergazdai hitelesítést igényel.",
+    "Would you like to prefill the Wi‑Fi password from the system keychain?": "Elő szeretné tölteni a Wi‑Fi jelszót a rendszer kulcskarikából?"
+  },
+  "LanguageSelectionStep": {
+    "Language:": "Nyelv:",
+    "Welcome": "Üdvözöljük"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Hiba a képfájl megnyitásakor",
+    "Error reading from image file": "Hiba a képfájl olvasásakor",
+    "Error writing to device": "Hiba az eszközre íráskor",
+    "Failed to read complete image file": "Nem sikerült a teljes képfájl beolvasása"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Billentyűzetkiosztás:"
+  },
+  "OSListModel": {
+    "Recommended": "Ajánlott"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "A számítógépen gyorsítótárazva",
+    "Go back to main menu": "Vissza a főmenübe",
+    "Local - %1": "Helyi – %1",
+    "Local file": "Helyi fájl",
+    "Online - %1 download": "Online – %1 letöltés",
+    "Select image": "Kép kiválasztása"
+  },
+  "PiConnectCustomizationStep": {
+    "Customisation: Raspberry Pi Connect": "Testreszabás: Raspberry Pi Connect",
+    "Enable Raspberry Pi Connect": "Raspberry Raspberry Pi Connect engedélyezése",
+    "OK": "OK",
+    "Open Raspberry Pi Connect": "Raspberry Raspberry Pi Connect megnyitása",
+    "Token received from browser": "Token érkezett a böngészőből",
+    "What is Raspberry Pi Connect?": "Mi a Raspberry Pi Connect?"
+  },
+  "RemoteAccessStep": {
+    "Customisation: SSH authentication": "Testreszabás: SSH hitelesítés",
+    "Enable SSH": "SSH engedélyezése",
+    "Learn about SSH": "Tudjon meg többet az SSH-ról",
+    "Use password authentication": "Jelszavas hitelesítés használata",
+    "Use public key authentication": "Nyilvános kulcsos hitelesítés használata"
+  },
+  "SshKeyManager": {
+    "Select SSH Public Key": "SSH nyilvános kulcs kiválasztása"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Csatolva: %1",
+    "No storage devices found": "Nem található tárolóeszköz",
+    "Read-only": "Csak olvasható",
+    "Select your storage device": "Válassza ki a tárolóeszközt"
+  },
+  "UpdateAvailableDialog": {
+    "There is a newer version of Imager available. Would you like to visit the website to download it?": "Elérhető a Imager újabb verziója. Szeretné megnyitni a weboldalt a letöltéshez?",
+    "Update available": "Frissítés érhető el"
+  },
+  "UserCustomizationStep": {
+    "Confirm password:": "Jelszó megerősítése:",
+    "Customisation: Choose username": "Testreszabás: Felhasználónév",
+    "Enter password": "Adja meg a jelszót",
+    "Re-enter password": "Írja be újra a jelszót",
+    "Re-enter to change password": "A jelszó módosításához írja be újra",
+    "Saved (hidden) — leave blank to keep": "Elmentve (rejtve) — hagyja üresen a megtartáshoz",
+    "The username must be lowercase and contain only letters, numbers, underscores, and hyphens.": "A felhasználónév kisbetűs legyen, és csak betűket, számokat, aláhúzást és kötőjelet tartalmazhat.",
+    "Username:": "Felhasználónév:"
+  },
+  "WifiCustomizationStep": {
+    "Confirm password:": "Jelszó megerősítése:",
+    "Customisation: Choose Wi‑Fi": "Testreszabás: Wi‑Fi választása",
+    "Hidden SSID": "Rejtett SSID",
+    "Network name": "Hálózat neve",
+    "Network password": "Hálózati jelszó",
+    "Re-enter password": "Írja be újra a jelszót",
+    "Re-enter to change password": "A jelszó módosításához írja be újra",
+    "SSID:": "SSID:",
+    "Saved (hidden) — leave blank to keep": "Elmentve (rejtve) — hagyja üresen a megtartáshoz"
+  },
+  "WizardContainer": {
+    "App Options": "Alkalmazás beállításai",
+    "Customisation": "Testreszabás",
+    "Device": "Eszköz",
+    "Done": "Kész",
+    "Hostname": "Gépnév",
+    "OS": "Rendszer",
+    "Raspberry Pi Connect": "Raspberry Pi Connect",
+    "Storage": "Tároló",
+    "User": "Felhasználó",
+    "Wi‑Fi": "Wi‑Fi",
+    "Writing": "Írás"
+  },
+  "WizardStepBase": {
+    "Next": "Tovább",
+    "Skip customisation": "Testreszabás kihagyása"
+  },
+  "WritingStep": {
+    "Customisations to apply:": "Alkalmazandó testreszabások:",
+    "Finalising...": "Befejezés...",
+    "I understand, erase and write": "Értem, törlés és írás",
+    "Please wait...": "Kérem, várjon...",
+    "Review your choices and write the image to the storage device": "Ellenőrizze a választásait, majd írja a képet a tárolóeszközre",
+    "Starting write process...": "Írási folyamat indítása...",
+    "Summary": "Összegzés",
+    "This action is PERMANENT and CANNOT be undone.": "Ez a művelet VÉGLEGES és NEM visszavonható.",
+    "Verifying... %1%": "Ellenőrzés... %1%",
+    "Write": "Írás",
+    "Write completed successfully!": "Az írás sikeresen befejeződött!",
+    "Write failed: %1": "Az írás sikertelen: %1",
+    "Writing... %1%": "Írás... %1%",
+    "You are about to ERASE all data on: %1": "Az alábbi eszköz MINDEN adatát törölni fogja: %1",
+    "the storage device": "a tárolóeszköz"
+  },
+  "main": {
+    "Are you sure you want to quit?": "Biztosan kilép?",
+    "Erase": "Törlés",
+    "Error": "Hiba",
+    "Format card as FAT32": "Kártya formázása FAT32-re",
+    "OK": "OK",
+    "Raspberry Pi Imager is still busy. Are you sure you want to quit?": "A Raspberry Pi Imager még dolgozik. Biztosan kilép?",
+    "Select a custom .img from your computer": "Válasszon egyéni .img fájlt a számítógépről",
+    "Storage device removed": "A tárolóeszközt eltávolították",
+    "The storage device was removed while writing, so the operation was cancelled. Please reinsert the device or select a different one to continue.": "A tárolóeszközt írás közben eltávolították, ezért a művelet megszakadt. Helyezze vissza az eszközt, vagy válasszon másikat a folytatáshoz.",
+    "Use custom": "Egyéni használata"
+  }
+}

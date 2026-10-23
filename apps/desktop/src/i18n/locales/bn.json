@@ -1,0 +1,95 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "শেষ হবার সময় মিডিয়া ইজেক্ট করুন",
+    "Play sound when finished": "শেষ হবার সময় শব্দ শোনান"
+  },
+  "CommonStrings": {
+    "Back": "পিছনে",
+    "Password:": "পাসওয়ার্ডঃ",
+    "Select image": "ইমেজ নির্বাচন করুন"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "চালিয়ে যান"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "উল্লেখিত ফোল্ডারে পরিবর্তনের সময় ক্রটি হয়েছেঃ '%1'",
+    "Error extracting archive: %1": "আর্কাইভটি এক্সট্রাক্ট করার সময় পাওয়া ক্রটিঃ %1",
+    "Error mounting FAT32 partition": "FAT32 পার্টিশনটি মাউন্ট করার সময় ক্রটি হয়েছে",
+    "Error reading from storage.<br>SD card may be broken.": "স্টোরেজ থেকে পড়ার সময় ত্রুটি।<br>SD কার্ডটি ত্রুটিপূর্ণ হতে পারে।",
+    "Operating system did not mount FAT32 partition": "অপারেটিং সিস্টেম FAT32 পার্টিশনটি মাউন্ট করতে পারেনি",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "লেখা যাচাই ব্যর্থ হয়েছে। SD কার্ডে যা আছে সেটা যা লেখা হয়েছিল তার থেকে ভিন্ন মনে হচ্ছে।"
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "ডিস্কে ফাইল লিখার সময় ক্রটিঃ 'অ্যাক্সেস ডিনাইড'",
+    "Cannot open storage device '%1'.": "স্টোরেজ ডিভাইস '%1' এ প্রবেশ করা ব্যর্থ হয়েছে",
+    "Error downloading: %1": "ডাউনলোডের সময় ত্রুটি: %1",
+    "Error reading from storage.<br>SD card may be broken.": "স্টোরেজ থেকে পড়ার সময় ত্রুটি।<br>SD কার্ডটি ত্রুটিপূর্ণ হতে পারে।",
+    "Error writing first block (partition table)": "প্রথম ব্লক লেখার সময় ত্রুটি (পার্টিশন টেবিল)",
+    "Error writing to storage (while flushing)": "স্টোরেজে লেখার সময় ত্রুটি (ফ্লাশ করার সময়)",
+    "Error writing to storage (while fsync)": "স্টোরেজে লেখার সময় ত্রুটি (fsync করার সময়)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "অনুগ্রহ করে নিশ্চিত করুন যে 'Raspberry Pi Imager' এর প্রাইভেসি সেটিংসের 'রিমুভেবল ভলিউম' এ অ্যাক্সেস রয়েছে (সেটিংস এর 'ফাইল এবং ফোল্ডার' থেকে; অথবা 'ফুল ডিস্ক অ্যাক্সেস' দিন)।",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "লেখা যাচাই ব্যর্থ হয়েছে। SD কার্ডে যা আছে সেটা যা লেখা হয়েছিল তার থেকে ভিন্ন মনে হচ্ছে।",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "কার্ডের শেষ অংশ শূন্য করার সময় লেখার ত্রুটি।<br>কার্ডটি ভুল ধারণক্ষমতা প্রদর্শন করতে পারে (কার্ডটি সম্ভবতঃ জাল)।",
+    "Write error while zero'ing out MBR": "MBR শূন্য করার সময় ড্রাইভে লিখার ত্রুটি"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "ডিভাইস নির্বাচন করুন"
+  },
+  "ImageWriter": {
+    "GB": "গিগাবাইট",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "ইনপুট ফাইলটি একটি বৈধ ডিস্ক ইমেজ নয়।<br>ফাইলের আকার %1 বাইট যা 512 বাইটের গুণিতক নয়।",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "আপনার ইথারনেট সুইচে STP সক্রিয় রয়েছে। IP পাওয়ার জন্য অনেক সময় লাগবে।",
+    "Select image": "ইমেজ নির্বাচন করুন"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "ইমেজ ফাইল খোলার সময় ত্রুটি"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "কীবোর্ড লেআউটঃ"
+  },
+  "OSListModel": {
+    "Recommended": "সুপারিশকৃত"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "আপনার কম্পিউটারে ক্যাশ করা হয়েছে",
+    "Go back to main menu": "মেইন মেনুতে ফিরে যান",
+    "Local file": "স্থানীয় ফাইল",
+    "Select image": "ইমেজ নির্বাচন করুন"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "SSH চালু করুন",
+    "Use password authentication": "পাসওয়ার্ড অথেনটিকেশন ব্যবহার করুন"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "%1 হিসেবে মাউন্ট করা হয়েছে",
+    "No storage devices found": "কোন স্টোরেজ ডিভাইস পাওয়া যায়নি"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "আপডেট আছে"
+  },
+  "UserCustomizationStep": {
+    "Username:": "ব্যবহারকারীর নামঃ"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "লুকানো SSID",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "স্টোরেজ"
+  },
+  "WizardStepBase": {
+    "Next": "পরবর্তী"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "%1% যাচাই করা হচ্ছে...",
+    "Writing... %1%": "%1% লেখা হচ্ছে..."
+  },
+  "main": {
+    "Are you sure you want to quit?": "আপনি কি সত্যিই বের হতে চান?",
+    "Erase": "মুছুন",
+    "Error": "ত্রুটি",
+    "Format card as FAT32": "কার্ডটি FAT32 হিসাবে ফরম্যাট করুন",
+    "Select a custom .img from your computer": "আপনার কম্পিউটার থেকে একটি কাস্টম .img নির্বাচন করুন",
+    "Use custom": "কাস্টম ইমেজ ব্যবহার করুন"
+  }
+}

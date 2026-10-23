@@ -1,0 +1,337 @@
+{
+  "AppOptionsDialog": {
+    "App Options": "აპის პარამეტრები",
+    "Content Repository": "შემცველობის რეპოზიტორია",
+    "Disable warnings": "გაფრთხილებების გამორთვა",
+    "Disable warnings?": "გამოვრთო გაფრთხილებები?",
+    "Edit": "ჩასწორება",
+    "Eject media when finished": "მედიის გამოღება დასრულებისას",
+    "Enable anonymous statistics (telemetry)": "ანონიმური სტატისტიკის ჩართვა (ტელემეტრია)",
+    "If you disable warnings, Raspberry Pi Imager will <b>not show confirmation prompts before writing images</b>. You will still be required to <b>type the exact name</b> when selecting a system drive.": "თუ გაფრთხილებებს გამორთავთ, Raspberry Pi Imager <b>არ გაჩვენებთ დადასტურების მოთხოვნას დისკის ასლის ფაილების ჩაწერამდე.</b>. სისტემური დისკის არჩევამდე <b>ზუსტი სახელის</b> შეყვანას მაინც მოგთხოვთ.",
+    "Play sound when finished": "ხმის დაკვრა დასრულებისას",
+    "Save": "შენახვა",
+    "What is this?": "რა არის ეს?"
+  },
+  "CommonStrings": {
+    "All files (*)": "ყველა ფაილი (*)",
+    "Back": "უკან",
+    "Browse": "პოვნა",
+    "Cancel": "გაუქმება",
+    "Continue": "გაგრძელება",
+    "Device:": "მოწყობილობა:",
+    "Finish": "დასრულება",
+    "Hostname configured": "ჰოსტის სახელი მორგებულია",
+    "I2C enabled": "I2C ჩართულია",
+    "Image files (%1)": "დისკის ასლის ფაილები (%1)",
+    "Imager Repository Files (*.json)": "დისკის ასლის ფაილის რეპოზიტორიის ფაილები (*.json)",
+    "No": "არა",
+    "No device selected": "მოწყობილობა არჩეული არაა",
+    "No image selected": "გამოსახულება არჩეული არაა",
+    "No storage selected": "საცავი არჩეული არაა",
+    "Only proceed if you fully understand the risks.": "გააგრძელეთ მხოლოდ იმ შემთხვევაში, თუ სრულად გესმით რისკები.",
+    "Password:": "პაროლი:",
+    "Public Key files (*.pub)": "საჯარო გასაღების ფაილები (*.pub)",
+    "Raspberry Pi Connect enabled": "Raspberry Pi Connect ჩართულია",
+    "SPI enabled": "SPI ჩართულია",
+    "SSH enabled": "SSH ჩართულია",
+    "Select image": "აირჩიეთ დისკის ასლის ფაილი",
+    "Selecting the wrong drive will permanently erase data and can render your computer inoperable.": "არასწორი დისკის არჩევა შეუქცევადად წაშლის მონაცემებს და შეიძლება, თქვენი კომპიუტერი უმოქმედო გახადოს.",
+    "Storage:": "საცავი:",
+    "System drives typically contain files essential to the operation of your computer, and may include your personal files (photos, videos, documents).": "სისტემური დისკები, ჩვეულებრივ, შეიცავენ ფაილებს, რომლებიც თქვენი კომპიუტერის მუშაობისთვისაა აუცილებელი და შეიძლება, თქვენს პირად ფაილებს (ფოტოებს, ვიდეოებს, დოკუმენტებს) შეიცავდეს.",
+    "User account configured": "მომხმარებლის ანგარიში მორგებულია",
+    "Wi‑Fi configured": "უსადენო ქსელი მორგებულია",
+    "Yes": "კი"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CANCEL": "გაუქმება",
+    "CONTINUE": "გაგრძელება",
+    "Mounted as: %1": "მიმაგრებულია, როგორც: %1",
+    "Not mounted": "მიმაგრებული არაა",
+    "Size: %1": "ზომა: %1",
+    "To continue, type the exact drive name below:": "გასაგრძელებლად აკრიფეთ ზუსტი დისკის სახელი ქვემოთ:",
+    "Type drive name exactly as shown above": "აკრიფეთ დისკის სახელი ზუსტად ისე, როგორც ზემოთაა ნაჩვენები"
+  },
+  "ConfirmUnfilterDialog": {
+    "By disabling system drive filtering, <b>system drives will be shown</b> in the list.": "სისტემური დისკის გაფილტვრის გამორთვით <b>სისტემური დისკები სიაში იქნება ნაჩვენები</b>.",
+    "KEEP FILTER ON": "ფილტრის ჩართულად დატოვება",
+    "SHOW SYSTEM DRIVES": "სისტემური დისკების ჩვენება"
+  },
+  "DeviceSelectionStep": {
+    "Select your Raspberry Pi device": "აირჩიეთ თქვენი Raspberry Pi მოწყობილობა"
+  },
+  "DoneStep": {
+    "Customisations applied:": "გამოყენებული პერსონალიზაცია:",
+    "Operating system:": "ოპერაციული სისტემა:",
+    "Please eject the storage device before removing it from your computer.": "ამოიღეთ საცავის მოწყობილობა მისი კომპიუტერიდან მოხსნამდე.",
+    "Reboot": "გადატვირთვა",
+    "Storage:": "საცავი:",
+    "The storage device was ejected automatically. You can now remove it safely.": "საცავის მოწყობილობა ავტომატურად იქნა ამოღებული. ახლა შეიძლიათ, ის უსაფრთხოდ გამოაერთოთ.",
+    "Write Another": "კიდევ ერთის ჩაწერა",
+    "Write complete!": "ჩაწერა დასრულდა!",
+    "Your choices:": "თქვენი არჩევნები:"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "ვერ გადავედი საქაღალდეში '%1'",
+    "Error extracting archive: %1": "გაშლის შეცდომა არქივისთვის: %1",
+    "Error mounting FAT32 partition": "FAT32 დანაყოფის მიმაგრების შეცდომა",
+    "Error reading from storage.<br>SD card may be broken.": "საცავიდან წაკითხვის შეცდომა.<br>ალბათ SD ბარათი დაზიანებულია.",
+    "Operating system did not mount FAT32 partition": "ოპერაციულმა სისტემამ FAT32 დანაყოფი არ მიამაგრა",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "ჩანაწერის გადამოწმება ჩავარდა. SD ბარათი არ შეიცავს იმ მონაცემებს, რაც ზედ ჩაიწერა."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "დისკზე ჩაწერისას წვდომა აკრძალულია.",
+    "Cached file is corrupt. SHA256 hash does not match expected value.<br>The cache file will be removed and the download will restart.": "დაკეშილი ფაილი დაზიანებულია. SHA256 ჰეში მოსალოდნელ მნიშვნელობას არ ემთხვევა.<br>დაკეშილი ფაილი წაიშლება და გადმოწერა თავიდან დაიწყება.",
+    "Cannot open storage device '%1'.": "ვერ გავხსენი საცავის მოწყობილობა '%1'.",
+    "Cleaning disk...": "დისკის გასუფთავება...",
+    "Controlled Folder Access seems to be enabled. Please add rpi-imager.exe to the list of allowed apps and try again.": "როგორც ჩანს, ჩართულია კონტროლირებადი საქაღალდის წვდომა. დაამატეთ rpi-imager.exe და fat32format.exe დაშვებული პროგრამების სიაში და თავიდან სცადეთ.",
+    "Customising OS...": "ოპერაციული სისტემის მორგება ...",
+    "Discarding existing data on drive...": "დისკზე არსებული მონაცემების მოცილება...",
+    "Disk is full. Please use a larger storage device.": "დისკი სავსეა. გამოიყენეთ უფრო დიდი დისკი.",
+    "Download appears to be corrupt. SHA256 hash does not match.<br>Expected: %1<br>Actual: %2<br>Please check your network connection and try again.": "როგორც ჩანს, გადმოწერილი ფაილი დაზიანებულია. SHA256 ჰეში არ ემთხვევა.<br>მოსალოდნელი: %1<br>ფაქტიური: %2<br>შეამოწმეთ თქვენი ინტერნეტკავშირი და თავიდან სცადეთ.",
+    "Error downloading: %1": "გადმოწერის შეცდომა: %1",
+    "Error getting device size": "მოწყობილობის ზომის მიღების შეცდომა",
+    "Error opening disk device '%1'": "გახსნის შეცდომა დისკის მოწყობილობისთვის '%1'",
+    "Error reading from storage.<br>SD card may be broken.": "საცავიდან წაკითხვის შეცდომა.<br>ალბათ SD ბარათი დაზიანებულია.",
+    "Error writing first block (partition table)": "პირველი ბლოკის ჩაწერის შეცდომა (დანაყოფების ცხრილი)",
+    "Error writing to storage (while flushing)": "საცავში ჩაწერის შეცდომა (ბუფერების ჩაწერისას)",
+    "Error writing to storage (while fsync)": "საცავში ჩაწერის შეცდომა (fsync-ის დროს)",
+    "Error writing to storage device. Please check if the device is writable, has sufficient space, and is not write-protected.": "საცავის მოწყობილობაზე ჩაწერის შეცდომა. შეამოწმეთ, არის თუ არა მოწყობილობა ჩაწერადი, არის თუ არა ზედ საკმარისი ადგილი და ხომ არაა დაცული ჩაწერისგან.",
+    "Error: Multiple partitions found on disk. Please ensure the disk is completely clean.": "შეცდომა: დისკზე აღმოჩენილია ერთზე მეტი ჩანაწერი. დარწმუნდით, რომ დისკი მთლიანად სუფთაა.",
+    "I/O device error. The storage device may have been disconnected or is malfunctioning.": "დისკის I/O შეცდომა. საცავის მოწყობილობა შეიძლება, გამოერთებულია, ან გაუმართავია.",
+    "Invalid disk parameter. The storage device may not be properly recognized. Please try reconnecting the device.": "არასწორი დისკის პარამეტრი. საცავის მოწყობილობა, შეიძლება, არასწორადაა ამოცნობილი. სცადეთ, მოწყობილობა თავიდან შეაერთოთ.",
+    "Local file is corrupt or has incorrect SHA256 hash.<br>Expected: %1<br>Actual: %2": "ლოკალური ფაილი დაზიანებულია, ან არასწორი SHA256 ჰეში აქვს.<br>მოსალოდნელი: %1<br>ფაქტიური:%2",
+    "Media error detected. The storage device may be damaged or counterfeit. Please try a different device.": "აღმოჩენილია მედიის შეცდომა. შეიძლება, საცავის მოწყობილობა დაზიანებულია, ან ყალბია. სცადეთ სხვა მოწყობილობა.",
+    "Opening drive...": "დისკის გახსნა...",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "გადაამოწმეთ, აქვს თუ არა 'Rasperry Pi Imager'-ს წვდომა 'მოხსნად ტომებთან' კონფიდენციალობის პარამეტრებში ('ფაილები და საქაღალდეებში', ან მიეცით 'სრული წვდომა დისკზე').",
+    "Starting download...": "გადმოწერის დაწყება...",
+    "The disk is write-protected. Please check if the disk has a physical write-protect switch or is read-only.": "დისკი ჩაწერისგან დაცულია. შეამოწმეთ, აქვს თუ არა დისკის ჩაწერისგან დაცულობის გადამრთველი და რაზეა დაყენებული ის.",
+    "The disk may be write-protected or in use by another application. Please ensure the disk is not mounted and try again.": "დისკი, შეიძლება, დაცულია ჩაწერისგან, ან გამოიყენება სხვა აპლიკაციის მიერ. დარწმუნდით, რომ დისკი მიმაგრებული არაა და თავიდან სცადეთ.",
+    "Unmounting drive...": "დისკის მოხსნა...",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "ჩანაწერის გადამოწმება ჩავარდა. SD ბარათი არ შეიცავს იმ მონაცემებს, რაც ზედ ჩაიწერა.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "ჩაწერის შეცდომა ბარათის ბოლო ნაწილის გაუქმებისას.<br>ბარათი, შეიძლება, არასწორ ზომას გადმოგვცემს (შეიძლება, ის ყალბია).",
+    "Write error while zero'ing out MBR": "ჩაწერის შეცდომა MBR-ის განულებისას",
+    "Writing image...": "დისკის ასლის ფაილი იწერება...",
+    "Zero'ing out first and last MB of drive...": "დისკის პირველი და ბოლო მეგაბაიტის განულება..."
+  },
+  "DriveFormatThread": {
+    "Cleaning disk...": "დისკის გასუფთავება...",
+    "Error opening device for formatting": "მოწყობილობის დასაფორმატებლად გახსნის შეცდომა",
+    "Error seeking on device during formatting": "მოწყობილობის გადახვევის შეცდომა დაფორმატებისას",
+    "Error writing to device during formatting": "დაფორმატებისას მოწყობილობაზე ჩაწერის შეცდომა",
+    "Insufficient space on device": "არასაკმარისი ადგილი მოწყობილობაზე",
+    "Invalid parameters for formatting": "არასწორი პარამეტრების დასაფორმატებლად",
+    "Preparing disk for formatting...": "დისკის მომზადება დასაფორმატებლად...",
+    "Unknown formatting error": "უცნობი დაფორმატების შეცდომა",
+    "Writing filesystem...": "ფაილური სისტემის ჩაწერა..."
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "აირჩიეთ მოწყობილობა"
+  },
+  "HostnameCustomizationStep": {
+    "A hostname is a unique name that identifies your Raspberry Pi on the network. It should contain only letters, numbers, and hyphens.": "ჰოსტის სახელი უნიკალური სახელია, რომლითაც თქვენი Raspberry Pi ქსელში გამოჩნდება. ის, მხოლოდ, ასოებს, ციფრებს და ტირეებს შეიძლება, შეიცავდეს.",
+    "Customisation: Choose hostname": "მორგება: აირჩიეთ ჰოსტის სახელი"
+  },
+  "IfAndFeaturesCustomizationStep": {
+    "Console": "კონსოლი",
+    "Customisation: Interfaces & Features": "მორგება: ინტერფეისები და ფუნქციები",
+    "Enable I2C": "I2C-ის ჩართვა",
+    "Enable SPI": "SPI-ის ჩართვა",
+    "Enable Serial:": "სერიული პორტის ჩართვა:",
+    "Enable USB Gadget Mode": "USB გაჯეტის რეჟიმის ჩართვა",
+    "Enable hardware interfaces and connectivity options.": "აპარატურული ინტერფეისების და დაკავშირების პარამეტრების ჩართვა.",
+    "Features": "ფუნქციები",
+    "I understand, continue": "მესმის, გავაგრძელოთ",
+    "Interfaces": "ინტერფეისები",
+    "Learn more about USB Gadget Mode": "გაიგეთ მეტი USB გაჯეტის რეჟიმის შესახებ",
+    "Only continue if you are sure you know what you are doing.": "გააგრძელეთ მხოლოდ იმ შემთხვევაში, თუ დარწმუნებული ხართ, რომ იცით, რას აკეთებთ.",
+    "Please review the <a href='%1'>documentation</a> before proceeding.": "გაგრძელებამდე გადახედეთ <a href='%1'>დოკუმენტაციას</a>.",
+    "USB Gadget Mode can change how your device behaves and may impact connectivity and host interaction.": "USB გაჯეტის რეჟიმს შეუძლია შეცვალოს, როგორ იქცევა თქვენი მოწყობილობა და შეიძლება, გავლენა ჰქონდეს დაკავშირებაზე და ჰოსტთან ურთიერთობაზე."
+  },
+  "ImFileDialog": {
+    "Enter path or URL…": "შეიყვანეთ ბილიკი ან ბმული…",
+    "Folders": "საქაღალდეები",
+    "Go up a folder": "ერთი საქაღალდით ზემოთ ასვლა",
+    "No files in this folder": "ამ საქაღალდეში ფაილები არაა",
+    "Open": "გახსნა",
+    "Removable drives": "მოხსნადი დისკები",
+    "Save": "შენახვა",
+    "Select File": "აირჩიეთ ფაილი"
+  },
+  "ImageWriter": {
+    " or ": " ან ",
+    "%1 %2": "%1 %2",
+    "%1.%2 %3": "%1.%2 %3",
+    "B": "ბ",
+    "Cannot start write. %1": "ჩაწერის დაწყება შეუძლებელია. %1",
+    "GB": "გბ",
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "შეყვანის ფაილი სწორი დისკის ასლის ფაილი არაა.<br>ფაილის ზომაა %1 ბაიტი და ის 512 ბაიტის ნამრავლს არ წარმოადგენს.",
+    "KB": "კბ",
+    "MB": "მბ",
+    "No %1 selected.": "%1 არჩეული არაა.",
+    "STP is enabled on your Ethernet switch. Getting IP will take long time.": "თქვენს Ethernet კომუტატორში STP ჩართულია. IP-ის მიღებას დიდი დრო დასჭირდება.",
+    "Select image": "აირჩიეთ დისკის ასლის ფაილი",
+    "Source file is not readable: %1": "წყაო ფაილი წაკითხვადი არაა: %1",
+    "Source file not found: %1": "წყარო ფაილი აღმოჩენილი არაა: %1",
+    "Source is not a regular file: %1": "წყარო ჩვეულებრივი ფაილი არაა: %1",
+    "Storage capacity is not large enough.<br>Needs to be at least %1.": "საცავის მოცულობა საკმარისი არაა.<br>საჭიროა, იყოს სულ ცოტა %1.",
+    "TB": "ტბ",
+    "Unknown precondition failure.": "უცნობი წინაპირობის ჩავარდნა.",
+    "image": "გამოსახულება",
+    "storage device": "საცავის მოწყობილობა",
+    "valid storage device (device no longer available)": "სწორი საცავის მოწყობილობა (მოწყობილობა ხელმისაწვდომი აღარაა)"
+  },
+  "KeychainPermissionDialog": {
+    "Keychain Access": "ბრელოკთან წვდომა",
+    "This will require administrator authentication on macOS.": "macOS-ზე ეს ადმინისტრატორის ავთენტიკაციას მოგთხოვთ.",
+    "Would you like to prefill the Wi‑Fi password from the system keychain?": "გნებავთ წინასწარ შეავსოთ Wi-Fi-ის პაროლი სისტემური ბრელოკიდან?"
+  },
+  "LanguageSelectionStep": {
+    "Choose your language for Raspberry Pi Imager": "აირჩიეთ Raspberry Pi Imager-ის ენა",
+    "Language:": "ენა:",
+    "Welcome": "მოგესალმებით"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "დისკის ასლის ფაილის გახსნის შეცდომა",
+    "Error reading from image file": "დისკის ასლის ფაილიდან წაკითხვის შეცდომა",
+    "Error writing to device": "მოწყობილობაში ჩაწერის შეცდომა",
+    "Failed to read complete image file": "დისკის ასლის ფაილის სრულად წაკითხვის შეცდომა",
+    "Opening image file...": "დისკის ასლის ფაილის გახსნა...",
+    "Starting extraction...": "ამოღების დაწყება..."
+  },
+  "LocaleCustomizationStep": {
+    "Capital city:": "დედაქალაქი:",
+    "Customisation: Localisation": "მორგება: ლოკალიზაცია",
+    "Keyboard layout:": "კლავიატურის განლაგება:",
+    "Select your location for suggested time zone and keyboard layout": "აირჩიეთ თქვენი მდებარეობა შემოთავაზებული დროის სარტყლისა და კლავიატურის განლაგებისთვის",
+    "Time zone:": "დროის სარტყელი:"
+  },
+  "OSListModel": {
+    "Recommended": "რეკომენდებულია"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "დაკეშილია თქვენს კომპიუტერზე",
+    "Choose operating system": "აირჩეთ ოპერაციული სისტემა",
+    "Go back to main menu": "მთავარ მენიუზე დაბრუნება",
+    "Local - %1": "ლოკალური - %1",
+    "Local file": "ლოკალური ფაილი",
+    "Online - %1 download": "ინტერნეტით - %1-ის გადმოწერა",
+    "Select an operating system to install on your Raspberry Pi": "აირჩიეთ ოპერაციული სისტემა თქვენს Raspberry Pi-ზე დასაყენებლად",
+    "Select image": "აირჩიეთ დისკის ასლის ფაილი"
+  },
+  "PiConnectCustomizationStep": {
+    "Customisation: Raspberry Pi Connect": "მორგება: Raspberry Pi Connect",
+    "Enable Raspberry Pi Connect": "Raspberry Pi Connect-ის ჩართვა",
+    "OK": "დიახ",
+    "Open Raspberry Pi Connect": "Raspberry Pi Connect-ის გახსნა",
+    "Token received from browser": "ბრაუზერიდან მიღებული ტოკენი",
+    "What is Raspberry Pi Connect?": "რა არის Raspberry Pi Connect?"
+  },
+  "RemoteAccessStep": {
+    "Authentication mechanism:": "ავთენტიკაციის მექანიზმი:",
+    "Configure SSH access": "SSH წვდომის მორგება",
+    "Customisation: SSH authentication": "მორგება: SSH ავთენტიკაცია",
+    "Enable SSH": "SSH-ის ჩართვა",
+    "Learn about SSH": "გაიგეთ მეტი SSH-ის შესახებ",
+    "Use password authentication": "პაროლით ავთენტიკაციის გამოყენება",
+    "Use public key authentication": "საჯარო გასაღებით ავთენტიკაციის გამოყენება"
+  },
+  "RepositoryDialog": {
+    "Apply & Restart": "გადატარება & გადატვირთვა",
+    "Content Repository": "შემცველობის რეპოზიტორია",
+    "Please select a custom repository json file": "აირჩიეთ მომხმარებლის რეპოზიტორიის json ფაილი",
+    "Repository source:": "რეპოზიტორიის წყარო:",
+    "Select Repository": "აირჩიეთ რეპოზიტორია",
+    "Select custom repository": "აირჩიეთ მომხმარებლის რეპოზიტორია",
+    "Use custom file": "მომხმარებლის ფაილის გამოყენება"
+  },
+  "SshKeyManager": {
+    "Select SSH Public Key": "აირჩიეთ SSH საჯარო გასაღები"
+  },
+  "StorageSelectionStep": {
+    "Exclude system drives": "სისტემური დისკების ამოღება",
+    "Mounted as %1": "მიმაგრებულია, როგორც %1",
+    "No storage devices found": "საცავის მოწყობილობები აღმოჩენილი არაა",
+    "Read-only": "მხოლოდ-წასაკითხად",
+    "Select your storage device": "აირჩიეთ თქვენი საცავის მოწყობილობა"
+  },
+  "UpdateAvailableDialog": {
+    "There is a newer version of Imager available. Would you like to visit the website to download it?": "ხელმისაწვდომია Imager-ის ახალი ვერსია. გნებავთ, გავხსნა ვებგვერდი, რომ გადმოწეროთ ის?",
+    "Update available": "განახლება ხელმისაწვდომია"
+  },
+  "UserCustomizationStep": {
+    "Confirm password:": "პაროლის დადასტურება:",
+    "Create a user account for your Raspberry Pi": "შექმენით მომხმარებლის ანგარიში თქვენი Raspberry Pi-ისთვის",
+    "Customisation: Choose username": "მორგება: აირჩიეთ მომხმარებლის სახელი",
+    "Enter password": "შეიყვანეთ პაროლი",
+    "Enter your username": "შეიყვანეთ თქვენი მომხმარებლის სახელი",
+    "Re-enter password": "თავიდან შეიყვანეთ პაროლი",
+    "Re-enter to change password": "შეიყვანეთ თავიდან პაროლის შესაცვლელად",
+    "Saved (hidden) — leave blank to keep": "შენახული (დამალული) — დატოვეთ ცარიელი შესანარჩუნებლად",
+    "The username must be lowercase and contain only letters, numbers, underscores, and hyphens.": "მომხმარებლის სახელი, მხოლოდ, ასოებს, რიცხვებს და ტირეებს უნდა შეიცავდეს.",
+    "Username:": "მომხმარებლის სახელი:"
+  },
+  "WifiCustomizationStep": {
+    "Confirm password:": "პაროლის დადასტურება:",
+    "Customisation: Choose Wi‑Fi": "მორგება: აირჩიეთ Wi-Fi",
+    "Hidden SSID": "დამალული SSID",
+    "Network name": "ქსელის სახელი",
+    "Network password": "ქსელის პაროლი",
+    "Re-enter password": "თავიდან შეიყვანეთ პაროლი",
+    "Re-enter to change password": "შეიყვანეთ თავიდან პაროლის შესაცვლელად",
+    "SSID:": "SSID:",
+    "Saved (hidden) — leave blank to keep": "შენახული (დამალული) — დატოვეთ ცარიელი შესანარჩუნებლად"
+  },
+  "WizardContainer": {
+    "App Options": "აპის პარამეტრები",
+    "Customisation": "პერსონალიზაცია",
+    "Device": "მოწყობილობა",
+    "Done": "დასრულებულია",
+    "Hostname": "ჰოსტის სახელი",
+    "Interfaces & Features": "ინტერფეისები და ფუნქციები",
+    "Localisation": "ლოკალიზაცია",
+    "OS": "OS",
+    "Raspberry Pi Connect": "Raspberry Pi Connect",
+    "Remote access": "დაკავშირება",
+    "Setup steps": "დაყენების ნაბიჯები",
+    "Storage": "საცავი",
+    "User": "მომხმარებელი",
+    "Wi‑Fi": "Wi‑Fi",
+    "Writing": "ჩაწერა"
+  },
+  "WizardStepBase": {
+    "Next": "შემდეგი",
+    "Skip customisation": "პერსონალიზაციის გამოტოვება"
+  },
+  "WritingStep": {
+    "Customisations to apply:": "პერსონალიზაციები გადასატარებლად:",
+    "Finalising...": "დასრულება...",
+    "I understand, erase and write": "მესმის. წაშალე და ჩაწერე",
+    "Operating system:": "ოპერაციული სისტემა:",
+    "Please wait...": "გთხოვთ, მოითმინეთ...",
+    "Review your choices and write the image to the storage device": "გადახედეთ თქვენს არჩევნებს და ჩაწერეთ დისკის ასლის ფაილი საცავის მოწყობილობაზე",
+    "Starting write process...": "ჩაწერის პროცესის დაწყება...",
+    "Summary": "ჯამში",
+    "This action is PERMANENT and CANNOT be undone.": "ეს ქმედება სამუდამო და შეუქცევადია.",
+    "Verifying... %1%": "გადამოწმება... %1%",
+    "Write": "ჩაწერა",
+    "Write completed successfully!": "დაწერა წარმატებით დასრულდა!",
+    "Write failed: %1": "ჩაწერა ჩავარდა: %1",
+    "Write image": "დისკის ასლის ფაილის ჩაწერა",
+    "Writing... %1%": "მიმდინარეობს ჩაწერა... %1%",
+    "You are about to ERASE all data on: %1": "აპირებთ, წაშალოთ ყველაფერი დისკზე: %1",
+    "the storage device": "საცავის მოწყობილობა"
+  },
+  "main": {
+    "All files (*)": "ყველა ფაილი (*)",
+    "Are you sure you want to quit?": "მართლა გნებავთ, გახვიდეთ?",
+    "Erase": "წაშლა",
+    "Error": "შეცდომა",
+    "Format card as FAT32": "ბარათის დაფორმატება FAT32-ზე",
+    "OK": "დიახ",
+    "Raspberry Pi Imager is still busy. Are you sure you want to quit?": "Raspberry Pi Imager ჯერ კიდევ დაკავებულია. მართლა გნებავთ გასვლა?",
+    "Select a custom .img from your computer": "მორგებული .img ფაილის არჩევა თქვენი კომპიუტერიდან",
+    "Storage device removed": "საცავის მოწყობილობა მოხსნილია",
+    "The storage device was removed while writing, so the operation was cancelled. Please reinsert the device or select a different one to continue.": "საცავის მოწყობილობა მოხსნილია ჩაწერისას, ასე რომ, ოპერაცია შეწყდა. გასაგრძელებლად შეაერთეთ მოწყობილობა თავიდან, ან აირჩიეთ სხვა.",
+    "Use custom": "მორგებულის გამოყენება"
+  }
+}

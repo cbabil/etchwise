@@ -1,0 +1,89 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "終わったときにメディアを取り出す",
+    "Play sound when finished": "終わったときに音を鳴らす"
+  },
+  "CommonStrings": {
+    "Back": "戻る",
+    "Password:": "パスワード:",
+    "Select image": "イメージを選ぶ"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "続ける"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "カレントディレクトリを%1に変更できませんでした",
+    "Error extracting archive: %1": "アーカイブを展開するのに失敗しました",
+    "Error mounting FAT32 partition": "FAT32パーティションをマウントできませんでした",
+    "Error reading from storage.<br>SD card may be broken.": "ストレージを読むのに失敗しました。SDカードが壊れている可能性があります。",
+    "Operating system did not mount FAT32 partition": "OSがFAT32パーティションをマウントしませんでした",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "確認中にエラーが発生しました。書き込んだはずのデータが実際にSDカードに記録されたデータと一致していません。"
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "ディスクにファイルを書き込む際にアクセスが拒否されました。",
+    "Cannot open storage device '%1'.": "ストレージを開けませんでした。",
+    "Error downloading: %1": "%1をダウンロードする際エラーが発生しました",
+    "Error reading from storage.<br>SD card may be broken.": "ストレージを読むのに失敗しました。SDカードが壊れている可能性があります。",
+    "Error writing first block (partition table)": "最初のブロック（パーティションテーブル）を書き込み中にエラーが発生しました",
+    "Error writing to storage (while flushing)": "ストレージへの書き込み中にエラーが発生しました (フラッシング中)",
+    "Error writing to storage (while fsync)": "ストレージへの書き込み中にエラーが発生しました（fsync中)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Raspberry Pi Imagerがリムーバブルボリュームへアクセスすることが「プライバシーとセキュリティ」の「ファイルとフォルダー」の設定、または「フルディスクアクセス」の付与によって許可されているかを確認してください。",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "確認中にエラーが発生しました。書き込んだはずのデータが実際にSDカードに記録されたデータと一致していません。",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "カードの最後のパートを0で書き込む際書き込みエラーが発生しました。カードが示している容量と実際のカードの容量が違う可能性があります。",
+    "Write error while zero'ing out MBR": "MBRを削除している際にエラーが発生しました。"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "デバイスを選択"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "入力されたファイルは適切なディスクイメージファイルではありません。ファイルサイズの%1は512バイトの倍数ではありません。",
+    "Select image": "イメージを選ぶ"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "イメージファイルを開く際にエラーが発生しました"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "キーボードレイアウト:"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "コンピュータにキャッシュされたファイル",
+    "Go back to main menu": "メインメニューへ戻る",
+    "Local file": "ローカルファイル",
+    "Select image": "イメージを選ぶ"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "SSHを有効化する",
+    "Use password authentication": "パスワード認証を使う"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "%1 としてマウントされています"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "アップデートがあります"
+  },
+  "UserCustomizationStep": {
+    "Username:": "ユーザー名"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "ステルスSSID",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "ストレージ"
+  },
+  "WizardStepBase": {
+    "Next": "次へ"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "確認中... %1%",
+    "Writing... %1%": "書き込み中... %1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "本当にやめますか？",
+    "Erase": "削除",
+    "Error": "エラー",
+    "Format card as FAT32": "カードをFAT32でフォーマットする",
+    "Select a custom .img from your computer": "自分で用意したイメージファイルを使う",
+    "Use custom": "カスタムイメージを使う"
+  }
+}

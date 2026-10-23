@@ -1,0 +1,89 @@
+{
+  "AppOptionsDialog": {
+    "Eject media when finished": "Media uitwerpen zodra voltooid",
+    "Play sound when finished": "Geluid afspelen zodra voltooid"
+  },
+  "CommonStrings": {
+    "Back": "Terug",
+    "Password:": "Wachtwoord:",
+    "Select image": "Selecteer image"
+  },
+  "ConfirmSystemDriveDialog": {
+    "CONTINUE": "VERDER GAAN"
+  },
+  "DownloadExtractThread": {
+    "Error changing to directory '%1'": "Fout bij openen map '%1'",
+    "Error extracting archive: %1": "Fout bij uitpakken archiefbestand: %1",
+    "Error mounting FAT32 partition": "Fout bij mounten FAT32 partitie",
+    "Error reading from storage.<br>SD card may be broken.": "Fout bij lezen van SD kaart.<br>Kaart is mogelijk defect.",
+    "Operating system did not mount FAT32 partition": "Besturingssysteem heeft FAT32 partitie niet gemount",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Verificatie mislukt. De gegevens die op de SD kaart staan wijken af van wat er naar geschreven is."
+  },
+  "DownloadThread": {
+    "Access denied error while writing file to disk.": "Toegang geweigerd bij het schrijven naar opslag.",
+    "Cannot open storage device '%1'.": "Fout bij openen opslagapparaat '%1'.",
+    "Error downloading: %1": "Fout bij downloaden: %1",
+    "Error reading from storage.<br>SD card may be broken.": "Fout bij lezen van SD kaart.<br>Kaart is mogelijk defect.",
+    "Error writing first block (partition table)": "Fout bij schrijven naar eerste deel van kaart (partitie tabel)",
+    "Error writing to storage (while flushing)": "Fout bij schrijven naar opslag (tijdens flushen)",
+    "Error writing to storage (while fsync)": "Fout bij schrijven naar opslag (tijdens fsync)",
+    "Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings (under 'files and folders' or alternatively give it 'full disk access').": "Gelieve te controlleren of 'Raspberry Pi Imager' toegang heeft tot 'verwijderbare volumes' in de privacy instellingen (onder 'bestanden en mappen' of anders via 'volledige schijftoegang').",
+    "Verifying write failed. Contents of SD card is different from what was written to it.": "Verificatie mislukt. De gegevens die op de SD kaart staan wijken af van wat er naar geschreven is.",
+    "Write error while trying to zero out last part of card.<br>Card could be advertising wrong capacity (possible counterfeit).": "Fout bij wissen laatste deel van de SD kaart.<br>Kaart geeft mogelijk onjuiste capaciteit aan (mogelijk counterfeit).",
+    "Write error while zero'ing out MBR": "Fout bij wissen MBR"
+  },
+  "HWListModel": {
+    "CHOOSE DEVICE": "KIES MODEL"
+  },
+  "ImageWriter": {
+    "Input file is not a valid disk image.<br>File size %1 bytes is not a multiple of 512 bytes.": "Invoerbestand is geen disk image.<br>Bestandsgrootte %1 bytes is geen veelvoud van 512 bytes.",
+    "Select image": "Selecteer image"
+  },
+  "LocalFileExtractThread": {
+    "Error opening image file": "Fout bij openen image bestand"
+  },
+  "LocaleCustomizationStep": {
+    "Keyboard layout:": "Toetsenbord indeling:"
+  },
+  "OSSelectionStep": {
+    "Cached on your computer": "Opgeslagen op computer",
+    "Go back to main menu": "Terug naar hoofdmenu",
+    "Local file": "Lokaal bestand",
+    "Select image": "Selecteer image"
+  },
+  "RemoteAccessStep": {
+    "Enable SSH": "SSH inschakelen",
+    "Use password authentication": "Gebruik wachtwoord authenticatie"
+  },
+  "StorageSelectionStep": {
+    "Mounted as %1": "Mounted op %1"
+  },
+  "UpdateAvailableDialog": {
+    "Update available": "Update beschikbaar"
+  },
+  "UserCustomizationStep": {
+    "Username:": "Gebruikersnaam:"
+  },
+  "WifiCustomizationStep": {
+    "Hidden SSID": "Verborgen SSID",
+    "SSID:": "SSID:"
+  },
+  "WizardContainer": {
+    "Storage": "Opslagapparaat"
+  },
+  "WizardStepBase": {
+    "Next": "Volgende"
+  },
+  "WritingStep": {
+    "Verifying... %1%": "Verifiëren... %1%",
+    "Writing... %1%": "Schrijven... %1%"
+  },
+  "main": {
+    "Are you sure you want to quit?": "Weet u zeker dat u wilt afsluiten?",
+    "Erase": "Wissen",
+    "Error": "Fout",
+    "Format card as FAT32": "Formatteer kaart als FAT32",
+    "Select a custom .img from your computer": "Selecteer een eigen .img bestand",
+    "Use custom": "Gebruik eigen bestand"
+  }
+}
