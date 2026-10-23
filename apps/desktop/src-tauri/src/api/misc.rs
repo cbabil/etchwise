@@ -13,6 +13,12 @@ pub fn handle(state: &mut State, method: &str, args: &Args<'_>) -> Handled {
         | "isSecureBootForcedByCliFlag"
         | "hasPerformanceData" => ok(false),
         "isBeepAvailable" | "nativeFileDialogAvailable" | "hasWindowDecorations" => ok(true),
+        // Upstream `main.cpp`: shown for a saved language preference, in
+        // embedded mode, or when the system language is unknown (never on
+        // macOS, which always reports one).
+        "showLanguageSelection" => ok(!state.settings.string("savedLanguage").is_empty()),
+        // Upstream runs `reboot`, reachable only in embedded mode (never on macOS).
+        "reboot" => ok(Value::Null),
         "getDebugOptions" => ok(json!(state.debug)),
         "setDebugOptions" => {
             state.debug = serde_json::from_value::<DebugOptions>(args.value(0)).unwrap_or_default();
@@ -50,6 +56,18 @@ fn verify_auth_key(token: &str, strict: bool) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn shows_language_selection_only_for_a_saved_language() {
+        let mut state = State::new(
+            imager_core::settings::Settings::in_memory(),
+            std::env::temp_dir(),
+        );
+        let ask = |state: &mut State| handle(state, "showLanguageSelection", &Args(&[]));
+        assert_eq!(ask(&mut state), Some(Ok(Value::Bool(false))));
+        state.settings.set("savedLanguage", json!("fr")).unwrap();
+        assert_eq!(ask(&mut state), Some(Ok(Value::Bool(true))));
+    }
 
     #[test]
     fn validates_connect_tokens() {

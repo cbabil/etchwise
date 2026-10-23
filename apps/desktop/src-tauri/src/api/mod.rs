@@ -10,6 +10,9 @@ mod settings;
 mod source;
 mod write;
 
+#[cfg(test)]
+mod ui_contract;
+
 use serde_json::Value;
 
 pub use self::args::Args;

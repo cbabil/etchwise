@@ -14,14 +14,25 @@ import type { CustomizationSettings, WizardState } from './state'
 import { Step } from './stepIds'
 import { clampSidebarWidth, type Commit } from './useWizardActions'
 
+/** A start-up value, or null (its default) when the call fails, so one
+ * failing call cannot keep the wizard from appearing. */
+async function orDefault<T>(method: string, ...args: unknown[]): Promise<T | null> {
+  try {
+    return await call<T>(method, ...args)
+  } catch (error) {
+    globalThis.reportError?.(new Error(`Start-up call ${method} failed`, { cause: error }))
+    return null
+  }
+}
+
 async function loadInitial(showLanguageSelection: boolean | undefined) {
   const [settings, rsaKey, width, unavailable, embedded, showLanguage] = await Promise.all([
-    call<CustomizationSettings | null>('getSavedCustomisationSettings'),
-    call<string | null>('getStringSetting', 'secureboot_rsa_key'),
-    call<string | null>('getStringSetting', 'sidebarWidth'),
-    call<boolean | null>('isOsListUnavailable'),
-    call<boolean | null>('isEmbeddedMode'),
-    showLanguageSelection ?? call<boolean | null>('showLanguageSelection'),
+    orDefault<CustomizationSettings>('getSavedCustomisationSettings'),
+    orDefault<string>('getStringSetting', 'secureboot_rsa_key'),
+    orDefault<string>('getStringSetting', 'sidebarWidth'),
+    orDefault<boolean>('isOsListUnavailable'),
+    orDefault<boolean>('isEmbeddedMode'),
+    showLanguageSelection ?? orDefault<boolean>('showLanguageSelection'),
   ])
   return (state: WizardState): WizardState => {
     const online = !unavailable
