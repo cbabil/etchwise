@@ -137,3 +137,30 @@ fn garbage_names_do_not_reset_the_retry_count() {
     let mut mock = mock_with(replies);
     assert_eq!(run(&mut mock, &std::env::temp_dir()), Ok(()));
 }
+
+#[test]
+fn never_serves_files_outside_the_firmware_directory() {
+    use super::file_requests::read_file_from_disk;
+    let root = temp_dir();
+    write_file(root.path(), "secret.txt", b"private");
+    let fw = root.path().join("fw");
+    std::fs::create_dir(&fw).unwrap();
+    write_file(&fw, "start4.elf", b"elf");
+    std::fs::create_dir(fw.join("sub")).unwrap();
+    write_file(&fw.join("sub"), "a.dtb", b"dtb");
+    let outside = root.path().join("secret.txt");
+    #[cfg(unix)]
+    std::os::unix::fs::symlink(&outside, fw.join("link.txt")).unwrap();
+
+    assert_eq!(read_file_from_disk(&fw, "start4.elf"), b"elf");
+    assert_eq!(read_file_from_disk(&fw, "sub/a.dtb"), b"dtb");
+    for name in [
+        "../secret.txt",
+        "sub/../../secret.txt",
+        outside.to_str().unwrap(),
+        "link.txt",
+        "",
+    ] {
+        assert!(read_file_from_disk(&fw, name).is_empty(), "{name}");
+    }
+}

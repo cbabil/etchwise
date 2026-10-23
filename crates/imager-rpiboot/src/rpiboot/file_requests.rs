@@ -2,7 +2,7 @@
 //! handleGetFileSize`, `handleReadFile`, `parseMetadata`,
 //! `readFileFromDisk`). Star-prefixed names carry device metadata.
 
-use std::path::Path;
+use std::path::{Component, Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
 
 use super::bootcode_loader::{error_code, split_length};
@@ -126,10 +126,29 @@ pub fn parse_metadata(metadata: &mut DeviceMetadata, name: &str, data: &[u8]) {
 }
 
 /// The default resolver: `<dir>/<name>`, empty for metadata, missing or
-/// empty files.
+/// empty files. The name comes from the USB device, so only relative paths
+/// that stay inside `dir` (after resolving symlinks) are served; upstream
+/// opens `dir / name` unchecked.
 pub fn read_file_from_disk(dir: &Path, name: &str) -> Vec<u8> {
     if is_metadata(name) {
         return Vec::new();
     }
-    std::fs::read(dir.join(name)).unwrap_or_default()
+    contained_path(dir, name)
+        .and_then(|path| std::fs::read(path).ok())
+        .unwrap_or_default()
+}
+
+/// `dir/name` when `name` is a non-empty relative path of plain components
+/// whose real location is under `dir`.
+fn contained_path(dir: &Path, name: &str) -> Option<PathBuf> {
+    let relative = Path::new(name);
+    let plain = relative
+        .components()
+        .all(|c| matches!(c, Component::Normal(_)));
+    if name.is_empty() || !plain {
+        return None;
+    }
+    let root = dir.canonicalize().ok()?;
+    let path = root.join(relative).canonicalize().ok()?;
+    path.starts_with(&root).then_some(path)
 }
