@@ -1,0 +1,22 @@
+[package]
+name = "imager-rpiboot"
+description = "USB boot (rpiboot) and fastboot flashing of Compute Modules, ported from Raspberry Pi Imager"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+imager-core = { path = "../imager-core" }
+hex = "0.4"
+roxmltree = "0.20"
+rusb = { version = "0.9", features = ["vendored"] }
+sha2 = "0.10"
+tar = "0.4"
+thiserror = "2"
+
+[dev-dependencies]
+tempfile = "3"
+
+[lints]
+workspace = true
