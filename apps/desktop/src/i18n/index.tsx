@@ -37,7 +37,7 @@ export const APP_NAME = 'Etchwise'
  * verbatim by most languages), a Georgian misspelling, Korean, and two
  * Hebrew phrasings ("the image burner of / for Raspberry Pi").
  */
-const UPSTREAM_BRAND =
+export const UPSTREAM_BRAND =
   /Raspberry Pi Imager|Rasperry Pi Imager|라즈베리 파이 이미저|צורב הדמויות (?:של |ל־)Raspberry Pi/g
 
 /** Looks a source string up in a catalogue, naming this app as `APP_NAME`. */

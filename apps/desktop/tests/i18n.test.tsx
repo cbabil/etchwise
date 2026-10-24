@@ -1,6 +1,14 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 
-import { APP_NAME, I18nProvider, substitute, translate, useLanguage, useTr } from '@/i18n'
+import {
+  APP_NAME,
+  I18nProvider,
+  substitute,
+  translate,
+  UPSTREAM_BRAND,
+  useLanguage,
+  useTr,
+} from '@/i18n'
 
 function Probe() {
   const tr = useTr('AppOptionsDialog')
@@ -40,8 +48,10 @@ describe('i18n', () => {
         for (const source of Object.keys(entries)) {
           if (!source.includes('Raspberry Pi Imager')) continue
           const shown = translate(catalogue, context, source)
+          // The swap's own pattern, plus the English name as a backstop.
           if (
-            /Raspberry Pi Imager|Rasperry Pi Imager|라즈베리 파이 이미저|צורב הדמויות/.test(shown)
+            new RegExp(UPSTREAM_BRAND.source).test(shown) ||
+            shown.includes('Raspberry Pi Imager')
           )
             leftovers.push(`${file}: ${shown}`)
         }

@@ -51,6 +51,14 @@ mod tests {
     }
 
     #[test]
+    fn matches_the_bundle_identity() {
+        let conf: serde_json::Value =
+            serde_json::from_str(include_str!("../tauri.conf.json")).unwrap();
+        assert_eq!(conf["identifier"], APP_DIR);
+        assert_eq!(conf["productName"], imager_core::APP_NAME);
+    }
+
+    #[test]
     fn works_without_any_folder() {
         let base = tempfile::tempdir().unwrap();
         assert_eq!(app_dir(base.path()), base.path().join(APP_DIR));

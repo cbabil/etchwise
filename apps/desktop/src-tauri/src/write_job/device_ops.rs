@@ -2,6 +2,7 @@
 
 use std::sync::Arc;
 
+use imager_core::APP_NAME;
 use imager_core::pipeline::Progress;
 use imager_core::pipeline::cache::CacheRecord;
 use imager_core::pipeline::job::Job;
@@ -40,9 +41,9 @@ fn open_target(
     }
     progress.set_status("Opening drive...");
     let raw = device.replacen("/dev/disk", "/dev/rdisk", 1);
-    let file = authopen::auth_open(&raw, authopen::PROMPT).map_err(|e| {
+    let file = authopen::auth_open(&raw, &authopen::prompt()).map_err(|e| {
         imager_platform::macos::open_removable_volume_privacy();
-        format!("Error opening disk device '{device}'<br>Please verify if 'Etchwise' is allowed access to 'removable volumes' in privacy settings ({e}).")
+        format!("Error opening disk device '{device}'<br>Please verify if '{APP_NAME}' is allowed access to 'removable volumes' in privacy settings ({e}).")
     })?;
     Ok(RawDevice::new(file))
 }

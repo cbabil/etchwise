@@ -62,17 +62,15 @@ describe('AppOptionsDialog', () => {
     ])
   })
 
-  it('disables the sound switch when no audio player exists and shows the version', async () => {
-    backend({
-      isBeepAvailable: () => false,
-      hasWindowDecorations: () => false,
-      isEmbeddedMode: () => true,
-    })
+  it('disables the sound switch when no audio player exists; the version is in the credit', async () => {
+    backend({ isBeepAvailable: () => false })
     await openOptions()
     expect(sw('Play sound when finished')).toBeDisabled()
     expect(sw('Play sound when finished')).not.toBeChecked()
-    expect(screen.getByText('Version: v1.0.0')).toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: 'What is this?' })).toBeNull()
+    expect(
+      screen.getByText(/^Etchwise v1\.0\.0 · Based on Raspberry Pi Imager/),
+    ).toBeInTheDocument()
+    expect(screen.queryByText(/^Version:/)).toBeNull()
   })
 
   it('confirms before disabling warnings and reverts on Cancel', async () => {

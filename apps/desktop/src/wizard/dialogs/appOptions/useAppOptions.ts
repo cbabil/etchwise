@@ -16,8 +16,6 @@ export interface AppOptionsValues {
 export interface AppOptionsEnv {
   beepAvailable: boolean
   idle: boolean
-  embedded: boolean
-  showVersion: boolean
   secureBootVisible: boolean
   version: string
 }
@@ -32,8 +30,6 @@ const emptyValues: AppOptionsValues = {
 const defaultEnv: AppOptionsEnv = {
   beepAvailable: false,
   idle: true,
-  embedded: false,
-  showVersion: false,
   secureBootVisible: false,
   version: '',
 }
@@ -48,9 +44,7 @@ async function loadOptions(secureBootAvailable: boolean, disableWarnings: boolea
     call<string | null>('getStringSetting', 'secureboot_rsa_key'),
     isWriteIdle(),
   ])
-  const [embedded, decorations, cliSecureBoot, swSecureBoot, version] = await Promise.all([
-    flag('isEmbeddedMode'),
-    call<boolean | null>('hasWindowDecorations'),
+  const [cliSecureBoot, swSecureBoot, version] = await Promise.all([
     flag('isSecureBootForcedByCliFlag'),
     flag('checkSWCapability', 'secure_boot'),
     call<string | null>('constantVersion'),
@@ -64,8 +58,6 @@ async function loadOptions(secureBootAvailable: boolean, disableWarnings: boolea
   const env: AppOptionsEnv = {
     beepAvailable,
     idle,
-    embedded,
-    showVersion: decorations === false,
     secureBootVisible: secureBootAvailable || cliSecureBoot || swSecureBoot,
     version: version ?? '',
   }

@@ -10,13 +10,13 @@ import type { HwDevice } from '../os/types'
 
 export type DeviceTab = 'pi' | 'other'
 
-export interface TabRow {
+interface TabRow {
   device: HwDevice
   /** Position in the full device list. */
   index: number
 }
 
-export const tabOf = (device: HwDevice | undefined): DeviceTab =>
+const tabOf = (device: HwDevice | undefined): DeviceTab =>
   device?.group === 'other' ? 'other' : 'pi'
 
 export function useDeviceTab(devices: readonly HwDevice[], current: number) {
@@ -29,7 +29,10 @@ export function useDeviceTab(devices: readonly HwDevice[], current: number) {
   return {
     tab,
     choose: setChosen,
-    rows,
+    items: rows.map((row) => row.device),
+    /** Row in this tab -> position in the full list (-1 when out of range). */
+    indexOf: (row: number) => rows[row]?.index ?? -1,
+    /** Position in the full list -> row in this tab (-1 when elsewhere). */
     rowOf: (index: number) => rows.findIndex((r) => r.index === index),
   }
 }

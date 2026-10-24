@@ -62,7 +62,7 @@ fn is_no_filtering(device: &Value) -> bool {
 }
 
 /// The tab extra devices are listed under on the Device step.
-pub const EXTRA_DEVICE_GROUP: &str = "other";
+const EXTRA_DEVICE_GROUP: &str = "other";
 
 /// `device` without its `default` flag, filed under the extra tab.
 fn without_default(device: &Value) -> Value {

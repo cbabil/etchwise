@@ -51,8 +51,8 @@ export function DeviceSelectionStep() {
   const tr = useTr('DeviceSelectionStep')
   const wizard = useWizard()
   const { devices, current, setCurrent, unavailable } = useHwList()
-  const { tab, choose: chooseTab, rows, rowOf } = useDeviceTab(devices, current)
-  const listName = useListName(rows.length)
+  const { tab, choose: chooseTab, items, indexOf, rowOf } = useDeviceTab(devices, current)
+  const listName = useListName(items.length)
   const nextEnabled = current !== -1 || (unavailable && devices.length === 0)
   const choose = (index: number, device: HwDevice) => {
     setCurrent(index)
@@ -71,15 +71,15 @@ export function DeviceSelectionStep() {
       ) : (
         <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
           <DeviceTabs tab={tab} onChange={chooseTab} />
-          {rows.length === 0 && tab === 'other' ? <OtherTabHint /> : null}
+          {items.length === 0 && tab === 'other' ? <OtherTabHint /> : null}
           <SelectionList
-            items={rows.map((row) => row.device)}
-            getKey={(device, row) => `${rows[row]?.index ?? row}:${device.name}`}
+            items={items}
+            getKey={(device, row) => `${indexOf(row)}:${device.name}`}
             currentIndex={rowOf(current)}
-            onCurrentIndexChange={(row) => setCurrent(rows[row]?.index ?? -1)}
-            onItemSelected={(row, device) => choose(rows[row]?.index ?? -1, device)}
+            onCurrentIndexChange={(row) => setCurrent(indexOf(row))}
+            onItemSelected={(row, device) => choose(indexOf(row), device)}
             onItemDoubleClicked={(row, device) => {
-              choose(rows[row]?.index ?? -1, device)
+              choose(indexOf(row), device)
               queueMicrotask(wizard.next)
             }}
             keyboardAutoAdvance

@@ -26,10 +26,6 @@ export interface AppOptionsDialogProps {
 /** Dialog padding, heading, gaps, credit line and button row around the list. */
 const CHROME_PX = 40 + 20 + 15 + 15 + 40 + 30
 
-/** Etchwise is a fork: credit the upstream project it is based on. */
-const credit = (version: string) =>
-  `${APP_NAME} ${version} · Based on Raspberry Pi Imager (Apache-2.0)`
-
 function Footer({ onCancel, onSave }: { onCancel: () => void; onSave: () => void }) {
   const tr = useTr('AppOptionsDialog')
   const common = useTr('CommonStrings')
@@ -70,7 +66,7 @@ export function AppOptionsDialog({ open, onClose }: AppOptionsDialogProps) {
     <>
       <BaseDialog open={open} onClose={onClose} title={tr('App Options')}>
         <CenteredHeading>{tr('App Options')}</CenteredHeading>
-        <DialogScrollArea chrome={CHROME_PX + (options.env.showVersion ? 30 : 0)}>
+        <DialogScrollArea chrome={CHROME_PX}>
           <AppOptionsList
             values={options.values}
             env={options.env}
@@ -82,10 +78,16 @@ export function AppOptionsDialog({ open, onClose }: AppOptionsDialogProps) {
             onClearSettings={clear.start}
           />
         </DialogScrollArea>
-        {options.env.showVersion ? (
-          <InfoText center>{tr('Version: %1', options.env.version)}</InfoText>
-        ) : null}
-        <InfoText center>{credit(options.env.version)}</InfoText>
+        <InfoText center>
+          {/* Etchwise is a fork: credit upstream. Its name is an argument, so
+              the brand swap in translate() leaves it intact. */}
+          {tr(
+            '%1 %2 · Based on %3 (Apache-2.0)',
+            APP_NAME,
+            options.env.version,
+            'Raspberry Pi Imager',
+          )}
+        </InfoText>
         <Footer onCancel={onClose} onSave={save} />
       </BaseDialog>
       <ConfirmDisableWarnings
