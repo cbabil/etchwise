@@ -2,7 +2,8 @@
  * What upstream `onOsListPreparedHandler` does after a full load of the
  * main list: offer the update dialog (once per run, as main.qml's
  * `updatePopupShown`) when `check_version` is on and the repository
- * advertises a newer Imager, and select `default_os` (plus
+ * advertises a newer Imager (currently off, see `UPDATE_CHECK_ENABLED`),
+ * and select `default_os` (plus
  * `embedded_default_os` in embedded mode).
  */
 import { useState } from 'react'
@@ -18,6 +19,13 @@ export interface UpdateOffer {
 
 type Metadata = Readonly<Record<string, unknown>>
 
+/**
+ * Off: the official list's `latest_version` is Raspberry Pi Imager's, so
+ * offering it would send users to install Raspberry Pi's app in place of
+ * this one. Turn back on once this app publishes its own releases.
+ */
+const UPDATE_CHECK_ENABLED = false
+
 let updatePopupShown = false
 
 /** Test hook: forget that the update dialog was shown this run. */
@@ -26,6 +34,7 @@ export function resetUpdatePopupShown(): void {
 }
 
 async function updateOffer(meta: Metadata, embedded: boolean): Promise<UpdateOffer | null> {
+  if (!UPDATE_CHECK_ENABLED) return null
   if (updatePopupShown || embedded || !('latest_version' in meta) || !('url' in meta)) return null
   const check = await call<boolean | null>('getBoolSetting', 'check_version')
   const version = String(meta.latest_version ?? '')

@@ -123,26 +123,18 @@ describe('offline', () => {
 })
 
 describe('repository metadata', () => {
-  it('offers a newer Imager once and opens the download page', async () => {
-    answers.imagerMetadata = () => ({ latest_version: '9.0', url: 'https://rpi/imager' })
+  it("never offers an update: latest_version is Raspberry Pi Imager's, not this app's", async () => {
+    answers.imagerMetadata = () => ({
+      latest_version: '9.0',
+      url: 'https://rpi/imager',
+      default_os: piOs.name,
+    })
     answers.isVersionNewer = () => true
-    renderStep(<OSSelectionStep />)
-    await screen.findByText(/Imager version 9\.0 is available/)
-    fireEvent.click(screen.getByRole('button', { name: /^Update/ }))
-    expect(await callsOf('openUrl')).toEqual([['https://rpi/imager']])
-    await waitFor(() => expect(screen.queryByText(/Imager version/)).toBeNull())
-    renderStep(<OSSelectionStep />)
-    await waitFor(async () => expect(await callsOf('imagerMetadata')).toHaveLength(2))
+    answers.getBoolSetting = () => true
+    const { wizard } = renderStep(<OSSelectionStep />)
+    await waitFor(() => expect(wizard().selectedOsName).toBe(piOs.name))
     expect(screen.queryByText(/Imager version/)).toBeNull()
-  })
-
-  it('stays quiet when check_version is off, and No closes the dialog', async () => {
-    answers.imagerMetadata = () => ({ latest_version: '9.0', url: 'u' })
-    answers.isVersionNewer = () => true
-    answers.getBoolSetting = () => false
-    renderStep(<OSSelectionStep />)
-    await waitFor(async () => expect(await callsOf('getBoolSetting')).toHaveLength(1))
-    expect(screen.queryByText(/Update available/)).toBeNull()
+    expect(await callsOf('isVersionNewer')).toHaveLength(0)
   })
 
   it('selects the default OS', async () => {
@@ -161,14 +153,6 @@ describe('repository metadata', () => {
     answers.isEmbeddedMode = () => true
     const { wizard } = renderStep(<OSSelectionStep />)
     await waitFor(() => expect(wizard().selectedOsName).toBe('Erase'))
-    expect(screen.queryByText(/Update available/)).toBeNull()
-  })
-
-  it('stays quiet when the advertised version is not newer', async () => {
-    answers.imagerMetadata = () => ({ latest_version: '1.0', url: 'u' })
-    answers.isVersionNewer = () => false
-    renderStep(<OSSelectionStep />)
-    await waitFor(async () => expect(await callsOf('isVersionNewer')).toHaveLength(1))
     expect(screen.queryByText(/Update available/)).toBeNull()
   })
 })
