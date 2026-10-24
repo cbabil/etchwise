@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 535 534">
+<g stroke="#000" stroke-width="10" stroke-linejoin="round">
+<polygon points="64.0,205.0 267.0,315.0 267.0,420.0 64.0,310.0" fill="#3b3f45"/>
+<polygon points="267.0,315.0 470.0,205.0 470.0,310.0 267.0,420.0" fill="#4b5058"/>
+<polygon points="267.0,95.0 470.0,205.0 267.0,315.0 64.0,205.0" fill="#6b717a"/>
+</g>
+<polygon points="267.0,125.0 420.0,205.0 267.0,285.0 114.0,205.0" fill="#7c838d" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+<ellipse cx="150.0" cy="303.6" rx="17" ry="15" fill="#ffffff" stroke="#000" stroke-width="6"/>
+<ellipse cx="150.0" cy="303.6" rx="8" ry="7" fill="#2f7ff0"/>
+<polygon points="300.0,335.1 336.0,315.6 336.0,339.6 300.0,359.1" fill="#ffffff" stroke="#000" stroke-width="7" stroke-linejoin="round"/><polygon points="307.0,339.3 329.0,327.4 329.0,333.4 307.0,345.3" fill="#3a3a3a"/><polygon points="350.0,308.0 386.0,288.5 386.0,312.5 350.0,332.0" fill="#ffffff" stroke="#000" stroke-width="7" stroke-linejoin="round"/><polygon points="357.0,312.2 379.0,300.3 379.0,306.3 357.0,318.2" fill="#3a3a3a"/><polygon points="405.0,284.2 430.0,270.7 430.0,282.7 405.0,296.2" fill="#ffffff" stroke="#000" stroke-width="6" stroke-linejoin="round"/>
+</svg>

@@ -37,6 +37,11 @@ fn lists_the_nuc_as_the_default_device() {
         .collect();
     assert_eq!(names, ["Intel NUC"]);
     assert_eq!(list["currentIndex"], 0);
+    let icon = list["devices"][0]["icon"].as_str().unwrap_or_default();
+    assert!(
+        icon.starts_with("data:image/svg+xml;base64,"),
+        "device icon: {icon:.40}"
+    );
 }
 
 #[test]
@@ -70,6 +75,8 @@ fn shows_the_x86_images_without_customisation() {
             false,
             "{name} customisable"
         );
+        let icon = image["icon"].as_str().unwrap_or_default();
+        assert!(icon.starts_with("https://"), "{name} icon: {icon}");
         let sha = image["extract_sha256"].as_str().unwrap_or_default();
         assert!(
             sha.len() == 64 && sha.chars().all(|c| c.is_ascii_hexdigit()),

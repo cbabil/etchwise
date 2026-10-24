@@ -4,6 +4,7 @@
       {
         "name": "Intel NUC",
         "tags": ["x86-64"],
+        "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MzUgNTM0Ij4KPGcgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KPHBvbHlnb24gcG9pbnRzPSI2NC4wLDIwNS4wIDI2Ny4wLDMxNS4wIDI2Ny4wLDQyMC4wIDY0LjAsMzEwLjAiIGZpbGw9IiMzYjNmNDUiLz4KPHBvbHlnb24gcG9pbnRzPSIyNjcuMCwzMTUuMCA0NzAuMCwyMDUuMCA0NzAuMCwzMTAuMCAyNjcuMCw0MjAuMCIgZmlsbD0iIzRiNTA1OCIvPgo8cG9seWdvbiBwb2ludHM9IjI2Ny4wLDk1LjAgNDcwLjAsMjA1LjAgMjY3LjAsMzE1LjAgNjQuMCwyMDUuMCIgZmlsbD0iIzZiNzE3YSIvPgo8L2c+Cjxwb2x5Z29uIHBvaW50cz0iMjY3LjAsMTI1LjAgNDIwLjAsMjA1LjAgMjY3LjAsMjg1LjAgMTE0LjAsMjA1LjAiIGZpbGw9IiM3YzgzOGQiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxlbGxpcHNlIGN4PSIxNTAuMCIgY3k9IjMwMy42IiByeD0iMTciIHJ5PSIxNSIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjYiLz4KPGVsbGlwc2UgY3g9IjE1MC4wIiBjeT0iMzAzLjYiIHJ4PSI4IiByeT0iNyIgZmlsbD0iIzJmN2ZmMCIvPgo8cG9seWdvbiBwb2ludHM9IjMwMC4wLDMzNS4xIDMzNi4wLDMxNS42IDMzNi4wLDMzOS42IDMwMC4wLDM1OS4xIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwb2x5Z29uIHBvaW50cz0iMzA3LjAsMzM5LjMgMzI5LjAsMzI3LjQgMzI5LjAsMzMzLjQgMzA3LjAsMzQ1LjMiIGZpbGw9IiMzYTNhM2EiLz48cG9seWdvbiBwb2ludHM9IjM1MC4wLDMwOC4wIDM4Ni4wLDI4OC41IDM4Ni4wLDMxMi41IDM1MC4wLDMzMi4wIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwb2x5Z29uIHBvaW50cz0iMzU3LjAsMzEyLjIgMzc5LjAsMzAwLjMgMzc5LjAsMzA2LjMgMzU3LjAsMzE4LjIiIGZpbGw9IiMzYTNhM2EiLz48cG9seWdvbiBwb2ludHM9IjQwNS4wLDI4NC4yIDQzMC4wLDI3MC43IDQzMC4wLDI4Mi43IDQwNS4wLDI5Ni4yIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=",
         "description": "Intel NUC and other x86-64 PCs (UEFI, boot from the USB stick)",
         "matching_type": "exclusive",
         "default": true,
@@ -15,6 +16,7 @@
     {
       "name": "Ubuntu Server 26.04.1 LTS",
       "description": "Installer for Ubuntu Server, supported until 2031",
+      "icon": "https://assets.ubuntu.com/v1/85a9de76-ubuntu-icon.svg",
       "url": "https://releases.ubuntu.com/26.04.1/ubuntu-26.04.1-live-server-amd64.iso",
       "extract_size": 2927861760,
       "extract_sha256": "cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927",
@@ -27,6 +29,7 @@
     {
       "name": "Ubuntu Desktop 26.04.1 LTS",
       "description": "Live session and installer for Ubuntu Desktop",
+      "icon": "https://assets.ubuntu.com/v1/85a9de76-ubuntu-icon.svg",
       "url": "https://releases.ubuntu.com/26.04.1/ubuntu-26.04.1-desktop-amd64.iso",
       "extract_size": 6482409472,
       "extract_sha256": "601e30fbf5d97759367c632e2c33630665039b7e2158fd068403da3ccf1bda1f",
@@ -39,6 +42,7 @@
     {
       "name": "Debian 13.7 (netinst)",
       "description": "Small Debian Trixie installer that downloads packages during install",
+      "icon": "https://www.debian.org/logos/openlogo-nd.svg",
       "url": "https://cdimage.debian.org/debian-cd/13.7.0/amd64/iso-cd/debian-13.7.0-amd64-netinst.iso",
       "extract_size": 792723456,
       "extract_sha256": "a7ef94ac2fb9a7fec454552abd629b7cc9d5155c886165a45649f5ce6167e355",
@@ -51,6 +55,7 @@
     {
       "name": "Proxmox VE 9.2",
       "description": "Installer for the Proxmox virtualisation platform",
+      "icon": "https://www.proxmox.com/favicon.svg",
       "url": "https://enterprise.proxmox.com/iso/proxmox-ve_9.2-1.iso",
       "extract_size": 1706178560,
       "extract_sha256": "4e88fe416df9b527624a175f24c9aa07c714d3332afb1ee3dbf3879573ef2c6c",
