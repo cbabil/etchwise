@@ -1,4 +1,4 @@
-//! `rpi-imager://` links and opened manifest files (upstream
+//! `etchwise://` links and opened manifest files (upstream
 //! `ImageWriter::handleIncomingUrl`): a manifest or `.json` file switches
 //! the repository, `repo=` asks the UI to confirm one, `auth_key=` sets the
 //! Raspberry Pi Connect token (or reports a conflict).

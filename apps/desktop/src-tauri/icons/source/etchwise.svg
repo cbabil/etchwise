@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A66BFF"/>
+      <stop offset="0.55" stop-color="#9146FF"/>
+      <stop offset="1" stop-color="#7B31FF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EDE4FF"/>
+    </linearGradient>
+  </defs>
+  <!-- macOS icon grid: 824px rounded square centred in 1024 -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <!-- SD card with a clipped corner -->
+  <path d="M372 238 H652 Q690 238 690 276 V748 Q690 786 652 786 H372 Q334 786 334 748 V342 L438 238 Z" fill="url(#card)"/>
+  <!-- contact pins -->
+  <g fill="#9146FF" opacity="0.85">
+    <rect x="440" y="282" width="34" height="86" rx="10"/>
+    <rect x="494" y="282" width="34" height="86" rx="10"/>
+    <rect x="548" y="282" width="34" height="86" rx="10"/>
+    <rect x="602" y="282" width="34" height="86" rx="10"/>
+  </g>
+  <!-- the etched line: a stroke cut across the label -->
+  <path d="M390 642 C450 572 510 702 570 630 C600 595 622 580 644 576" fill="none" stroke="#7B31FF" stroke-width="30" stroke-linecap="round"/>
+</svg>

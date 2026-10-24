@@ -20,7 +20,7 @@ function Harness() {
   )
 }
 
-const settings: Record<string, unknown> = { beep: true, eject: true, telemetry: false }
+const settings: Record<string, unknown> = { beep: true, eject: true }
 
 function backend(extra: Record<string, (...a: unknown[]) => unknown> = {}) {
   setAnswers({
@@ -28,7 +28,7 @@ function backend(extra: Record<string, (...a: unknown[]) => unknown> = {}) {
     getBoolSetting: (key) => settings[String(key)] ?? false,
     getStringSetting: () => '',
     hasWindowDecorations: () => true,
-    constantVersion: () => 'v2.0.7',
+    constantVersion: () => 'v1.0.0',
     writeState: () => 'Idle',
     ...extra,
   })
@@ -48,18 +48,16 @@ describe('AppOptionsDialog', () => {
     backend()
     await openOptions()
     expect(sw('Play sound when finished')).toBeChecked()
-    expect(sw('Enable anonymous statistics')).not.toBeChecked()
-    expect(screen.getByRole('link', { name: 'What is this?' })).toBeInTheDocument()
+    expect(screen.queryByRole('switch', { name: /statistics|telemetry/i })).toBeNull()
+    expect(screen.queryByRole('link', { name: 'What is this?' })).toBeNull()
     expect(screen.queryByText(/^Version:/)).toBeNull()
     expect(screen.queryByRole('button', { name: /^Secure Boot RSA Key/ })).toBeNull()
-    fireEvent.click(sw('Enable anonymous statistics'))
     fireEvent.click(sw('Play sound when finished'))
     fireEvent.click(sw('Eject media when finished'))
     fireEvent.click(within(dialog()).getByRole('button', { name: /^Save,/ }))
     expect(callsOf('setSetting')).toEqual([
       ['beep', false],
       ['eject', false],
-      ['telemetry', true],
       ['secureboot_rsa_key', ''],
     ])
   })
@@ -73,7 +71,7 @@ describe('AppOptionsDialog', () => {
     await openOptions()
     expect(sw('Play sound when finished')).toBeDisabled()
     expect(sw('Play sound when finished')).not.toBeChecked()
-    expect(screen.getByText('Version: v2.0.7')).toBeInTheDocument()
+    expect(screen.getByText('Version: v1.0.0')).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'What is this?' })).toBeNull()
   })
 

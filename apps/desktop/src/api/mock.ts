@@ -16,7 +16,7 @@ let debugOptions: Record<string, unknown> = { asyncQueueDepth: 4 }
 
 const answers: Record<string, (args: unknown[]) => unknown> = {
   getBoolSetting: ([key]) =>
-    settings[String(key)] ?? ['telemetry', 'eject', 'check_version'].includes(String(key)),
+    settings[String(key)] ?? ['eject', 'check_version'].includes(String(key)),
   getStringSetting: ([key]) => String(settings[String(key)] ?? ''),
   setSetting: ([key, value]) => void (settings[String(key)] = value),
   getSavedCustomisationSettings: () => ({ ...customisation }),
@@ -29,7 +29,7 @@ const answers: Record<string, (args: unknown[]) => unknown> = {
     )
   },
   clearSavedCustomisationSettings: () => void (customisation = {}),
-  constantVersion: () => 'v2.0.7',
+  constantVersion: () => 'v1.0.0',
   getHWList: () => mockOsList.hw,
   getOSList: () => mockOsList.os,
   getSublist: () => [],

@@ -1,5 +1,5 @@
 /**
- * Upstream `AppOptionsDialog.qml`: sound / eject / telemetry / disable
+ * Upstream `AppOptionsDialog.qml` (without its telemetry switch): sound / eject / disable
  * warnings switches, the content repository editor, the Secure Boot RSA
  * key, clearing saved customisation, and Cancel / Save. Options load
  * fresh on every open so Cancel discards changes.
@@ -8,7 +8,7 @@ import { BaseDialog } from '@/components/BaseDialog'
 import { DialogButtons } from '@/components/DialogText'
 import { ImButton } from '@/components/ImButton'
 import { ImButtonRed } from '@/components/ImButtonRed'
-import { useTr } from '@/i18n'
+import { APP_NAME, useTr } from '@/i18n'
 import { sizes } from '@/theme/tokens'
 
 import { ConfirmClearSettings, ConfirmDisableWarnings } from './appOptions/AppOptionsConfirms'
@@ -23,8 +23,12 @@ export interface AppOptionsDialogProps {
   onClose: () => void
 }
 
-/** Dialog padding, heading, gaps and button row around the options list. */
-const CHROME_PX = 40 + 20 + 15 + 15 + 40
+/** Dialog padding, heading, gaps, credit line and button row around the list. */
+const CHROME_PX = 40 + 20 + 15 + 15 + 40 + 30
+
+/** Etchwise is a fork: credit the upstream project it is based on. */
+const credit = (version: string) =>
+  `${APP_NAME} ${version} · Based on Raspberry Pi Imager (Apache-2.0)`
 
 function Footer({ onCancel, onSave }: { onCancel: () => void; onSave: () => void }) {
   const tr = useTr('AppOptionsDialog')
@@ -81,6 +85,7 @@ export function AppOptionsDialog({ open, onClose }: AppOptionsDialogProps) {
         {options.env.showVersion ? (
           <InfoText center>{tr('Version: %1', options.env.version)}</InfoText>
         ) : null}
+        <InfoText center>{credit(options.env.version)}</InfoText>
         <Footer onCancel={onClose} onSave={save} />
       </BaseDialog>
       <ConfirmDisableWarnings

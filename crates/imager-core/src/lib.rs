@@ -14,11 +14,13 @@ pub mod oslist;
 pub mod pipeline;
 pub mod secureboot;
 pub mod settings;
-pub mod telemetry;
 #[cfg(test)]
 mod testutil;
 mod urlparts;
 
-/// Version string as upstream shows it (`git describe` of tag `v2.0.7`).
-/// The workspace `Cargo.toml` version is the single source.
+/// The app name shown to users.
+pub const APP_NAME: &str = "Etchwise";
+
+/// Version string, e.g. `v1.0.0`; the workspace `Cargo.toml` version is the
+/// single source.
 pub const IMAGER_VERSION: &str = concat!("v", env!("CARGO_PKG_VERSION"));

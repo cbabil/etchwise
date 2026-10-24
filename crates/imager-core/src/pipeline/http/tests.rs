@@ -32,7 +32,7 @@ fn serve(body: Vec<u8>, drops: usize, ignore_range: bool) -> (String, Arc<Atomic
                     user_agent = line.clone();
                 }
             }
-            assert!(user_agent.contains("rpi-imager/v"), "{user_agent}");
+            assert!(user_agent.contains("Etchwise/v"), "{user_agent}");
             let n = seen.fetch_add(1, Ordering::SeqCst);
             let start = if ignore_range { 0 } else { start };
             let rest = &body[start..];
@@ -132,6 +132,6 @@ fn parses_content_range_and_user_agent() {
     assert_eq!(range_start("items 1-2"), None);
     assert_eq!(
         user_agent(),
-        format!("Mozilla/5.0 rpi-imager/{IMAGER_VERSION}")
+        format!("Mozilla/5.0 Etchwise/{IMAGER_VERSION}")
     );
 }

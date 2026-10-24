@@ -116,18 +116,3 @@ fn appends_when_there_is_no_catch_all_device() {
         ["Intel NUC", "Raspberry Pi 5"]
     );
 }
-
-#[test]
-fn remembers_which_images_came_from_the_extra_repository() {
-    let mut main = official();
-    let extra = store(&json!({"imager": {}, "os_list": [
-        {"name": "Ubuntu Server", "url": "https://u/s.iso"},
-        {"name": "Folder", "subitems": [{"name": "Deep", "url": "https://u/deep.iso"}]}
-    ]}));
-    main.merge_extra(&extra);
-    assert!(main.is_from_extra("https://u/s.iso"));
-    assert!(main.is_from_extra("https://u/deep.iso"));
-    assert!(!main.is_from_extra("https://pi/os.img.xz"));
-    main.clear();
-    assert!(!main.is_from_extra("https://u/s.iso"));
-}

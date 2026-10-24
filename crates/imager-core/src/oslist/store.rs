@@ -30,8 +30,6 @@ pub struct FetchResult {
 #[derive(Debug, Clone, Default)]
 pub struct OsListStore {
     complete: Option<Value>,
-    /// Image URLs merged in from an extra repository.
-    extra_urls: std::collections::HashSet<String>,
 }
 
 impl OsListStore {
@@ -43,7 +41,6 @@ impl OsListStore {
     /// Forgets the list, e.g. before switching repository.
     pub fn clear(&mut self) {
         self.complete = None;
-        self.extra_urls.clear();
     }
 
     /// The `imager` object (devices, latest_version, refresh hints).

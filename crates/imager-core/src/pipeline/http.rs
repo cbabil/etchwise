@@ -1,5 +1,5 @@
 //! HTTP access with upstream's curl settings (`curlfetcher.cpp`,
-//! `downloadthread.cpp`): user agent `Mozilla/5.0 rpi-imager/<version>`,
+//! `downloadthread.cpp`): user agent `Mozilla/5.0 Etchwise/<version>`,
 //! 30 s connect timeout, 60 s stall timeout (reqwest's blocking timeout
 //! applies to each send and each body read), up to 10 redirects, system
 //! proxy, and resumable downloads via `Range` after transient failures.
@@ -13,14 +13,14 @@ use reqwest::blocking::{Client, ClientBuilder, Response};
 use reqwest::header::{CONTENT_RANGE, RANGE};
 
 use super::progress::Progress;
-use crate::IMAGER_VERSION;
+use crate::{APP_NAME, IMAGER_VERSION};
 
 /// Retries after a failed transfer before giving up.
 pub const MAX_RESUMES: u32 = 10;
 
-/// `Mozilla/5.0 rpi-imager/v2.0.7`.
+/// `Mozilla/5.0 Etchwise/v1.0.0`.
 pub fn user_agent() -> String {
-    format!("Mozilla/5.0 rpi-imager/{IMAGER_VERSION}")
+    format!("Mozilla/5.0 {APP_NAME}/{IMAGER_VERSION}")
 }
 
 /// A builder with upstream's curl settings; reqwest's default redirect

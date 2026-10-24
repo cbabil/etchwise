@@ -1,5 +1,14 @@
-pi-imager-rs is a Rust/Tauri port of Raspberry Pi Imager v2.0.7
+Etchwise
+Copyright (C) 2026 Christophe Babilotte
+
+Etchwise is based on Raspberry Pi Imager v2.0.7
 (https://github.com/raspberrypi/rpi-imager), Copyright (C) 2020 Raspberry Pi Ltd,
-licensed under the Apache License 2.0 (see LICENSE). Data files under
-crates/imager-core/data/ and the UI translations are taken from that project.
-"Raspberry Pi" is a trademark of Raspberry Pi Ltd; this port is not affiliated with it.
+licensed under the Apache License 2.0 (see LICENSE). It is a Rust/Tauri port
+with modifications: it is renamed, has its own look and icon, can merge extra
+OS repositories (e.g. for Intel NUC) alongside the official Raspberry Pi list,
+and sends no usage statistics. Data files under crates/imager-core/data/ and the UI translations are taken
+from that project.
+
+"Raspberry Pi" is a trademark of Raspberry Pi Ltd. Etchwise is not affiliated
+with or endorsed by Raspberry Pi Ltd; the name is used only to describe
+compatibility and origin.

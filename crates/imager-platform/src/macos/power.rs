@@ -12,10 +12,10 @@ pub struct SleepInhibitor {
 }
 
 impl SleepInhibitor {
-    /// Takes both assertions named "Raspberry Pi Imager".
+    /// Takes both assertions named after the app.
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        let name = CFString::from_static_string("Raspberry Pi Imager");
+        let name = CFString::from_static_string(imager_core::APP_NAME);
         let ids = ["PreventUserIdleSystemSleep", "PreventUserIdleDisplaySleep"]
             .iter()
             .filter_map(|kind| {

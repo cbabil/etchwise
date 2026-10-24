@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Raspberry Pi Imager uses your location to read the name of the Wi-Fi network you are connected to, so it can pre-fill the Wi-Fi settings.</string>
+  <string>Etchwise uses your location to read the name of the Wi-Fi network you are connected to, so it can pre-fill the Wi-Fi settings.</string>
   <key>NSSupportsAutomaticGraphicsSwitching</key>
   <true/>
 </dict>

@@ -1,6 +1,6 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 
-import { I18nProvider, substitute, translate, useLanguage, useTr } from '@/i18n'
+import { APP_NAME, I18nProvider, substitute, translate, useLanguage, useTr } from '@/i18n'
 
 function Probe() {
   const tr = useTr('AppOptionsDialog')
@@ -14,10 +14,40 @@ function Probe() {
 
 describe('i18n', () => {
   it('substitutes Qt placeholders', () => {
-    expect(substitute('Raspberry Pi Imager %1', ['v2.0.7'])).toBe('Raspberry Pi Imager v2.0.7')
+    expect(substitute('Imager %1', ['v1.0.0'])).toBe('Imager v1.0.0')
     expect(substitute('%2 of %1', ['a'])).toBe('%2 of a')
     expect(translate({ C: { Hi: 'Hallo %1' } }, 'C', 'Hi', ['x'])).toBe('Hallo x')
     expect(translate({}, 'C', 'Hi')).toBe('Hi')
+  })
+
+  it('shows the app name in place of the upstream brand', () => {
+    expect(APP_NAME).toBe('Etchwise')
+    expect(translate({}, 'C', 'Close Raspberry Pi Imager and exit the application')).toBe(
+      'Close Etchwise and exit the application',
+    )
+    expect(translate({}, 'C', 'Raspberry Pi Imager %1', ['v1.0.0'])).toBe('Etchwise v1.0.0')
+    expect(translate({}, 'C', 'Choose a Raspberry Pi device')).toBe('Choose a Raspberry Pi device')
+  })
+
+  it('renames the brand in every translation, whatever its spelling', () => {
+    const catalogues = import.meta.glob<{ default: Record<string, Record<string, string>> }>(
+      '../src/i18n/locales/*.json',
+      { eager: true },
+    )
+    const leftovers: string[] = []
+    for (const [file, { default: catalogue }] of Object.entries(catalogues)) {
+      for (const [context, entries] of Object.entries(catalogue)) {
+        for (const source of Object.keys(entries)) {
+          if (!source.includes('Raspberry Pi Imager')) continue
+          const shown = translate(catalogue, context, source)
+          if (
+            /Raspberry Pi Imager|Rasperry Pi Imager|라즈베리 파이 이미저|צורב הדמויות/.test(shown)
+          )
+            leftovers.push(`${file}: ${shown}`)
+        }
+      }
+    }
+    expect(leftovers).toEqual([])
   })
 
   it('switches language from the upstream catalogues', async () => {

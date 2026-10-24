@@ -9,7 +9,6 @@ import { isWriteIdle } from '../common/writeIdle'
 export interface AppOptionsValues {
   beep: boolean
   eject: boolean
-  telemetry: boolean
   disableWarnings: boolean
   rsaKeyPath: string
 }
@@ -26,7 +25,6 @@ export interface AppOptionsEnv {
 const emptyValues: AppOptionsValues = {
   beep: false,
   eject: false,
-  telemetry: false,
   disableWarnings: false,
   rsaKeyPath: '',
 }
@@ -43,11 +41,10 @@ const defaultEnv: AppOptionsEnv = {
 async function loadOptions(secureBootAvailable: boolean, disableWarnings: boolean) {
   const flag = (method: string, ...args: unknown[]) =>
     call<boolean | null>(method, ...args).then(Boolean)
-  const [beepAvailable, beep, eject, telemetry, rsaKeyPath, idle] = await Promise.all([
+  const [beepAvailable, beep, eject, rsaKeyPath, idle] = await Promise.all([
     flag('isBeepAvailable'),
     flag('getBoolSetting', 'beep'),
     flag('getBoolSetting', 'eject'),
-    flag('getBoolSetting', 'telemetry'),
     call<string | null>('getStringSetting', 'secureboot_rsa_key'),
     isWriteIdle(),
   ])
@@ -61,7 +58,6 @@ async function loadOptions(secureBootAvailable: boolean, disableWarnings: boolea
   const values = {
     beep: beep && beepAvailable,
     eject,
-    telemetry,
     disableWarnings,
     rsaKeyPath: rsaKeyPath ?? '',
   }
@@ -99,7 +95,6 @@ export function useAppOptions(open: boolean) {
   const save = () => {
     void call('setSetting', 'beep', values.beep && env.beepAvailable)
     void call('setSetting', 'eject', values.eject)
-    void call('setSetting', 'telemetry', values.telemetry)
     void call('setSetting', 'secureboot_rsa_key', values.rsaKeyPath)
     wizard.update({ disableWarnings: values.disableWarnings })
   }

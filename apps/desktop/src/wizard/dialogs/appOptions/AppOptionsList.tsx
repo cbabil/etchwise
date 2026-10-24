@@ -7,9 +7,6 @@ import { ExtraRepoRow } from './ExtraRepoRow'
 import type { AppOptionsEnv, AppOptionsValues } from './useAppOptions'
 import type { ExtraRepo } from './useExtraRepo'
 
-export const TELEMETRY_HELP_URL =
-  'https://github.com/raspberrypi/rpi-imager?tab=readme-ov-file#anonymous-metrics-telemetry'
-
 export interface AppOptionsListProps {
   values: AppOptionsValues
   env: AppOptionsEnv
@@ -43,15 +40,6 @@ function Switches({ values, env, onChange, onDisableWarnings }: AppOptionsListPr
         )}
         checked={values.eject}
         onToggle={(eject) => onChange({ eject })}
-      />
-      <ImOptionPill
-        label={tr('Enable anonymous statistics (telemetry)')}
-        accessibleDescription={tr(
-          'Send anonymous usage statistics to help improve Raspberry Pi Imager',
-        )}
-        {...(env.embedded ? {} : { helpLabel: tr('What is this?'), helpUrl: TELEMETRY_HELP_URL })}
-        checked={values.telemetry}
-        onToggle={(telemetry) => onChange({ telemetry })}
       />
       <ImOptionPill
         label={tr('Disable warnings')}

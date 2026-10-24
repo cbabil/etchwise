@@ -16,14 +16,9 @@ mod variant;
 
 pub use self::error::SettingsError;
 
-/// Root keys with a default, as in upstream `getBoolSetting`. Upstream
-/// builds `telemetry` and `check_version` from CMake options that default
-/// to on, which the released app ships with.
-pub const DEFAULTS: [(&str, bool); 3] = [
-    ("telemetry", true),
-    ("eject", true),
-    ("check_version", true),
-];
+/// Root keys with a default, as in upstream `getBoolSetting`. Upstream's
+/// `telemetry` default is gone: Etchwise sends no statistics.
+pub const DEFAULTS: [(&str, bool); 2] = [("eject", true), ("check_version", true)];
 
 /// Group holding the saved OS customisation.
 pub const CUSTOMISATION_GROUP: &str = "imagecustomization";

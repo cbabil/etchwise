@@ -42,7 +42,7 @@ fn open_target(
     let raw = device.replacen("/dev/disk", "/dev/rdisk", 1);
     let file = authopen::auth_open(&raw, authopen::PROMPT).map_err(|e| {
         imager_platform::macos::open_removable_volume_privacy();
-        format!("Error opening disk device '{device}'<br>Please verify if 'Raspberry Pi Imager' is allowed access to 'removable volumes' in privacy settings ({e}).")
+        format!("Error opening disk device '{device}'<br>Please verify if 'Etchwise' is allowed access to 'removable volumes' in privacy settings ({e}).")
     })?;
     Ok(RawDevice::new(file))
 }

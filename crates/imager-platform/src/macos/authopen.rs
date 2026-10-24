@@ -13,7 +13,7 @@ use std::process::{Command, Stdio};
 use security_framework::authorization::{Authorization, AuthorizationItemSetBuilder, Flags};
 
 /// Upstream's dialog text (`MacFile` translation context).
-pub const PROMPT: &str = "Raspberry Pi Imager needs to access the disk to write the image.";
+pub const PROMPT: &str = "Etchwise needs to access the disk to write the image.";
 
 /// Why the device could not be opened.
 #[derive(Debug, thiserror::Error)]

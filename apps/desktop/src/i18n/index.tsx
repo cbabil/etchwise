@@ -29,14 +29,26 @@ export function substitute(text: string, args: readonly unknown[]): string {
   })
 }
 
-/** Looks a source string up in a catalogue. */
+/** The app's own name, shown wherever upstream's text names its app. */
+export const APP_NAME = 'Etchwise'
+
+/**
+ * How upstream's text and its translations name the app: English (kept
+ * verbatim by most languages), a Georgian misspelling, Korean, and two
+ * Hebrew phrasings ("the image burner of / for Raspberry Pi").
+ */
+const UPSTREAM_BRAND =
+  /Raspberry Pi Imager|Rasperry Pi Imager|라즈베리 파이 이미저|צורב הדמויות (?:של |ל־)Raspberry Pi/g
+
+/** Looks a source string up in a catalogue, naming this app as `APP_NAME`. */
 export function translate(
   catalogue: Catalogue,
   context: string,
   source: string,
   args: readonly unknown[] = [],
 ): string {
-  return substitute(catalogue[context]?.[source] ?? source, args)
+  const text = (catalogue[context]?.[source] ?? source).replace(UPSTREAM_BRAND, APP_NAME)
+  return substitute(text, args)
 }
 
 export function I18nProvider({

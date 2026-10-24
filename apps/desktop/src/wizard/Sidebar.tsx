@@ -35,7 +35,7 @@ function SidebarFooter({ onOpenAppOptions }: SidebarProps) {
         fullWidth
         onClick={onOpenAppOptions}
         accessibleDescription={tr(
-          'Open application settings to configure sound alerts, auto-eject, telemetry, and content repository',
+          'Open application settings to configure sound alerts, auto-eject, and content repository',
         )}
         sx={{ minWidth: 0 }}
       >

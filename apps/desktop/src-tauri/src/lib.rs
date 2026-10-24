@@ -2,6 +2,7 @@
 //! upstream's `imageWriter.<method>(…)` calls, events for its signals.
 
 mod api;
+mod app_dirs;
 mod background;
 pub mod cli;
 mod cli_plan;
@@ -13,9 +14,9 @@ mod write_job;
 
 use std::sync::{Arc, Mutex};
 
-use imager_core::IMAGER_VERSION;
 use imager_core::oslist::fetch::DEFAULT_REPO;
 use imager_core::settings::Settings;
+use imager_core::{APP_NAME, IMAGER_VERSION};
 use serde_json::Value;
 use tauri::{AppHandle, Manager};
 use tauri_plugin_deep_link::DeepLinkExt;
@@ -24,11 +25,9 @@ use tauri_plugin_opener::OpenerExt;
 use self::background::{Shared, begin_os_list_fetch, lock, refresh_os_list_from};
 use self::state::State;
 
-const APP_DIR: &str = "me.digitalminimalist.pi-imager";
-
-/// Upstream `main.qml` title before the offline / custom-repo suffixes.
+/// The window title: the app name and version.
 fn window_title() -> String {
-    format!("Raspberry Pi Imager {IMAGER_VERSION}")
+    format!("{APP_NAME} {IMAGER_VERSION}")
 }
 
 /// `imageWriter.<method>(args…)`.
@@ -71,12 +70,12 @@ fn imager(
 }
 
 fn load_state(repo: Option<String>) -> State {
-    let config = dirs::config_dir().unwrap_or_default().join(APP_DIR);
+    let config = app_dirs::app_dir(&dirs::config_dir().unwrap_or_default());
     let settings =
         Settings::load(config.join("settings.json")).unwrap_or_else(|_| Settings::in_memory());
     let mut state = State::new(
         settings,
-        dirs::cache_dir().unwrap_or_default().join(APP_DIR),
+        app_dirs::app_dir(&dirs::cache_dir().unwrap_or_default()),
     );
     if let Some(repo) = repo {
         state.repo_display.clone_from(&repo);
@@ -125,8 +124,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn title_uses_the_git_describe_version() {
-        assert_eq!(window_title(), "Raspberry Pi Imager v2.0.7");
+    fn title_names_the_app_and_its_version() {
+        assert_eq!(window_title(), "Etchwise v1.0.0");
     }
 
     #[test]
@@ -138,7 +137,7 @@ mod tests {
         );
         assert_eq!(
             api::dispatch(&mut state, "constantVersion", &[]),
-            Ok(Value::String("v2.0.7".into()))
+            Ok(Value::String("v1.0.0".into()))
         );
         assert_eq!(
             api::dispatch(&mut state, "isOsListUnavailable", &[]),

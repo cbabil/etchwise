@@ -3,9 +3,9 @@ use serde_json::json;
 use super::*;
 
 #[test]
-fn bool_defaults_match_upstream() {
+fn bool_defaults_match_upstream_without_telemetry() {
     let s = Settings::in_memory();
-    assert!(s.bool("telemetry"));
+    assert!(!s.bool("telemetry"), "Etchwise sends no statistics");
     assert!(s.bool("eject"));
     assert!(s.bool("check_version"));
     assert!(!s.bool("beep"));

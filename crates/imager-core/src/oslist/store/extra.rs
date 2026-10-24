@@ -51,31 +51,8 @@ impl OsListStore {
         devices.splice(at..at, added);
         current["imager"]["devices"] = Value::Array(devices);
         let mut os_list = into_vec(current["os_list"].take());
-        let added = extra["os_list"]
-            .as_array()
-            .map(Vec::as_slice)
-            .unwrap_or_default();
-        collect_urls(added, &mut self.extra_urls);
-        os_list.extend(added.iter().cloned());
+        os_list.extend(extra["os_list"].as_array().into_iter().flatten().cloned());
         current["os_list"] = Value::Array(os_list);
-    }
-
-    /// True for an image that came from the extra repository, so it is
-    /// not reported to the main repository's download statistics.
-    pub fn is_from_extra(&self, url: &str) -> bool {
-        self.extra_urls.contains(url)
-    }
-}
-
-/// Every image URL in `entries` and their folders.
-fn collect_urls(entries: &[Value], into: &mut std::collections::HashSet<String>) {
-    for entry in entries {
-        if let Some(url) = entry["url"].as_str() {
-            into.insert(url.to_owned());
-        }
-        if let Some(children) = entry["subitems"].as_array() {
-            collect_urls(children, into);
-        }
     }
 }
 

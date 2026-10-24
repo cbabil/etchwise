@@ -1,14 +1,13 @@
 //! `startWrite` (upstream `ImageWriter::startWrite` + `DownloadThread`):
 //! picks the source (verified cache, local file or download), unmounts and
 //! opens the disk, runs the write job, then saves the cache record, ejects,
-//! beeps and sends telemetry.
+//! and beeps.
 
 use std::sync::Arc;
 
 use imager_core::pipeline::cache::{has_room, is_cached, save_record};
 use imager_core::pipeline::job::{Job, Source};
 use imager_core::pipeline::{Progress, WriteOptions};
-use imager_core::telemetry;
 use serde_json::{Value, json};
 use tauri::AppHandle;
 
@@ -17,7 +16,6 @@ use crate::background::{Shared, emit, lock};
 use crate::state::State;
 
 pub(crate) mod device_ops;
-mod stats;
 mod usb_boot;
 
 /// Starts the write on its own thread; progress is polled by the UI.
@@ -33,13 +31,6 @@ pub fn start_write(shared: &Shared, app: &AppHandle) -> Result<(), String> {
     let usb_boot = state.rpiboot_device.clone();
     let (bmap_url, cache_dir) = (src.bmap_url.clone(), state.cache_dir.clone());
     let job = build_job(&state, &src.url, &src.expected_hash, src.extract_len);
-    if stats::should_report(
-        &state,
-        matches!(job.source, Some(Source::Remote(_))),
-        &src.url,
-    ) {
-        telemetry::send_in_background(telemetry::body(&report(&src)));
-    }
     state.progress = Arc::new(Progress::default());
     state.writing = true;
     let (shared, app, progress) = (Arc::clone(shared), app.clone(), Arc::clone(&state.progress));
@@ -88,18 +79,6 @@ fn build_job(state: &State, url: &str, sha: &str, extract_len: u64) -> Job {
         plan: state.plan.clone(),
         cache_dir: caching.then(|| state.cache_dir.clone()),
         multiple_files: state.src.as_ref().is_some_and(|s| s.multiple_files),
-    }
-}
-
-fn report(src: &crate::state::Source) -> telemetry::Report<'_> {
-    telemetry::Report {
-        url: &src.url,
-        os: &src.parent_category,
-        image: &src.os_name,
-        os_type: "macos",
-        os_version: "",
-        arch: std::env::consts::ARCH,
-        locale: "",
     }
 }
 
