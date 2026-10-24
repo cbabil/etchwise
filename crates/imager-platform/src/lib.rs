@@ -1,4 +1,4 @@
-//! OS-specific services for the Pi Imager port: drive listing, raw disk
+//! OS-specific services for Etchwise: drive listing, raw disk
 //! access, unmount/eject, sleep inhibition, Wi-Fi credentials and the
 //! system beep. macOS is implemented (upstream `src/mac/`); other platforms
 //! report `Unsupported`.

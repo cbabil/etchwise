@@ -1,4 +1,4 @@
-//! `--cli` mode (upstream `cli.cpp`): `pi-imager --cli [options] <src> <dst>`
+//! `--cli` mode (upstream `cli.cpp`): `etchwise --cli [options] <src> <dst>`
 //! writes without the GUI, printing upstream's progress bar to stderr.
 
 use std::sync::Arc;
@@ -9,7 +9,7 @@ use imager_core::drives::visible_drives;
 use imager_core::pipeline::job::{Job, Source};
 use imager_core::pipeline::{Progress, WriteOptions, WriteState};
 
-const HELP: &str = "Usage: pi-imager --cli [options] src dst
+const HELP: &str = "Usage: etchwise --cli [options] src dst
 
 Options:
   --disable-verify                    Disable verification

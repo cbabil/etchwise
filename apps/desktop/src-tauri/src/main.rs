@@ -5,7 +5,7 @@ fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
     if args.iter().any(|a| a == "--cli") {
         let rest: Vec<String> = args.into_iter().filter(|a| a != "--cli").collect();
-        std::process::exit(pi_imager_lib::cli::run(&rest));
+        std::process::exit(etchwise_lib::cli::run(&rest));
     }
-    pi_imager_lib::run();
+    etchwise_lib::run();
 }

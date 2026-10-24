@@ -1,5 +1,5 @@
 {
-  "name": "pi-imager-rs",
+  "name": "etchwise",
   "private": true,
   "workspaces": ["apps/*"],
   "scripts": {

@@ -1,6 +1,6 @@
 [package]
 name = "imager-platform"
-description = "OS-specific drive, raw-disk, Wi-Fi and power access for the Pi Imager port"
+description = "OS-specific drive, raw-disk, Wi-Fi and power access for Etchwise"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

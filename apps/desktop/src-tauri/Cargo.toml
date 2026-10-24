@@ -1,13 +1,13 @@
 [package]
-name = "pi-imager"
-description = "Tauri shell of the Pi Imager port"
+name = "etchwise"
+description = "Tauri shell of Etchwise"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
 
 [lib]
-name = "pi_imager_lib"
+name = "etchwise_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

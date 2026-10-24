@@ -1,4 +1,4 @@
-//! Tauri shell of the Pi Imager port: one `imager` command carrying
+//! Tauri shell of Etchwise: one `imager` command carrying
 //! upstream's `imageWriter.<method>(…)` calls, events for its signals.
 
 mod api;
@@ -116,7 +116,7 @@ pub fn run() {
         })
         .invoke_handler(tauri::generate_handler![imager])
         .run(tauri::generate_context!())
-        .unwrap_or_else(|error| panic!("failed to run Pi Imager: {error}"));
+        .unwrap_or_else(|error| panic!("failed to run {APP_NAME}: {error}"));
 }
 
 #[cfg(test)]

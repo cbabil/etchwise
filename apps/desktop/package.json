@@ -1,8 +1,8 @@
 {
-  "name": "@pi-imager/desktop",
+  "name": "@etchwise/desktop",
   "private": true,
   "type": "module",
-  "description": "Pi Imager desktop UI: React + MUI hosted by the Tauri shell",
+  "description": "Etchwise desktop UI: React + MUI hosted by the Tauri shell",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

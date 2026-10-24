@@ -1,6 +1,6 @@
 [package]
 name = "imager-core"
-description = "Platform-independent core of the Pi Imager port: OS list, write pipeline, customisation"
+description = "Platform-independent core of Etchwise: OS list, write pipeline, customisation"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

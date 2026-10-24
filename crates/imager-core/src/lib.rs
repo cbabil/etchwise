@@ -1,4 +1,4 @@
-//! Platform-independent core of the Pi Imager port.
+//! Platform-independent core of Etchwise.
 //!
 //! Everything here is pure Rust with no OS calls, so it is fully unit-tested.
 //! Disk, Wi-Fi and power access live behind the traits in `imager-platform`.

@@ -1,4 +1,4 @@
-# Pi Imager (Rust/Tauri port) developer targets. Run `make help` for the list.
+# Etchwise developer targets. Run `make help` for the list.
 # Run `make check` locally before pushing; there is no CI on every push.
 
 SHELL := /bin/bash

@@ -1070,6 +1070,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "etchwise"
+version = "1.0.0"
+dependencies = [
+ "dirs 6.0.0",
+ "imager-core",
+ "imager-platform",
+ "imager-rpiboot",
+ "libc",
+ "rand 0.9.5",
+ "reqwest 0.12.28",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-deep-link",
+ "tauri-plugin-dialog",
+ "tauri-plugin-opener",
+ "tempfile",
+]
+
+[[package]]
 name = "event-listener"
 version = "5.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2950,27 +2971,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e57fef6bc5981e38c2ce2d63bfa546861309f875b8a75f092d1d54ae2d64f266"
 dependencies = [
  "siphasher",
-]
-
-[[package]]
-name = "pi-imager"
-version = "1.0.0"
-dependencies = [
- "dirs 6.0.0",
- "imager-core",
- "imager-platform",
- "imager-rpiboot",
- "libc",
- "rand 0.9.5",
- "reqwest 0.12.28",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "tauri-plugin-deep-link",
- "tauri-plugin-dialog",
- "tauri-plugin-opener",
- "tempfile",
 ]
 
 [[package]]

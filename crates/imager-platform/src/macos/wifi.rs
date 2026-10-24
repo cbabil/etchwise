@@ -85,7 +85,7 @@ mod tests {
     #[test]
     fn missing_keychain_items_are_none() {
         assert_eq!(
-            saved_password("pi-imager-test-network-that-does-not-exist"),
+            saved_password("etchwise-test-network-that-does-not-exist"),
             None
         );
         let _ = current_ssid();
