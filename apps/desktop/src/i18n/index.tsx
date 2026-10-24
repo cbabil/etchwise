@@ -5,7 +5,7 @@
  */
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from 'react'
 
-type Catalogue = Record<string, Record<string, string>>
+import { type Catalogue, withOverlay } from './overlay'
 
 const loaders = import.meta.glob<{ default: Catalogue }>('./locales/*.json')
 
@@ -65,7 +65,7 @@ export function I18nProvider({
     if (!load || loaded[language]) return
     let live = true
     void load().then((module) => {
-      if (live) setLoaded((all) => ({ ...all, [language]: module.default }))
+      if (live) setLoaded((all) => ({ ...all, [language]: withOverlay(language, module.default) }))
     })
     return () => {
       live = false

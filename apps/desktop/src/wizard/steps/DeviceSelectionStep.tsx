@@ -61,7 +61,7 @@ export function DeviceSelectionStep() {
   }
   return (
     <StepBase
-      title={tr('Select your Raspberry Pi device')}
+      title={tr('Select your device')}
       showBack={false}
       nextEnabled={nextEnabled}
       onNext={wizard.next}

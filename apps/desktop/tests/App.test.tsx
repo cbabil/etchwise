@@ -7,7 +7,7 @@ describe('App', () => {
   it('renders the wizard shell at the device step', async () => {
     render(<App />)
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Select your Raspberry Pi device' }),
+      await screen.findByRole('heading', { level: 1, name: 'Select your device' }),
     ).toBeInTheDocument()
     expect(screen.getByRole('navigation', { name: 'Setup steps' })).toBeInTheDocument()
   })

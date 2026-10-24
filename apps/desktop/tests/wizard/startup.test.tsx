@@ -20,7 +20,7 @@ describe('wizard start-up', () => {
       </WizardProvider>,
     )
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Select your Raspberry Pi device' }),
+      await screen.findByRole('heading', { level: 1, name: 'Select your device' }),
     ).toBeInTheDocument()
   })
 })

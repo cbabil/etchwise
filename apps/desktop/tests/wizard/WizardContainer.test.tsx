@@ -37,7 +37,7 @@ describe('WizardContainer', () => {
     await title('Welcome')
     next()
     expect(screen.getByRole('main')).toHaveStyle({ opacity: '0' })
-    await title('Select your Raspberry Pi device')
+    await title('Select your device')
     expect(screen.queryByRole('button', { name: /^Back/ })).toBeNull()
     fireEvent.click(await screen.findByText('Raspberry Pi 5'))
     await nextWhenEnabled()
@@ -61,7 +61,7 @@ describe('WizardContainer', () => {
 
   it('opens App Options from the sidebar and closes it', async () => {
     renderWizard()
-    await title('Select your Raspberry Pi device')
+    await title('Select your device')
     fireEvent.click(screen.getByRole('button', { name: /^App Options/ }))
     const dialog = screen.getByRole('dialog', { name: 'App Options' })
     fireEvent.click(screen.getByRole('button', { name: /^Save(,|$)/ }))

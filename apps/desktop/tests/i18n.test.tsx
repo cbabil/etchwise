@@ -9,14 +9,19 @@ import {
   useLanguage,
   useTr,
 } from '@/i18n'
+import type { Catalogue } from '@/i18n/overlay'
 
 function Probe() {
   const tr = useTr('AppOptionsDialog')
+  const trDevice = useTr('DeviceSelectionStep')
   const { setLanguage } = useLanguage()
   return (
-    <button type="button" onClick={() => setLanguage('de')}>
-      {tr('App Options')}
-    </button>
+    <>
+      <button type="button" onClick={() => setLanguage('de')}>
+        {tr('App Options')}
+      </button>
+      <h1>{trDevice('Select your device')}</h1>
+    </>
   )
 }
 
@@ -38,10 +43,9 @@ describe('i18n', () => {
   })
 
   it('renames the brand in every translation, whatever its spelling', () => {
-    const catalogues = import.meta.glob<{ default: Record<string, Record<string, string>> }>(
-      '../src/i18n/locales/*.json',
-      { eager: true },
-    )
+    const catalogues = import.meta.glob<{ default: Catalogue }>('../src/i18n/locales/*.json', {
+      eager: true,
+    })
     const leftovers: string[] = []
     for (const [file, { default: catalogue }] of Object.entries(catalogues)) {
       for (const [context, entries] of Object.entries(catalogue)) {
@@ -60,7 +64,7 @@ describe('i18n', () => {
     expect(leftovers).toEqual([])
   })
 
-  it('switches language from the upstream catalogues', async () => {
+  it('switches language from the upstream catalogues and the Etchwise overlay', async () => {
     render(
       <I18nProvider>
         <Probe />
@@ -69,5 +73,6 @@ describe('i18n', () => {
     expect(screen.getByRole('button')).toHaveTextContent('App Options')
     act(() => screen.getByRole('button').click())
     await waitFor(() => expect(screen.getByRole('button')).toHaveTextContent('Einstellungen'))
+    expect(screen.getByRole('heading')).toHaveTextContent('Wählen Sie Ihr Gerät aus')
   })
 })
