@@ -5,7 +5,6 @@
 
 use std::sync::Arc;
 
-use imager_core::oslist::fetch::DEFAULT_REPO;
 use imager_core::pipeline::cache::{has_room, is_cached, save_record};
 use imager_core::pipeline::job::{Job, Source};
 use imager_core::pipeline::{Progress, WriteOptions};
@@ -18,6 +17,7 @@ use crate::background::{Shared, emit, lock};
 use crate::state::State;
 
 pub(crate) mod device_ops;
+mod stats;
 mod usb_boot;
 
 /// Starts the write on its own thread; progress is polled by the UI.
@@ -33,13 +33,11 @@ pub fn start_write(shared: &Shared, app: &AppHandle) -> Result<(), String> {
     let usb_boot = state.rpiboot_device.clone();
     let (bmap_url, cache_dir) = (src.bmap_url.clone(), state.cache_dir.clone());
     let job = build_job(&state, &src.url, &src.expected_hash, src.extract_len);
-    if matches!(job.source, Some(Source::Remote(_)))
-        && telemetry::should_send(
-            state.settings.bool("telemetry"),
-            true,
-            state.repo == DEFAULT_REPO,
-        )
-    {
+    if stats::should_report(
+        &state,
+        matches!(job.source, Some(Source::Remote(_))),
+        &src.url,
+    ) {
         telemetry::send_in_background(telemetry::body(&report(&src)));
     }
     state.progress = Arc::new(Progress::default());
