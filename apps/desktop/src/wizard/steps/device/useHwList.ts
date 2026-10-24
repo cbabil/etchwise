@@ -1,7 +1,7 @@
 /**
  * The device list of upstream `DeviceSelectionStep.qml`: loads once, and
- * reloads when `osListPrepared` arrives while empty or when the OS list
- * becomes available again. The backend pre-selects the repository's
+ * reloads whenever `osListPrepared` arrives (a merged extra repository can
+ * add devices to a filled list) or the OS list becomes available again. The backend pre-selects the repository's
  * default device, which is highlighted here.
  */
 import { useCallback, useEffect, useState } from 'react'
@@ -39,7 +39,7 @@ export function useHwList(): HwListState {
     void load()
   }, [load])
   useImagerEvent((event) => {
-    if (event.name === 'osListPrepared' && devices.length === 0) void load()
+    if (event.name === 'osListPrepared') void load()
     if (event.name === 'osListUnavailableChanged') void load()
   })
   return { devices, current, setCurrent, unavailable }

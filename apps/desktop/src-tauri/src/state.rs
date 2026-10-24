@@ -60,6 +60,8 @@ pub struct State {
     /// Chips of the boards in USB boot mode seen by the last drive poll
     /// (upstream `DriveListModel::connectedRpibootChipsChanged`).
     pub rpiboot_chips: Vec<&'static str>,
+    /// Why the extra repository could not be merged; empty when it was.
+    pub extra_repo_error: String,
     pub plan: Option<CustomisationPlan>,
     pub progress: Arc<Progress>,
     pub writing: bool,
@@ -88,6 +90,7 @@ impl State {
             dst: None,
             rpiboot_device: None,
             rpiboot_chips: Vec::new(),
+            extra_repo_error: String::new(),
             plan: None,
             progress: Arc::new(Progress::default()),
             writing: false,

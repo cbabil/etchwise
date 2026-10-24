@@ -87,6 +87,15 @@ describe('DeviceSelectionStep', () => {
     await screen.findByRole('listbox', { name: /1 device\./ })
   })
 
+  it('reloads a filled list when osListPrepared arrives (extra repository merged)', async () => {
+    answers.getHWList = () => ({ devices: devices.slice(0, 1), currentIndex: -1 })
+    renderStep(<DeviceSelectionStep />)
+    await screen.findByRole('listbox', { name: /1 device\./ })
+    answers.getHWList = () => ({ devices: devices.slice(0, 2), currentIndex: -1 })
+    act(() => mockEmit({ name: 'osListPrepared', data: null }))
+    await screen.findByRole('listbox', { name: /2 devices\./ })
+  })
+
   it('resolves bundled icons and keeps remote ones', () => {
     expect(resolveIcon('icons/erase.png')).toMatch(/erase/)
     expect(resolveIcon('../icons/use_custom.png')).toMatch(/use_custom/)

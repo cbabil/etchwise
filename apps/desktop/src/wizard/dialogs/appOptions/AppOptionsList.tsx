@@ -3,7 +3,9 @@ import { ImOptionPill } from '@/components/ImOptionPill'
 import { useTr } from '@/i18n'
 
 import { ImOptionButton } from '../common/ImOptionButton'
+import { ExtraRepoRow } from './ExtraRepoRow'
 import type { AppOptionsEnv, AppOptionsValues } from './useAppOptions'
+import type { ExtraRepo } from './useExtraRepo'
 
 export const TELEMETRY_HELP_URL =
   'https://github.com/raspberrypi/rpi-imager?tab=readme-ov-file#anonymous-metrics-telemetry'
@@ -14,6 +16,7 @@ export interface AppOptionsListProps {
   onChange: (patch: Partial<AppOptionsValues>) => void
   onDisableWarnings: (checked: boolean) => void
   onEditRepository: () => void
+  extraRepo: ExtraRepo
   onSelectKey: () => void
   onClearSettings: () => void
 }
@@ -66,6 +69,7 @@ function Buttons({
   values,
   env,
   onEditRepository,
+  extraRepo,
   onSelectKey,
   onClearSettings,
 }: AppOptionsListProps) {
@@ -81,6 +85,7 @@ function Buttons({
         disabled={!env.idle}
         onClick={onEditRepository}
       />
+      <ExtraRepoRow repo={extraRepo} disabled={!env.idle} />
       {env.secureBootVisible ? (
         <ImOptionButton
           label={tr('Secure Boot RSA Key')}

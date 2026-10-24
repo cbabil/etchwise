@@ -107,5 +107,9 @@ fn merge_into(current: &mut Value, mut response: Value, url: &str, is_top_level:
     *current = json!({"imager": object_or_empty(Some(imager)), "os_list": tree});
 }
 
+mod extra;
+
+pub use self::extra::load_extra_repository;
+
 #[cfg(test)]
 mod tests;

@@ -14,6 +14,7 @@ import { sizes } from '@/theme/tokens'
 import { ConfirmClearSettings, ConfirmDisableWarnings } from './appOptions/AppOptionsConfirms'
 import { AppOptionsList } from './appOptions/AppOptionsList'
 import { useAppOptionsFlow } from './appOptions/useAppOptionsFlow'
+import { useExtraRepo } from './appOptions/useExtraRepo'
 import { CenteredHeading, DialogScrollArea, InfoText } from './common/dialogParts'
 import { RepositoryDialog } from './RepositoryDialog'
 
@@ -54,9 +55,11 @@ function Footer({ onCancel, onSave }: { onCancel: () => void; onSave: () => void
 export function AppOptionsDialog({ open, onClose }: AppOptionsDialogProps) {
   const tr = useTr('AppOptionsDialog')
   const flow = useAppOptionsFlow(open, onClose)
+  const extraRepo = useExtraRepo(open)
   const { options, warnings, clear } = flow
   const save = () => {
     options.save()
+    extraRepo.save()
     onClose()
   }
   return (
@@ -70,6 +73,7 @@ export function AppOptionsDialog({ open, onClose }: AppOptionsDialogProps) {
             onChange={options.change}
             onDisableWarnings={warnings.toggle}
             onEditRepository={flow.editRepository}
+            extraRepo={extraRepo}
             onSelectKey={() => void flow.selectKey()}
             onClearSettings={clear.start}
           />
