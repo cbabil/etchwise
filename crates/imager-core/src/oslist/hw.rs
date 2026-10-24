@@ -16,6 +16,9 @@ pub struct HwDevice {
     pub description: String,
     pub matching_type: String,
     pub architecture: String,
+    /// Device-step tab: empty for the main repository's devices, "other"
+    /// for those merged from an extra repository.
+    pub group: String,
 }
 
 impl HwDevice {
@@ -46,6 +49,7 @@ fn device_from_json(d: &Value) -> HwDevice {
         description: str_field(d, "description"),
         matching_type: str_field(d, "matching_type"),
         architecture: str_field(d, "architecture"),
+        group: str_field(d, "group"),
     }
 }
 

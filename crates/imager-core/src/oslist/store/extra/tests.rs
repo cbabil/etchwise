@@ -55,6 +55,13 @@ fn adds_devices_before_no_filtering_without_taking_the_default() {
     );
     assert_eq!(devices[0]["default"], true);
     assert!(devices[1].get("default").is_none());
+    assert_eq!(devices[1]["group"], "other");
+    assert!(devices[0].get("group").is_none());
+    assert!(devices[2].get("group").is_none());
+    let (parsed, _) =
+        crate::oslist::hw::parse_devices(&main.filtered_document(&HwFilter::default())).unwrap();
+    let groups: Vec<&str> = parsed.iter().map(|d| d.group.as_str()).collect();
+    assert_eq!(groups, ["", "other", ""]);
     assert_eq!(main.imager_metadata()["latest_version"], "2.0.12");
 }
 

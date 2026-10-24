@@ -14,6 +14,8 @@ export interface HwDevice {
   matching_type?: string
   architecture?: string
   isUsbBootConnected?: boolean
+  /** "other" for devices merged from an extra repository. */
+  group?: string
 }
 
 export interface HwList {

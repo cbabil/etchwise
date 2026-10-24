@@ -15,6 +15,8 @@ import { colors } from '@/theme/tokens'
 import { StepBase } from '../StepBase'
 import { useWizard } from '../WizardContext'
 import { DeviceOfflinePlaceholder } from './device/DeviceOfflinePlaceholder'
+import { DeviceTabs, OtherTabHint } from './device/DeviceTabs'
+import { useDeviceTab } from './device/useDeviceTab'
 import { useHwList } from './device/useHwList'
 import { ListRow, MetaLine } from './os/ListRow'
 import type { HwDevice } from './os/types'
@@ -49,7 +51,8 @@ export function DeviceSelectionStep() {
   const tr = useTr('DeviceSelectionStep')
   const wizard = useWizard()
   const { devices, current, setCurrent, unavailable } = useHwList()
-  const listName = useListName(devices.length)
+  const { tab, choose: chooseTab, rows, rowOf } = useDeviceTab(devices, current)
+  const listName = useListName(rows.length)
   const nextEnabled = current !== -1 || (unavailable && devices.length === 0)
   const choose = (index: number, device: HwDevice) => {
     setCurrent(index)
@@ -67,14 +70,16 @@ export function DeviceSelectionStep() {
         <DeviceOfflinePlaceholder />
       ) : (
         <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+          <DeviceTabs tab={tab} onChange={chooseTab} />
+          {rows.length === 0 && tab === 'other' ? <OtherTabHint /> : null}
           <SelectionList
-            items={devices}
-            getKey={(device, index) => `${index}:${device.name}`}
-            currentIndex={current}
-            onCurrentIndexChange={setCurrent}
-            onItemSelected={choose}
-            onItemDoubleClicked={(index, device) => {
-              choose(index, device)
+            items={rows.map((row) => row.device)}
+            getKey={(device, row) => `${rows[row]?.index ?? row}:${device.name}`}
+            currentIndex={rowOf(current)}
+            onCurrentIndexChange={(row) => setCurrent(rows[row]?.index ?? -1)}
+            onItemSelected={(row, device) => choose(rows[row]?.index ?? -1, device)}
+            onItemDoubleClicked={(row, device) => {
+              choose(rows[row]?.index ?? -1, device)
               queueMicrotask(wizard.next)
             }}
             keyboardAutoAdvance

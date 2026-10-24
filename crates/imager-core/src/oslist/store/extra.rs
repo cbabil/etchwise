@@ -61,10 +61,15 @@ fn is_no_filtering(device: &Value) -> bool {
     device["matching_type"] == "inclusive" && device["tags"].as_array().is_none_or(Vec::is_empty)
 }
 
+/// The tab extra devices are listed under on the Device step.
+pub const EXTRA_DEVICE_GROUP: &str = "other";
+
+/// `device` without its `default` flag, filed under the extra tab.
 fn without_default(device: &Value) -> Value {
     let mut device = device.clone();
     if let Some(fields) = device.as_object_mut() {
         fields.remove("default");
+        fields.insert("group".into(), EXTRA_DEVICE_GROUP.into());
     }
     device
 }

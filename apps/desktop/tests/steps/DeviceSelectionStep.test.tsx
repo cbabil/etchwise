@@ -103,4 +103,57 @@ describe('DeviceSelectionStep', () => {
     expect(resolveIcon('https://x/y.png')).toBe('https://x/y.png')
     expect(resolveIcon(undefined)).toBe('')
   })
+
+  describe('Raspberry Pi | Other tabs', () => {
+    const mixed = [
+      devices[0],
+      { name: 'Intel NUC', description: 'x86-64 PCs', icon: '', group: 'other' },
+      devices[2],
+    ]
+    const tab = (name: string) => screen.getByRole('tab', { name })
+
+    it('lists official devices under Raspberry Pi and extra ones under Other', async () => {
+      answers.getHWList = () => ({ devices: mixed, currentIndex: -1 })
+      renderStep(<DeviceSelectionStep />)
+      await screen.findByRole('listbox', { name: /2 devices\./ })
+      expect(tab('Raspberry Pi')).toHaveAttribute('aria-selected', 'true')
+      expect(screen.getByText('No filtering')).toBeInTheDocument()
+      expect(screen.queryByText('Intel NUC')).toBeNull()
+      fireEvent.click(tab('Other'))
+      await screen.findByRole('listbox', { name: /1 device\./ })
+      expect(screen.getByText('Intel NUC')).toBeInTheDocument()
+      expect(screen.queryByText('Raspberry Pi 5')).toBeNull()
+    })
+
+    it('selects with the device position in the full list', async () => {
+      answers.getHWList = () => ({ devices: mixed, currentIndex: -1 })
+      const { wizard } = renderStep(<DeviceSelectionStep />)
+      await screen.findByRole('listbox', { name: /2 devices\./ })
+      fireEvent.click(tab('Other'))
+      fireEvent.click(await screen.findByText('Intel NUC'))
+      expect(await callsOf('setHWIndex')).toContainEqual([1])
+      expect(wizard().selectedDeviceName).toBe('Intel NUC')
+      expect(next()).toBeEnabled()
+    })
+
+    it('opens on the tab of the selected device', async () => {
+      answers.getHWList = () => ({ devices: mixed, currentIndex: 1 })
+      renderStep(<DeviceSelectionStep />)
+      await screen.findByRole('listbox', { name: /1 device\./ })
+      expect(tab('Other')).toHaveAttribute('aria-selected', 'true')
+      expect(screen.getByRole('option', { name: /Intel NUC/ })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      )
+    })
+
+    it('explains how to add devices when Other is empty', async () => {
+      renderStep(<DeviceSelectionStep />)
+      await list()
+      fireEvent.click(tab('Other'))
+      expect(
+        await screen.findByText('Add devices with App Options > Extra Repository'),
+      ).toBeInTheDocument()
+    })
+  })
 })
