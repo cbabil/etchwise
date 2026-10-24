@@ -13,6 +13,7 @@ use super::progress::{Progress, WriteState};
 use super::writer::Written;
 use crate::customise::plan::{CustomisationPlan, apply_plan};
 use crate::fat::BootPartition;
+use crate::seed::add_seed_partition;
 
 /// Re-reads everything written (the first block from memory) and compares
 /// hashes. Skipping or cancelling counts as success, as upstream.
@@ -60,7 +61,9 @@ pub fn verify<D: Device>(
 
 /// Customises the boot partition when the plan has content for it, else
 /// writes the first block; then syncs. Customisation runs, as upstream,
-/// only when config, cmdline, firstrun or user-data is non-empty.
+/// only when config, cmdline, firstrun or user-data is non-empty. Ubuntu
+/// autoinstall plans leave the image as written and add a `CIDATA` seed
+/// partition after it.
 ///
 /// # Errors
 /// Fails when customising or the final writes fail.
@@ -79,25 +82,39 @@ pub fn finalize<D: Device>(
                 && p.firstrun.is_empty()
                 && p.cloudinit.is_empty())
     });
+    if customise.is_some() {
+        progress.set_status("Customising OS...");
+    }
     match customise {
+        Some(plan) if plan.needs_seed() => {
+            write_first_block(device, &written)?;
+            let files = plan.seed_files(instance_id);
+            let files = files
+                .each_ref()
+                .map(|(name, data)| (*name, data.as_slice()));
+            let size = device.size().map_err(WriteError::Customise)?;
+            add_seed_partition(&mut *device, size, written.length, &files)
+                .map_err(WriteError::Customise)?;
+        }
         Some(plan) => {
-            progress.set_status("Customising OS...");
             let mut boot = BootPartition::open_with_prefix(&mut *device, &written.first_block)
                 .map_err(WriteError::Customise)?;
             apply_plan(&mut boot, plan, instance_id).map_err(WriteError::Customise)?;
             boot.finish().map_err(WriteError::Customise)?;
         }
-        None => {
-            device
-                .seek(SeekFrom::Start(0))
-                .map_err(WriteError::io("writing partition table"))?;
-            device
-                .write_all(&written.first_block)
-                .and_then(|()| device.flush())
-                .map_err(WriteError::io("writing partition table"))?;
-        }
+        None => write_first_block(device, &written)?,
     }
     device.force_sync().map_err(WriteError::io("final sync"))
+}
+
+fn write_first_block<D: Device>(device: &mut D, written: &Written) -> Result<(), WriteError> {
+    device
+        .seek(SeekFrom::Start(0))
+        .map_err(WriteError::io("writing partition table"))?;
+    device
+        .write_all(&written.first_block)
+        .and_then(|()| device.flush())
+        .map_err(WriteError::io("writing partition table"))
 }
 
 #[cfg(test)]

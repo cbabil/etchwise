@@ -25,6 +25,8 @@ export interface WizardFlags {
   passwordlessSudoAvailable: boolean
   secureBootKeyConfigured: boolean
   ccRpiAvailable: boolean
+  /** The image sets itself up through Ubuntu autoinstall (`init_format`). */
+  autoinstall: boolean
   ifAndFeaturesAvailable: boolean
   ifI2cEnabled: boolean
   ifSpiEnabled: boolean
@@ -95,6 +97,7 @@ export const initialFlags: WizardFlags = {
   passwordlessSudoAvailable: false,
   secureBootKeyConfigured: false,
   ccRpiAvailable: false,
+  autoinstall: false,
   ifAndFeaturesAvailable: false,
   disableWarnings: false,
   customizationSupported: true,

@@ -65,6 +65,15 @@ pub fn check_sizes(extract_size: u64, device_size: u64) -> Result<(), WriteError
     Ok(())
 }
 
+/// Extra space needed after the image for a plan's seed partition.
+pub fn seed_room(plan: Option<&CustomisationPlan>) -> u64 {
+    if plan.is_some_and(CustomisationPlan::needs_seed) {
+        crate::seed::SEED_ROOM
+    } else {
+        0
+    }
+}
+
 /// Runs the job; on success returns the cache record to remember, if any.
 ///
 /// # Errors
@@ -103,7 +112,7 @@ fn run_inner<D: Device>(
     let size = device
         .size()
         .map_err(WriteError::io("getting device size"))?;
-    check_sizes(job.extract_size, size)?;
+    check_sizes(job.extract_size + seed_room(job.plan.as_ref()), size)?;
     progress
         .write_total
         .store(job.extract_size, std::sync::atomic::Ordering::Relaxed);
@@ -141,3 +150,5 @@ pub fn instance_id() -> String {
 
 #[cfg(test)]
 mod tests;
+#[cfg(test)]
+mod tests_autoinstall;

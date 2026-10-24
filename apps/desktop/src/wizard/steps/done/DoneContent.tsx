@@ -8,10 +8,25 @@ import { Box } from '@mui/material'
 import { useTr } from '@/i18n'
 import { colors, fontSize, sizes, spacing } from '@/theme/tokens'
 
+import { InfoText } from '../../dialogs/common/dialogParts'
 import { useWizard } from '../../WizardContext'
 import { ChoicesGrid, Heading } from '../writing/ChoicesGrid'
 import { CustomisationList } from '../writing/CustomisationList'
 import { anyCustomisations, customisationLines } from '../writing/customisations'
+
+/** Ubuntu autoinstall images: the one step left on the NUC. */
+function AutoinstallHint() {
+  const tr = useTr('DoneStep')
+  const { autoinstall } = useWizard()
+  if (!autoinstall) return null
+  return (
+    <InfoText color={colors.formLabel} size={fontSize.sm} center>
+      {tr(
+        'Boot the NUC from the stick. When the installer asks "Continue with autoinstall?", type yes.',
+      )}
+    </InfoText>
+  )
+}
 
 export function DoneContent({ autoEject }: { autoEject: boolean }) {
   const tr = useTr('DoneStep')
@@ -42,6 +57,7 @@ export function DoneContent({ autoEject }: { autoEject: boolean }) {
           />
         </>
       ) : null}
+      <AutoinstallHint />
       <Box
         sx={{
           fontSize: fontSize.xs,

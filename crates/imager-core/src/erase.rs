@@ -9,6 +9,9 @@
 
 mod layout;
 mod sectors;
+
+pub(crate) use self::layout::FAT32_PARTITION_TYPE;
+pub(crate) use self::sectors::MBR_ENTRY_OFFSET;
 #[cfg(test)]
 mod tests;
 #[cfg(test)]

@@ -8,8 +8,16 @@ use serde_json::Value;
 
 use super::json::{as_slice, into_vec};
 
-/// `init_format` values the v4 schema allows.
-pub const VALID_INIT_FORMATS: [&str; 5] = ["", "systemd", "cloudinit", "cloudinit-rpi", "none"];
+/// `init_format` values the v4 schema allows, plus Etchwise's Ubuntu
+/// autoinstall for PCs.
+pub const VALID_INIT_FORMATS: [&str; 6] = [
+    "",
+    "systemd",
+    "cloudinit",
+    "cloudinit-rpi",
+    "none",
+    crate::customise::plan::AUTOINSTALL_UBUNTU,
+];
 
 /// Picks `os_list_<locale>` (or, when that key is absent,
 /// `os_list_<language>`), falling back to `os_list` when the pick is empty.

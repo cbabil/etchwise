@@ -10,9 +10,11 @@ pub mod drives;
 pub mod erase;
 pub mod fat;
 pub mod format;
+mod le;
 pub mod oslist;
 pub mod pipeline;
 pub mod secureboot;
+pub mod seed;
 pub mod settings;
 #[cfg(test)]
 mod testutil;

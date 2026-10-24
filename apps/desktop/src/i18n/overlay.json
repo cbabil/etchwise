@@ -1,0 +1,277 @@
+{
+  "bn": {
+    "DeviceSelectionStep": {
+      "Select your device": "আপনার ডিভাইস নির্বাচন করুন"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "ইনস্টলেশনের সময় NUC-এর সবচেয়ে বড় ডিস্কটি মুছে ফেলা হবে।"
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "স্টিক থেকে NUC চালু করুন। ইনস্টলার \"Continue with autoinstall?\" জিজ্ঞাসা করলে yes লিখুন।"
+    }
+  },
+  "ca": {
+    "DeviceSelectionStep": {
+      "Select your device": "Seleccioneu el vostre dispositiu"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "El disc més gran del NUC s'esborrarà durant la instal·lació."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arrenqueu el NUC des del llapis. Quan l'instal·lador pregunti \"Continue with autoinstall?\", escriviu yes."
+    }
+  },
+  "cs": {
+    "DeviceSelectionStep": {
+      "Select your device": "Výběr zařízení"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Během instalace bude vymazán největší disk NUC."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Spusťte NUC z flash disku. Až se instalátor zeptá „Continue with autoinstall?“, napište yes."
+    }
+  },
+  "de": {
+    "DeviceSelectionStep": {
+      "Select your device": "Wählen Sie Ihr Gerät aus"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Die größte Festplatte des NUC wird bei der Installation gelöscht."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Starten Sie den NUC vom Stick. Wenn das Installationsprogramm „Continue with autoinstall?“ fragt, geben Sie yes ein."
+    }
+  },
+  "es": {
+    "DeviceSelectionStep": {
+      "Select your device": "Seleccione su dispositivo"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Se borrará el disco más grande del NUC durante la instalación."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arranque el NUC desde la memoria USB. Cuando el instalador pregunte \"Continue with autoinstall?\", escriba yes."
+    }
+  },
+  "fr": {
+    "DeviceSelectionStep": {
+      "Select your device": "Sélectionner votre appareil"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Le plus grand disque du NUC sera effacé pendant l'installation."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Démarrez le NUC depuis la clé. Quand l'installateur demande « Continue with autoinstall? », tapez yes."
+    }
+  },
+  "ga": {
+    "DeviceSelectionStep": {
+      "Select your device": "Roghnaigh do ghléas"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Scriosfar an diosca is mó ar an NUC le linn na suiteála."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Tosaigh an NUC ón mbata. Nuair a fhiafraíonn an suiteálaí \"Continue with autoinstall?\", clóscríobh yes."
+    }
+  },
+  "he": {
+    "DeviceSelectionStep": {
+      "Select your device": "נא לבחור את ההתקן שלך"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "הדיסק הגדול ביותר ב־NUC יימחק במהלך ההתקנה."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "נא להפעיל את ה־NUC מההתקן הנייד. כשתוכנית ההתקנה שואלת „Continue with autoinstall?”, יש להקליד yes."
+    }
+  },
+  "hu": {
+    "DeviceSelectionStep": {
+      "Select your device": "Válassza ki az eszközét"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "A telepítés során a NUC legnagyobb lemeze törlődik."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Indítsa a NUC-ot a pendrive-ról. Amikor a telepítő megkérdezi: „Continue with autoinstall?”, írja be: yes."
+    }
+  },
+  "it": {
+    "DeviceSelectionStep": {
+      "Select your device": "Seleziona il tuo dispositivo"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Il disco più grande del NUC verrà cancellato durante l'installazione."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Avvia il NUC dalla chiavetta. Quando il programma di installazione chiede \"Continue with autoinstall?\", digita yes."
+    }
+  },
+  "ja": {
+    "DeviceSelectionStep": {
+      "Select your device": "デバイスを選ぶ"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "インストール中に NUC の最大のディスクが消去されます。"
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "スティックから NUC を起動します。インストーラーが「Continue with autoinstall?」と尋ねたら yes と入力します。"
+    }
+  },
+  "ka": {
+    "DeviceSelectionStep": {
+      "Select your device": "აირჩიეთ თქვენი მოწყობილობა"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "ინსტალაციისას NUC-ის ყველაზე დიდი დისკი წაიშლება."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "ჩატვირთეთ NUC ფლეშკიდან. როცა ინსტალერი იკითხავს „Continue with autoinstall?“, აკრიფეთ yes."
+    }
+  },
+  "ko": {
+    "DeviceSelectionStep": {
+      "Select your device": "장치를 선택하세요"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "설치하는 동안 NUC의 가장 큰 디스크가 지워집니다."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "스틱으로 NUC를 부팅하세요. 설치 프로그램이 \"Continue with autoinstall?\"이라고 물으면 yes를 입력하세요."
+    }
+  },
+  "nl": {
+    "DeviceSelectionStep": {
+      "Select your device": "Selecteer je apparaat"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "De grootste schijf van de NUC wordt tijdens de installatie gewist."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Start de NUC op vanaf de stick. Typ yes wanneer het installatieprogramma \"Continue with autoinstall?\" vraagt."
+    }
+  },
+  "pl": {
+    "DeviceSelectionStep": {
+      "Select your device": "Wybierz swoje urządzenie"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Podczas instalacji największy dysk NUC zostanie wymazany."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Uruchom NUC z pendrive’a. Gdy instalator zapyta „Continue with autoinstall?”, wpisz yes."
+    }
+  },
+  "pt": {
+    "DeviceSelectionStep": {
+      "Select your device": "Selecionar o dispositivo"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "O maior disco do NUC será apagado durante a instalação."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arranque o NUC a partir da pen. Quando o instalador perguntar \"Continue with autoinstall?\", escreva yes."
+    }
+  },
+  "pt-BR": {
+    "DeviceSelectionStep": {
+      "Select your device": "Selecionar o dispositivo"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "O maior disco do NUC será apagado durante a instalação."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Inicie o NUC pelo pendrive. Quando o instalador perguntar \"Continue with autoinstall?\", digite yes."
+    }
+  },
+  "ro": {
+    "DeviceSelectionStep": {
+      "Select your device": "Selectează dispozitivul"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Cel mai mare disc al NUC-ului va fi șters în timpul instalării."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Pornește NUC-ul de pe stick. Când programul de instalare întreabă „Continue with autoinstall?”, tastează yes."
+    }
+  },
+  "ru": {
+    "DeviceSelectionStep": {
+      "Select your device": "Выберите ваше устройство"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Во время установки самый большой диск NUC будет стёрт."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Загрузите NUC с флешки. Когда установщик спросит «Continue with autoinstall?», введите yes."
+    }
+  },
+  "sk": {
+    "DeviceSelectionStep": {
+      "Select your device": "Vyberte svoje zariadenie"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Počas inštalácie sa vymaže najväčší disk NUC."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Spustite NUC z kľúča USB. Keď sa inštalátor opýta „Continue with autoinstall?“, napíšte yes."
+    }
+  },
+  "sl": {
+    "DeviceSelectionStep": {
+      "Select your device": "Izberite svojo napravo"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Med namestitvijo bo izbrisan največji disk NUC-a."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Zaženite NUC s ključka. Ko namestitveni program vpraša »Continue with autoinstall?«, vnesite yes."
+    }
+  },
+  "tr": {
+    "DeviceSelectionStep": {
+      "Select your device": "Cihazınızı seçin"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Kurulum sırasında NUC'nin en büyük diski silinecek."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "NUC'yi bellekten başlatın. Yükleyici \"Continue with autoinstall?\" diye sorduğunda yes yazın."
+    }
+  },
+  "uk": {
+    "DeviceSelectionStep": {
+      "Select your device": "Обрати пристрій"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "Під час встановлення найбільший диск NUC буде стерто."
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Завантажте NUC з флешки. Коли інсталятор запитає «Continue with autoinstall?», введіть yes."
+    }
+  },
+  "zh": {
+    "DeviceSelectionStep": {
+      "Select your device": "选择你的设备"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "安装过程中将清除 NUC 上最大的磁盘。"
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "从 U 盘启动 NUC。安装程序询问“Continue with autoinstall?”时，输入 yes。"
+    }
+  },
+  "zh-TW": {
+    "DeviceSelectionStep": {
+      "Select your device": "選擇您的裝置"
+    },
+    "WritingStep": {
+      "The NUC's largest disk will be erased during installation.": "安裝期間將清除 NUC 上最大的磁碟。"
+    },
+    "DoneStep": {
+      "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "從隨身碟啟動 NUC。安裝程式詢問「Continue with autoinstall?」時，請輸入 yes。"
+    }
+  }
+}

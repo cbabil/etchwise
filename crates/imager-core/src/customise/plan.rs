@@ -6,6 +6,7 @@ use std::io::{self, Read, Seek, Write};
 
 use super::cloudinit::{UserDataOptions, cloudinit_user_data};
 use super::cloudinit_extras::cloudinit_network_config;
+use super::seed_plan::{meta_data_file, user_data_file};
 use super::systemd::systemd_script;
 use super::text::Settings;
 use crate::fat::BootPartition;
@@ -38,6 +39,11 @@ pub struct PlanInputs<'a> {
     pub secure_boot_key_path: &'a str,
 }
 
+/// `init_format` of Ubuntu Server images for PCs: the plan's `cloudinit` is
+/// autoinstall `user-data`, written to a new `CIDATA` partition instead of
+/// the boot partition.
+pub const AUTOINSTALL_UBUNTU: &str = "autoinstall-ubuntu";
+
 /// Builds the plan for the selected OS.
 pub fn plan_from_settings(settings: Settings<'_>, inputs: PlanInputs<'_>) -> CustomisationPlan {
     let init_format = inputs.init_format.to_owned();
@@ -47,6 +53,10 @@ pub fn plan_from_settings(settings: Settings<'_>, inputs: PlanInputs<'_>) -> Cus
     };
     match inputs.init_format {
         "" => return plan,
+        AUTOINSTALL_UBUNTU => {
+            plan.cloudinit = super::autoinstall_user_data(settings);
+            return plan;
+        }
         "systemd" => plan.firstrun = systemd_script(settings, inputs.pi_connect_token),
         _ => {
             let options = UserDataOptions {
@@ -93,16 +103,10 @@ pub fn apply_plan<D: Read + Write + Seek>(
     }
     let cloud = plan.init_format == "cloudinit" || plan.init_format == "cloudinit-rpi";
     if cloud && (!plan.cloudinit.is_empty() || !plan.network.is_empty()) {
-        boot.write_file(
-            "meta-data",
-            format!("instance-id: {instance_id}\n").as_bytes(),
-        )?;
+        boot.write_file("meta-data", meta_data_file(instance_id).as_bytes())?;
         cmdline.push_str(&format!(" ds=nocloud;i={instance_id}"));
         if !plan.cloudinit.is_empty() {
-            boot.write_file(
-                "user-data",
-                format!("#cloud-config\n{}", plan.cloudinit).as_bytes(),
-            )?;
+            boot.write_file("user-data", user_data_file(&plan.cloudinit).as_bytes())?;
         }
         if !plan.network.is_empty() {
             boot.write_file("network-config", plan.network.as_bytes())?;

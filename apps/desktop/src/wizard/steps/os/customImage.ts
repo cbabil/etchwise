@@ -55,8 +55,9 @@ export async function applyCustomImage(wizard: SelectionWizard, path: string): P
     call<number | null>('getSelectedSourceSize'),
   ])
   wizard.setSelectedOsName(name ?? '')
-  wizard.update(
-    customization
+  wizard.update({
+    autoinstall: false,
+    ...(customization
       ? { customizationSupported: true }
       : {
           customizationSupported: false,
@@ -68,7 +69,7 @@ export async function applyCustomImage(wizard: SelectionWizard, path: string): P
           piConnectEnabled: false,
           piConnectAvailable: false,
           secureBootAvailable: Boolean(forced),
-        },
-  )
+        }),
+  })
   return size ?? 0
 }

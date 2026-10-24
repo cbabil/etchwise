@@ -5,8 +5,9 @@
 import { Box } from '@mui/material'
 
 import { useTr } from '@/i18n'
-import { sizes, spacing } from '@/theme/tokens'
+import { colors, fontSize, sizes, spacing } from '@/theme/tokens'
 
+import { InfoText } from '../../dialogs/common/dialogParts'
 import { useWizard } from '../../WizardContext'
 import { ChoicesGrid, Heading } from './ChoicesGrid'
 import { CustomisationList } from './CustomisationList'
@@ -32,6 +33,11 @@ export function WriteSummary() {
         <Heading>{tr('Summary')}</Heading>
         <ChoicesGrid context="WritingStep" />
       </Box>
+      {wizard.autoinstall ? (
+        <InfoText color={colors.formLabelError} size={fontSize.sm} center>
+          {tr("The NUC's largest disk will be erased during installation.")}
+        </InfoText>
+      ) : null}
       {anyCustomisations(wizard, false) ? (
         <Box sx={{ ...section, flex: 1 }}>
           <Heading>{tr('Customisations to apply:')}</Heading>

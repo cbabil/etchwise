@@ -99,6 +99,11 @@ pub fn yaml_escape(value: &str) -> String {
     out
 }
 
+/// A YAML double-quoted scalar: `"` + [`yaml_escape`] + `"`.
+pub fn yaml_quoted(value: &str) -> String {
+    format!("\"{}\"", yaml_escape(value))
+}
+
 /// Splits on `\r?\n`, skipping empty parts, then trims each part (so a
 /// whitespace-only line yields an empty key, as upstream).
 pub fn split_keys(raw: &str) -> Vec<String> {

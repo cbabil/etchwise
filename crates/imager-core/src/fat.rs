@@ -44,6 +44,18 @@ impl<D: Read + Write + Seek> BootPartition<D> {
         Ok(Self { cache, extent })
     }
 
+    /// Formats `extent` as a new, empty FAT volume named `label` (padded to
+    /// 11 bytes) and opens it; fatfs picks FAT12/16/32 by size.
+    ///
+    /// # Errors
+    /// Fails when the volume cannot be written.
+    pub fn format_new(device: D, extent: Extent, label: [u8; 11]) -> io::Result<Self> {
+        let mut cache = BlockCache::new(device);
+        let options = fatfs::FormatVolumeOptions::new().volume_label(label);
+        fatfs::format_volume(Window::new(&mut cache, extent), options)?;
+        Ok(Self { cache, extent })
+    }
+
     /// The partition's byte range.
     pub fn extent(&self) -> Extent {
         self.extent

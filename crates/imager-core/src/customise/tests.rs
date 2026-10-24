@@ -2,6 +2,7 @@
 
 use serde_json::{Map, Value};
 
+mod autoinstall_cases;
 mod cloudinit_cases;
 mod cloudinit_cases2;
 mod combined_cases;

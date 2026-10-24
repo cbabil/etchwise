@@ -4,7 +4,7 @@ use fatfs::FatType;
 
 use super::*;
 use crate::pipeline::writer::{WriteOptions, prepare, write_stream};
-use crate::testutil::{MIB, mbr_image};
+use crate::testutil::{MIB, autoinstall_plan, mbr_image, read_text, seed_volume};
 
 fn options(buffer: usize) -> WriteOptions {
     WriteOptions {
@@ -55,4 +55,32 @@ fn network_only_plan_does_not_customise() {
     finalize(&mut dev, written, Some(&plan), "id", &progress).unwrap();
     let mut boot = BootPartition::open(dev).unwrap();
     assert!(!boot.exists("network-config").unwrap());
+}
+
+#[test]
+fn autoinstall_adds_a_seed_partition_and_leaves_the_image() {
+    let image = mbr_image(FatType::Fat16, 16);
+    let mut dev = device(image.len() + 2 * MIB + crate::seed::SEED_SIZE as usize);
+    let progress = Progress::default();
+    prepare(&mut dev, &options(MIB), &Progress::default()).unwrap();
+    let written = write_stream(&mut dev, Cursor::new(&image), &options(MIB), &progress).unwrap();
+    let plan = autoinstall_plan();
+    finalize(&mut dev, written, Some(&plan), "etchwise-1", &progress).unwrap();
+    let bytes = dev.into_inner();
+    assert_eq!(
+        bytes[512..image.len()],
+        image[512..],
+        "image untouched after the MBR"
+    );
+    assert_eq!(
+        bytes[446 + 16 + 4],
+        0x0C,
+        "seed partition added as MBR slot 2"
+    );
+    let fs = seed_volume(&bytes, 2);
+    assert_eq!(
+        read_text(&fs, "user-data"),
+        format!("#cloud-config\n{}", plan.cloudinit)
+    );
+    assert_eq!(read_text(&fs, "meta-data"), "instance-id: etchwise-1\n");
 }

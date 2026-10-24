@@ -23,6 +23,7 @@
       "image_download_size": 2927861760,
       "image_download_sha256": "cc8a95cde20f6ced61a322420de00f10cc3c90ced545daa46cb9c1a117f1d927",
       "release_date": "2026-08-26",
+      "init_format": "autoinstall-ubuntu",
       "devices": ["x86-64"],
       "capabilities": []
     },

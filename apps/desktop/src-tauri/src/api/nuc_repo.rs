@@ -45,7 +45,7 @@ fn lists_the_nuc_as_the_default_device() {
 }
 
 #[test]
-fn shows_the_x86_images_without_customisation() {
+fn shows_the_x86_images_with_setup_for_ubuntu_server_only() {
     let mut state = loaded_state();
     call(&mut state, "getHWList", &[]);
     call(&mut state, "setHWIndex", &[0.into()]);
@@ -69,11 +69,26 @@ fn shows_the_x86_images_without_customisation() {
     );
     for image in &images {
         let name = &image["name"];
-        call(&mut state, "setSrc", std::slice::from_ref(image));
+        // The payload the UI sends (selectImage.ts setSource).
+        let source = serde_json::json!({
+            "url": image["url"],
+            "initFormat": image["init_format"].as_str().unwrap_or_default(),
+            "releaseDate": image["release_date"],
+        });
+        call(&mut state, "setSrc", &[source]);
+        // Only Ubuntu Server has first-boot setup (autoinstall) so far.
+        let setup = name
+            .as_str()
+            .is_some_and(|n| n.starts_with("Ubuntu Server"));
         assert_eq!(
             call(&mut state, "imageSupportsCustomization", &[]),
-            false,
+            setup,
             "{name} customisable"
+        );
+        assert_eq!(
+            call(&mut state, "imageUsesAutoinstall", &[]),
+            setup,
+            "{name} autoinstall"
         );
         let icon = image["icon"].as_str().unwrap_or_default();
         assert!(icon.starts_with("https://"), "{name} icon: {icon}");
