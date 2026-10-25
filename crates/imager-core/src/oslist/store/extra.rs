@@ -28,7 +28,7 @@ pub fn load_extra_repository(store: &mut OsListStore, url: &str) -> io::Result<(
 }
 
 impl OsListStore {
-    /// Adds `extra`'s devices and images. Its devices lose any `default`
+    /// Adds `extra`'s devices, and its images above the main list's. Its devices lose any `default`
     /// flag (the main repository picks the default) and are skipped when a
     /// device of the same name exists. Does nothing unless both lists are
     /// available.
@@ -50,8 +50,13 @@ impl OsListStore {
             .collect();
         devices.splice(at..at, added);
         current["imager"]["devices"] = Value::Array(devices);
-        let mut os_list = into_vec(current["os_list"].take());
-        os_list.extend(extra["os_list"].as_array().into_iter().flatten().cloned());
+        let mut os_list: Vec<Value> = extra["os_list"]
+            .as_array()
+            .into_iter()
+            .flatten()
+            .cloned()
+            .collect();
+        os_list.extend(into_vec(current["os_list"].take()));
         current["os_list"] = Value::Array(os_list);
     }
 }

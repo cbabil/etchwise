@@ -86,8 +86,24 @@ fn device_filters_pick_each_repository_images() {
     let all = main.filtered_document(&HwFilter::default());
     assert_eq!(
         &names(&all["os_list"])[..2],
-        ["Raspberry Pi OS", "Ubuntu Server"]
+        ["Ubuntu Server", "Raspberry Pi OS"]
     );
+}
+
+#[test]
+fn extra_images_come_first_for_a_device_both_lists_serve() {
+    // e.g. Kura (extra repository) above Raspberry Pi OS on a Pi 5
+    let mut main = official();
+    let extra = store(&json!({"imager": {}, "os_list": [
+        {"name": "Kura", "devices": ["pi5-64bit"], "url": "https://k/kura.img.zst"}
+    ]}));
+    main.merge_extra(&extra);
+    let filter = HwFilter {
+        tags: vec!["pi5-64bit".to_owned()],
+        inclusive: false,
+    };
+    let doc = main.filtered_document(&filter);
+    assert_eq!(&names(&doc["os_list"])[..2], ["Kura", "Raspberry Pi OS"]);
 }
 
 #[test]
