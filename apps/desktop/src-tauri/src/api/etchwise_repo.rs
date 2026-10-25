@@ -1,7 +1,7 @@
 //! `repos/etchwise.json` loads as a repository: one Intel NUC device whose
 //! filter shows the x86-64 images (Ubuntu Server with autoinstall setup), and
-//! a Kura folder for the Raspberry Pi 5 whose sublist comes from Kura's
-//! release (here a local copy, so the test needs no network).
+//! a Kura folder for the Raspberry Pi 5 and the NUC whose sublist comes from
+//! Kura's release (here a local copy, so the test needs no network).
 
 use std::path::{Path, PathBuf};
 
@@ -17,20 +17,26 @@ const KURA_LIST: &str = "https://github.com/cbabil/kura/releases/latest/download
 
 /// What Kura's `scripts/release/make-etchwise-list.sh` publishes.
 fn kura_fragment() -> Value {
-    serde_json::json!({"os_list": [{
-        "name": "Kura 0.2.0",
-        "description": "Lightweight home-server OS",
-        "icon": "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=",
-        "url": "https://github.com/cbabil/kura/releases/download/v0.2.0/kura-0.2.0-rpi5-arm64.img.zst",
-        "extract_size": 2_147_483_648_u64,
-        "extract_sha256": "b".repeat(64),
-        "image_download_size": 400_000_000,
-        "image_download_sha256": "a".repeat(64),
-        "release_date": "2026-10-25",
-        "init_format": "kura",
-        "devices": ["pi5-64bit"],
-        "capabilities": []
-    }]})
+    let image = |name: &str, file: &str, device: &str| {
+        serde_json::json!({
+            "name": name,
+            "description": "Lightweight home-server OS",
+            "icon": "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=",
+            "url": format!("https://github.com/cbabil/kura/releases/download/v0.3.0/{file}"),
+            "extract_size": 2_147_483_648_u64,
+            "extract_sha256": "b".repeat(64),
+            "image_download_size": 400_000_000,
+            "image_download_sha256": "a".repeat(64),
+            "release_date": "2026-10-25",
+            "init_format": "kura",
+            "devices": [device],
+            "capabilities": []
+        })
+    };
+    serde_json::json!({"os_list": [
+        image("Kura 0.3.0", "kura-0.3.0-rpi5-arm64.img.zst", "pi5-64bit"),
+        image("Kura 0.3.0 (PC)", "kura-0.3.0-x86_64-amd64.img.zst", "x86-64"),
+    ]})
 }
 
 fn repo_file() -> PathBuf {
@@ -147,11 +153,11 @@ fn shows_the_x86_images_with_setup_for_ubuntu_server_only() {
     }
 }
 
-/// The Kura folder as a Raspberry Pi 5 sees it (the Pi 5 device comes from
-/// the official list this repository is merged onto).
-fn kura_for_pi5(state: &State) -> Value {
+/// The Kura folder as a device with `tag` sees it (the Pi 5 device comes
+/// from the official list this repository is merged onto).
+fn kura_for(state: &State, tag: &str) -> Value {
     let filter = imager_core::oslist::store::HwFilter {
-        tags: vec!["pi5-64bit".into()],
+        tags: vec![tag.into()],
         inclusive: false,
     };
     let doc = state.store.filtered_document(&filter);
@@ -161,42 +167,55 @@ fn kura_for_pi5(state: &State) -> Value {
         .iter()
         .find(|o| o["name"] == "Kura")
         .cloned()
-        .expect("Kura folder for the Pi 5")
+        .unwrap_or_else(|| panic!("Kura folder for {tag}"))
+}
+
+fn image_names(folder: &Value) -> Vec<&str> {
+    folder["subitems"]
+        .as_array()
+        .expect("subitems")
+        .iter()
+        .filter_map(|o| o["name"].as_str())
+        .collect()
 }
 
 #[test]
-fn lists_kura_for_the_pi5_only() {
-    let mut state = loaded_state();
-    let kura = kura_for_pi5(&state);
-    assert_eq!(kura["subitems"][0]["name"], "Kura 0.2.0");
+fn lists_each_device_its_own_kura_image() {
+    let state = loaded_state();
+    let pi5 = kura_for(&state, "pi5-64bit");
+    assert_eq!(image_names(&pi5), ["Kura 0.3.0"]);
     assert!(
-        kura["icon"]
+        pi5["icon"]
             .as_str()
             .unwrap_or_default()
             .starts_with("data:image/svg+xml;base64,")
     );
-    call(&mut state, "getHWList", &[]);
-    call(&mut state, "setHWIndex", &[0.into()]);
-    let nuc = call(&mut state, "getOSList", &[]);
-    let names: Vec<&str> = nuc
-        .as_array()
-        .unwrap()
-        .iter()
-        .filter_map(|o| o["name"].as_str())
-        .collect();
-    assert!(!names.iter().any(|n| n.starts_with("Kura")), "{names:?}");
+    assert_eq!(
+        image_names(&kura_for(&state, "x86-64")),
+        ["Kura 0.3.0 (PC)"]
+    );
 }
 
 #[test]
 fn kura_offers_first_boot_setup_without_autoinstall() {
     let mut state = loaded_state();
-    let image = kura_for_pi5(&state)["subitems"][0].clone();
-    let source = serde_json::json!({
-        "url": image["url"],
-        "initFormat": image["init_format"],
-        "releaseDate": image["release_date"],
-    });
-    call(&mut state, "setSrc", &[source]);
-    assert_eq!(call(&mut state, "imageSupportsCustomization", &[]), true);
-    assert_eq!(call(&mut state, "imageUsesAutoinstall", &[]), false);
+    for tag in ["pi5-64bit", "x86-64"] {
+        let image = kura_for(&state, tag)["subitems"][0].clone();
+        let source = serde_json::json!({
+            "url": image["url"],
+            "initFormat": image["init_format"],
+            "releaseDate": image["release_date"],
+        });
+        call(&mut state, "setSrc", &[source]);
+        assert_eq!(
+            call(&mut state, "imageSupportsCustomization", &[]),
+            true,
+            "{tag}"
+        );
+        assert_eq!(
+            call(&mut state, "imageUsesAutoinstall", &[]),
+            false,
+            "{tag}"
+        );
+    }
 }
