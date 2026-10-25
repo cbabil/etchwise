@@ -44,6 +44,12 @@ pub struct PlanInputs<'a> {
 /// the boot partition.
 pub const AUTOINSTALL_UBUNTU: &str = "autoinstall-ubuntu";
 
+/// `init_format` of Kura images: the plan's `cloudinit` is Kura's setup
+/// file, written to the boot partition as [`KURA_SETUP_FILE`].
+pub const KURA: &str = "kura";
+/// Read, applied and deleted by Kura's first boot.
+pub const KURA_SETUP_FILE: &str = "kura-setup.json";
+
 /// Builds the plan for the selected OS.
 pub fn plan_from_settings(settings: Settings<'_>, inputs: PlanInputs<'_>) -> CustomisationPlan {
     let init_format = inputs.init_format.to_owned();
@@ -55,6 +61,10 @@ pub fn plan_from_settings(settings: Settings<'_>, inputs: PlanInputs<'_>) -> Cus
         "" => return plan,
         AUTOINSTALL_UBUNTU => {
             plan.cloudinit = super::autoinstall_user_data(settings);
+            return plan;
+        }
+        KURA => {
+            plan.cloudinit = super::kura_setup(settings);
             return plan;
         }
         "systemd" => plan.firstrun = systemd_script(settings, inputs.pi_connect_token),
@@ -95,6 +105,9 @@ pub fn apply_plan<D: Read + Write + Seek>(
     if !plan.config.is_empty() {
         let existing = boot.read_file("config.txt")?.unwrap_or_default();
         boot.write_file("config.txt", &merge_config(&existing, &plan.config))?;
+    }
+    if plan.init_format == KURA && !plan.cloudinit.is_empty() {
+        boot.write_file(KURA_SETUP_FILE, plan.cloudinit.as_bytes())?;
     }
     let mut cmdline = plan.cmdline.clone();
     if !plan.firstrun.is_empty() && plan.init_format == "systemd" {

@@ -14,6 +14,13 @@
   },
   "os_list": [
     {
+      "name": "Kura",
+      "description": "Lightweight home-server OS: Debian 13 and Docker, set up on first boot",
+      "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iMTIiIGZpbGw9IiM5MTQ2RkYiLz4KICA8cGF0aCBkPSJNMjIgMTZ2MzJNMjIgMzNsMTctMTdNMjcgMjlsMTQgMTkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==",
+      "subitems_url": "https://github.com/cbabil/kura/releases/latest/download/etchwise.json",
+      "devices": ["pi5-64bit"]
+    },
+    {
       "name": "Ubuntu Server 26.04.1 LTS",
       "description": "Installer for Ubuntu Server, supported until 2031",
       "icon": "https://assets.ubuntu.com/v1/85a9de76-ubuntu-icon.svg",

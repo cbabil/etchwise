@@ -9,6 +9,7 @@ mod combined_cases;
 mod helpers;
 mod independent_cases;
 mod independent_cases2;
+mod kura_cases;
 mod network_cases;
 mod plan_cases;
 mod systemd_cases;

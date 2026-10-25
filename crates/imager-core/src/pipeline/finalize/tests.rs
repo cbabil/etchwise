@@ -84,3 +84,35 @@ fn autoinstall_adds_a_seed_partition_and_leaves_the_image() {
     );
     assert_eq!(read_text(&fs, "meta-data"), "instance-id: etchwise-1\n");
 }
+
+#[test]
+fn kura_setup_lands_on_the_boot_partition_after_verify() {
+    let image = mbr_image(FatType::Fat16, 16);
+    let mut dev = device(image.len() + 2 * MIB);
+    let progress = Progress::default();
+    prepare(&mut dev, &options(MIB), &Progress::default()).unwrap();
+    let written = write_stream(&mut dev, Cursor::new(&image), &options(MIB), &progress).unwrap();
+    verify(&mut dev, &written, &progress).unwrap();
+    let settings = serde_json::json!({"hostname": "kura-01", "sshUserName": "chris"});
+    let plan = crate::customise::plan::plan_from_settings(
+        crate::customise::Settings(settings.as_object().unwrap()),
+        crate::customise::plan::PlanInputs {
+            init_format: crate::customise::plan::KURA,
+            ..Default::default()
+        },
+    );
+    finalize(&mut dev, written, Some(&plan), "", &progress).unwrap();
+    assert_eq!(dev.get_ref()[..512], image[..512], "MBR from the image");
+    dev.seek(SeekFrom::Start(0)).unwrap();
+    let mut boot = BootPartition::open(dev).unwrap();
+    let setup: serde_json::Value =
+        serde_json::from_slice(&boot.read_file("kura-setup.json").unwrap().unwrap()).unwrap();
+    assert_eq!(
+        setup,
+        serde_json::json!({"version": 1, "hostname": "kura-01", "user": {"name": "chris"}})
+    );
+    assert!(
+        boot.read_file("cmdline.txt").unwrap().is_none(),
+        "cmdline untouched"
+    );
+}

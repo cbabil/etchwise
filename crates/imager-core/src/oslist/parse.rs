@@ -9,14 +9,15 @@ use serde_json::Value;
 use super::json::{as_slice, into_vec};
 
 /// `init_format` values the v4 schema allows, plus Etchwise's Ubuntu
-/// autoinstall for PCs.
-pub const VALID_INIT_FORMATS: [&str; 6] = [
+/// autoinstall for PCs and Kura's setup file.
+pub const VALID_INIT_FORMATS: [&str; 7] = [
     "",
     "systemd",
     "cloudinit",
     "cloudinit-rpi",
     "none",
     crate::customise::plan::AUTOINSTALL_UBUNTU,
+    crate::customise::plan::KURA,
 ];
 
 /// Picks `os_list_<locale>` (or, when that key is absent,

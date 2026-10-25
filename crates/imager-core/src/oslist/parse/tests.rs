@@ -41,10 +41,13 @@ fn prunes_invalid_init_formats_and_empty_parents() {
 
 #[test]
 fn keeps_etchwise_autoinstall_entries() {
-    let list = json!([{"name": "Ubuntu Server", "init_format": "autoinstall-ubuntu"}]);
+    let list = json!([
+        {"name": "Ubuntu Server", "init_format": "autoinstall-ubuntu"},
+        {"name": "Kura", "init_format": "kura"}
+    ]);
     assert_eq!(
         prune_invalid_init_formats(list.as_array().unwrap().clone()).len(),
-        1
+        2
     );
 }
 

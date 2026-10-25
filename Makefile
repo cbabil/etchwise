@@ -23,7 +23,7 @@ help:            ## List targets
 install:         ## Install JS dependencies and the git hooks
 	$(BUN) install
 
-# Optional custom OS list for `make dev`, e.g. REPO=repos/intel-nuc.json.
+# Optional custom OS list for `make dev`, e.g. REPO=repos/etchwise.json.
 REPO ?=
 DEV_ARGS := $(if $(REPO),-- -- --repo $(abspath $(REPO)),)
 

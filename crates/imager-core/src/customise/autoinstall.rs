@@ -4,7 +4,7 @@
 //! kernel command line has no `autoinstall` keyword.
 
 use super::cloudinit::Yaml;
-use super::text::{Settings, ssh_keys, yaml_quoted as quoted};
+use super::text::{Settings, is_safe_username, ssh_keys, yaml_quoted as quoted};
 
 /// Where passwordless sudo is granted on the installed system.
 const SUDOERS_FILE: &str = "/target/etc/sudoers.d/90-etchwise";
@@ -107,16 +107,6 @@ fn interface(out: &mut Yaml, pattern: &str) {
     out.push("        match:");
     out.push(format!("          name: {}", quoted(pattern)));
     out.lines(&["        dhcp4: true", "        optional: true"]);
-}
-
-/// The UI's username rule (`[a-z_][a-z0-9_-]*`), checked again because the
-/// name goes into a shell command the installer runs as root.
-fn is_safe_username(user: &str) -> bool {
-    let mut chars = user.chars();
-    chars
-        .next()
-        .is_some_and(|c| c.is_ascii_lowercase() || c == '_')
-        && chars.all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_' || c == '-')
 }
 
 fn passwordless_sudo(out: &mut Yaml, s: Settings<'_>) {

@@ -9,7 +9,8 @@ use serde_json::json;
 use super::map;
 use crate::customise::Settings;
 use crate::customise::plan::{
-    CustomisationPlan, PlanInputs, apply_plan, merge_config, plan_from_settings,
+    CustomisationPlan, KURA, KURA_SETUP_FILE, PlanInputs, apply_plan, merge_config,
+    plan_from_settings,
 };
 use crate::fat::BootPartition;
 use crate::testutil::mbr_image;
@@ -144,4 +145,33 @@ fn seeded(files: &[(&str, &[u8])]) -> Vec<u8> {
         boot.write_file(name, data).unwrap();
     }
     boot.finish().unwrap().into_inner()
+}
+
+#[test]
+fn kura_stages_its_setup_file_and_leaves_cmdline_alone() {
+    let p = plan(
+        json!({"hostname": "kura-01", "recommendedWifiCountry": "FR"}),
+        KURA,
+    );
+    assert!(p.cloudinit.contains("\"hostname\":\"kura-01\""));
+    assert!(p.cmdline.is_empty() && p.firstrun.is_empty() && p.network.is_empty());
+    assert!(!p.needs_seed());
+}
+
+#[test]
+fn applies_kura_plan_to_boot_partition() {
+    let p = plan(json!({"hostname": "kura-01"}), KURA);
+    let image = seeded(&[(
+        "cmdline.txt",
+        b"console=tty1 root=/dev/mmcblk0p2 rootwait\n",
+    )]);
+    let mut boot = BootPartition::open(Cursor::new(image)).unwrap();
+    apply_plan(&mut boot, &p, "unused").unwrap();
+    let setup = boot.read_file(KURA_SETUP_FILE).unwrap().unwrap();
+    assert_eq!(setup, p.cloudinit.as_bytes());
+    assert_eq!(
+        boot.read_file("cmdline.txt").unwrap().unwrap(),
+        b"console=tty1 root=/dev/mmcblk0p2 rootwait\n"
+    );
+    assert!(!boot.exists("user-data").unwrap() && !boot.exists("firstrun.sh").unwrap());
 }
