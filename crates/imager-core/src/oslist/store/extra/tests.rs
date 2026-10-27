@@ -139,3 +139,29 @@ fn appends_when_there_is_no_catch_all_device() {
         ["Intel NUC", "Raspberry Pi 5"]
     );
 }
+
+#[test]
+fn merging_the_same_list_twice_adds_nothing() {
+    let mut main = official();
+    main.merge_extra(&nuc());
+    main.merge_extra(&nuc());
+    assert_eq!(
+        names(&main.imager_metadata()["devices"]),
+        ["Raspberry Pi 5", "Intel NUC", "No filtering"]
+    );
+    assert_eq!(
+        names(&main.filtered_document(&HwFilter::default())["os_list"]),
+        ["Ubuntu Server", "Raspberry Pi OS", "Erase", "Use custom"]
+    );
+}
+
+#[test]
+fn merges_a_list_given_as_text() {
+    let mut main = official();
+    load_extra_document(&mut main, &nuc_doc().to_string()).unwrap();
+    assert_eq!(
+        names(&main.imager_metadata()["devices"]),
+        ["Raspberry Pi 5", "Intel NUC", "No filtering"]
+    );
+    assert!(load_extra_document(&mut main, "not json").is_err());
+}

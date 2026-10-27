@@ -57,7 +57,32 @@ pub fn load_repository(store: &mut OsListStore, top_url: &str) -> io::Result<Loa
         Ok(fetched) => fetched,
         Err(_) => fetch_document(&ipv4_client()?, top_url)?,
     };
-    let result = store.on_fetch_complete(&data, top_url, true);
+    let failed_sublists = load_document(store, &client, &data, top_url)?;
+    Ok(Loaded {
+        final_url,
+        failed_sublists,
+    })
+}
+
+/// Loads an already-fetched top-level list `data` (from `url`) into an
+/// emptied `store`, fetching its sublists.
+///
+/// # Errors
+/// Fails when `data` is not a valid OS list. Returns the sublists that
+/// could not be fetched.
+pub fn load_list_text(store: &mut OsListStore, data: &str, url: &str) -> io::Result<Vec<String>> {
+    store.clear();
+    let client = http::client().map_err(io::Error::other)?;
+    load_document(store, &client, data.as_bytes(), url)
+}
+
+fn load_document(
+    store: &mut OsListStore,
+    client: &Client,
+    data: &[u8],
+    url: &str,
+) -> io::Result<Vec<String>> {
+    let result = store.on_fetch_complete(data, url, true);
     if result.malformed {
         return Err(io::Error::new(
             io::ErrorKind::InvalidData,
@@ -70,7 +95,7 @@ pub fn load_repository(store: &mut OsListStore, top_url: &str) -> io::Result<Loa
         let fetched: Vec<(String, Fetched)> = std::thread::scope(|scope| {
             let handles: Vec<_> = pending
                 .iter()
-                .map(|url| (url.clone(), scope.spawn(|| fetch_document(&client, url))))
+                .map(|url| (url.clone(), scope.spawn(|| fetch_document(client, url))))
                 .collect();
             handles
                 .into_iter()
@@ -93,10 +118,7 @@ pub fn load_repository(store: &mut OsListStore, top_url: &str) -> io::Result<Loa
             }
         }
     }
-    Ok(Loaded {
-        final_url,
-        failed_sublists,
-    })
+    Ok(failed_sublists)
 }
 
 fn ipv4_client() -> io::Result<Client> {

@@ -109,7 +109,7 @@ fn merge_into(current: &mut Value, mut response: Value, url: &str, is_top_level:
 
 mod extra;
 
-pub use self::extra::load_extra_repository;
+pub use self::extra::{load_extra_document, load_extra_repository};
 
 #[cfg(test)]
 mod tests;

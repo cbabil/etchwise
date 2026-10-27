@@ -15,7 +15,7 @@ import { colors } from '@/theme/tokens'
 import { StepBase } from '../StepBase'
 import { useWizard } from '../WizardContext'
 import { DeviceOfflinePlaceholder } from './device/DeviceOfflinePlaceholder'
-import { DeviceTabs, OtherTabHint } from './device/DeviceTabs'
+import { DeviceTabs } from './device/DeviceTabs'
 import { isPiDevice, useDeviceTab } from './device/useDeviceTab'
 import { useHwList } from './device/useHwList'
 import { ListRow, MetaLine } from './os/ListRow'
@@ -71,7 +71,6 @@ export function DeviceSelectionStep() {
       ) : (
         <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
           <DeviceTabs tab={tab} onChange={chooseTab} />
-          {items.length === 0 && tab === 'other' ? <OtherTabHint /> : null}
           <SelectionList
             items={items}
             getKey={(device, row) => `${indexOf(row)}:${device.name}`}

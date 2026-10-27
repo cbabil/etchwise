@@ -8,7 +8,7 @@ use std::io;
 use serde_json::Value;
 
 use super::OsListStore;
-use crate::oslist::fetch::load_repository;
+use crate::oslist::fetch::{load_list_text, load_repository};
 use crate::oslist::json::into_vec;
 
 /// Loads the repository at `url` (with its sublists) and merges it into
@@ -27,11 +27,26 @@ pub fn load_extra_repository(store: &mut OsListStore, url: &str) -> io::Result<(
     Ok(())
 }
 
+/// Like [`load_extra_repository`], for a list shipped as text (its
+/// sublists are still fetched).
+///
+/// # Errors
+/// When the main list is not loaded, or `text` is not a valid OS list.
+pub fn load_extra_document(store: &mut OsListStore, text: &str) -> io::Result<()> {
+    if !store.is_available() {
+        return Err(io::Error::other("the main OS list is not loaded"));
+    }
+    let mut extra = OsListStore::default();
+    load_list_text(&mut extra, text, "built-in")?;
+    store.merge_extra(&extra);
+    Ok(())
+}
+
 impl OsListStore {
     /// Adds `extra`'s devices, and its images above the main list's. Its devices lose any `default`
-    /// flag (the main repository picks the default) and are skipped when a
-    /// device of the same name exists. Does nothing unless both lists are
-    /// available.
+    /// flag (the main repository picks the default); devices and images
+    /// whose name is already listed are skipped. Does nothing unless both
+    /// lists are available.
     pub fn merge_extra(&mut self, extra: &OsListStore) {
         let (Some(current), Some(extra)) = (self.complete.as_mut(), extra.complete.as_ref()) else {
             return;
@@ -50,13 +65,15 @@ impl OsListStore {
             .collect();
         devices.splice(at..at, added);
         current["imager"]["devices"] = Value::Array(devices);
+        let listed = into_vec(current["os_list"].take());
         let mut os_list: Vec<Value> = extra["os_list"]
             .as_array()
             .into_iter()
             .flatten()
+            .filter(|os| !listed.iter().any(|known| known["name"] == os["name"]))
             .cloned()
             .collect();
-        os_list.extend(into_vec(current["os_list"].take()));
+        os_list.extend(listed);
         current["os_list"] = Value::Array(os_list);
     }
 }

@@ -148,13 +148,11 @@ describe('DeviceSelectionStep', () => {
       )
     })
 
-    it('explains how to add devices when Other is empty', async () => {
+    it('no longer points at App Options to add devices', async () => {
       renderStep(<DeviceSelectionStep />)
       await list()
       fireEvent.click(tab('Other'))
-      expect(
-        await screen.findByText('Add devices with App Options > Extra Repository'),
-      ).toBeInTheDocument()
+      expect(screen.queryByText(/Extra Repository/)).not.toBeInTheDocument()
     })
   })
 })

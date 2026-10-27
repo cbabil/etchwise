@@ -4,7 +4,7 @@
 use std::sync::{Arc, Mutex, PoisonError};
 
 use imager_core::oslist::fetch::{Loaded, load_repository};
-use imager_core::oslist::store::{OsListStore, load_extra_repository};
+use imager_core::oslist::store::{OsListStore, load_extra_document, load_extra_repository};
 use serde_json::{Value, json};
 use tauri::{AppHandle, Emitter};
 
@@ -41,29 +41,36 @@ fn fetch_signals(was_available: bool, loaded: Result<(), String>) -> Vec<(&'stat
 /// Setting holding the extra repository URL (empty for none).
 pub const EXTRA_REPO_SETTING: &str = "extraRepo";
 
-/// A freshly loaded OS list: the main repository, plus the extra one when
-/// set. A failing extra list leaves the main one in place.
+/// Etchwise's own list (Intel NUC, Kura, x86 images), shipped with the app
+/// and merged on top of the main repository like an extra one.
+pub const BUILT_IN_LIST: &str = include_str!("../../../../repos/etchwise.json");
+
+/// A freshly loaded OS list: the main repository, Etchwise's own list, and
+/// the user's extra one when set. A failing extra list leaves the rest.
 struct Lists {
     store: OsListStore,
     main: std::io::Result<Loaded>,
     extra_error: String,
 }
 
-fn load_lists(repo: &str, extra: &str) -> Lists {
+fn load_lists(repo: &str, built_in: &str, extra: &str) -> Lists {
     let mut store = OsListStore::default();
     let main = load_repository(&mut store, repo);
-    let extra_error = if main.is_ok() && !extra.is_empty() {
-        load_extra_repository(&mut store, extra)
-            .err()
-            .map(|e| e.to_string())
-            .unwrap_or_default()
-    } else {
-        String::new()
-    };
+    let mut errors = Vec::new();
+    if main.is_ok() {
+        if let Err(e) = load_extra_document(&mut store, built_in) {
+            errors.push(e.to_string());
+        }
+        if !extra.is_empty()
+            && let Err(e) = load_extra_repository(&mut store, extra)
+        {
+            errors.push(e.to_string());
+        }
+    }
     Lists {
         store,
         main,
-        extra_error,
+        extra_error: errors.join("; "),
     }
 }
 
@@ -79,7 +86,7 @@ pub fn begin_os_list_fetch(shared: &Shared, app: &AppHandle) {
         )
     };
     std::thread::spawn(move || {
-        let lists = load_lists(&repo, &extra);
+        let lists = load_lists(&repo, BUILT_IN_LIST, &extra);
         let mut state = lock(&shared);
         let was_available = state.store.is_available();
         state.store = lists.store;
@@ -129,39 +136,60 @@ mod tests {
             .unwrap_or_default()
     }
 
-    #[test]
-    fn loads_the_extra_list_on_top_of_the_main_one() {
-        let dir = tempfile::tempdir().unwrap();
-        let main = write_list(
-            dir.path(),
+    /// A built-in list with no sublists, so the tests stay offline.
+    const BUILT_IN: &str =
+        r#"{"imager": {"devices": [{"name": "Intel NUC", "tags": ["x86-64"]}]}, "os_list": []}"#;
+
+    fn main_list(dir: &std::path::Path) -> String {
+        write_list(
+            dir,
             "main.json",
             &json!({
                 "imager": {"devices": [{"name": "Raspberry Pi 5", "tags": ["pi5"]}]}, "os_list": []
             }),
-        );
-        let extra = write_list(
-            dir.path(),
-            "nuc.json",
-            &json!({
-                "imager": {"devices": [{"name": "Intel NUC", "tags": ["x86-64"]}]}, "os_list": []
-            }),
-        );
-        let lists = load_lists(&main, &extra);
+        )
+    }
+
+    #[test]
+    fn always_lists_etchwise_s_own_devices() {
+        let dir = tempfile::tempdir().unwrap();
+        let lists = load_lists(&main_list(dir.path()), BUILT_IN, "");
         assert!(lists.main.is_ok());
         assert_eq!(lists.extra_error, "");
         assert_eq!(device_names(&lists.store), ["Raspberry Pi 5", "Intel NUC"]);
+    }
+
+    #[test]
+    fn loads_the_extra_list_on_top_of_the_built_in_one() {
+        let dir = tempfile::tempdir().unwrap();
+        let main = main_list(dir.path());
+        let extra = write_list(
+            dir.path(),
+            "board.json",
+            &json!({
+                "imager": {"devices": [{"name": "Rock 5", "tags": ["rk3588"]}]}, "os_list": []
+            }),
+        );
+        let lists = load_lists(&main, BUILT_IN, &extra);
+        assert_eq!(lists.extra_error, "");
+        assert_eq!(
+            device_names(&lists.store),
+            ["Raspberry Pi 5", "Intel NUC", "Rock 5"]
+        );
 
         let missing = format!("file://{}/gone.json", dir.path().display());
-        let lists = load_lists(&main, &missing);
+        let lists = load_lists(&main, BUILT_IN, &missing);
         assert!(lists.main.is_ok());
         assert!(!lists.extra_error.is_empty());
-        assert_eq!(device_names(&lists.store), ["Raspberry Pi 5"]);
+        assert_eq!(device_names(&lists.store), ["Raspberry Pi 5", "Intel NUC"]);
+    }
 
-        let lists = load_lists(&main, "");
-        assert_eq!(
-            (lists.extra_error.as_str(), device_names(&lists.store).len()),
-            ("", 1)
-        );
+    #[test]
+    fn the_shipped_list_names_the_nuc() {
+        let mut store = OsListStore::default();
+        let result = store.on_fetch_complete(BUILT_IN_LIST.as_bytes(), "built-in", true);
+        assert!(!result.malformed);
+        assert_eq!(device_names(&store), ["Intel NUC"]);
     }
 
     #[test]
