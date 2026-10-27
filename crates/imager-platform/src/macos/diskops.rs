@@ -1,6 +1,6 @@
 //! Unmounting and ejecting whole disks through DiskArbitration (upstream
 //! `PlatformQuirks::unmountDisk` / `ejectDisk`): forced whole-disk unmount,
-//! run loop pumped in 0.05 s steps for up to 60 s.
+//! run loop pumped in 0.05 s steps for up to 60 s, a busy unmount retried.
 
 use std::ffi::c_void;
 
@@ -25,9 +25,31 @@ const DA_NOT_PRIVILEGED: DAReturn = 0xF8DA_0009_u32 as i32;
 /// Steps of 0.05 s: 12 × 100 × 0.05 s = 60 s.
 const MAX_STEPS: u32 = 1200;
 
-/// Unmounts every volume of the disk behind `device` (`/dev/[r]diskN`).
+/// Attempts at an unmount another app is holding up (Spotlight indexing a
+/// freshly inserted drive, a Finder window), one second apart.
+const ATTEMPTS: usize = 3;
+
+/// Unmounts every volume of the disk behind `device` (`/dev/[r]diskN`),
+/// retrying while the drive is busy.
 pub fn unmount_disk(device: &str) -> DiskResult {
-    run(device, unmount_done)
+    retried(
+        || run(device, unmount_done),
+        || std::thread::sleep(std::time::Duration::from_secs(1)),
+    )
+}
+
+/// `attempt` until it gives a final answer (success, missing drive, access
+/// denied) or ATTEMPTS run out, with `pause` between attempts.
+fn retried(mut attempt: impl FnMut() -> DiskResult, mut pause: impl FnMut()) -> DiskResult {
+    let mut result = attempt();
+    for _ in 1..ATTEMPTS {
+        if !matches!(result, DiskResult::Busy | DiskResult::Error) {
+            break;
+        }
+        pause();
+        result = attempt();
+    }
+    result
 }
 
 /// Unmounts, then ejects.
@@ -57,16 +79,17 @@ fn run(device: &str, callback: DADiskCallback) -> DiskResult {
     // SAFETY: session, disk and context outlive the run loop pumping below;
     // the callback only runs on this thread inside CFRunLoopRunInMode.
     unsafe {
+        // Scheduled before the request, as DiskArbitration requires.
+        DASessionScheduleWithRunLoop(
+            session.raw(),
+            run_loop.as_concrete_TypeRef(),
+            kCFRunLoopDefaultMode,
+        );
         DADiskUnmount(
             disk.as_raw(),
             kDADiskUnmountOptionWhole | kDADiskUnmountOptionForce,
             Some(callback),
             (&raw mut context).cast(),
-        );
-        DASessionScheduleWithRunLoop(
-            session.raw(),
-            run_loop.as_concrete_TypeRef(),
-            kCFRunLoopDefaultMode,
         );
         for _ in 0..MAX_STEPS {
             if context.is_some() {
@@ -131,6 +154,39 @@ mod tests {
         assert_eq!(bsd_name("/dev/disk4"), "disk4");
         assert_eq!(bsd_name("disk12"), "disk12");
         assert_eq!(translate(std::ptr::null()), DiskResult::Success);
+    }
+
+    #[test]
+    fn retries_a_busy_disk_then_gives_its_last_answer() {
+        let mut answers = vec![DiskResult::Success, DiskResult::Busy, DiskResult::Busy];
+        let mut pauses = 0;
+        let result = retried(|| answers.pop().unwrap(), || pauses += 1);
+        assert_eq!((result, pauses), (DiskResult::Success, 2));
+
+        let mut calls = 0;
+        let result = retried(
+            || {
+                calls += 1;
+                DiskResult::Busy
+            },
+            || {},
+        );
+        assert_eq!((result, calls), (DiskResult::Busy, ATTEMPTS));
+    }
+
+    #[test]
+    fn does_not_retry_a_final_answer() {
+        for answer in [DiskResult::InvalidDrive, DiskResult::AccessDenied] {
+            let mut calls = 0;
+            let result = retried(
+                || {
+                    calls += 1;
+                    answer
+                },
+                || {},
+            );
+            assert_eq!((result, calls), (answer, 1));
+        }
     }
 
     #[test]

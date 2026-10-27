@@ -34,9 +34,11 @@ fn open_target(
         return Ok(RawDevice::new(file));
     }
     progress.set_status("Unmounting drive...");
-    if diskops::unmount_disk(device) != DiskResult::Success {
+    let unmounted = diskops::unmount_disk(device);
+    if unmounted != DiskResult::Success {
         return Err(format!(
-            "Failed to unmount disk '{device}'. Please close any applications using the disk and try again."
+            "Failed to unmount disk '{device}' ({}). Please close any applications using the disk and try again.",
+            unmounted.reason()
         ));
     }
     progress.set_status("Opening drive...");
