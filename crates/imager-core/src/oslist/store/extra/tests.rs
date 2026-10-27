@@ -165,3 +165,29 @@ fn merges_a_list_given_as_text() {
     );
     assert!(load_extra_document(&mut main, "not json").is_err());
 }
+
+#[test]
+fn lists_a_loaded_folder_s_images_by_their_own_names() {
+    let mut main = official();
+    main.merge_extra(&store(&json!({
+        "imager": {"devices": []},
+        "os_list": [
+            {"name": "Kura", "subitems_url": "https://k/list.json", "subitems": [
+                {"name": "Kura 0.3.0", "devices": ["pi5-64bit"], "url": "https://k/pi.img.zst"},
+                {"name": "Kura 0.3.0 (PC)", "devices": ["x86-64"], "url": "https://k/pc.img.zst"}
+            ]},
+            {"name": "Offline folder", "subitems_url": "https://gone/list.json"}
+        ]
+    })));
+    assert_eq!(
+        names(&main.filtered_document(&HwFilter::default())["os_list"]),
+        [
+            "Kura 0.3.0",
+            "Kura 0.3.0 (PC)",
+            "Offline folder",
+            "Raspberry Pi OS",
+            "Erase",
+            "Use custom"
+        ]
+    );
+}

@@ -43,7 +43,7 @@ pub fn load_extra_document(store: &mut OsListStore, text: &str) -> io::Result<()
 }
 
 impl OsListStore {
-    /// Adds `extra`'s devices, and its images above the main list's. Its devices lose any `default`
+    /// Adds `extra`'s devices, and its images (folders unfolded) above the main list's. Its devices lose any `default`
     /// flag (the main repository picks the default); devices and images
     /// whose name is already listed are skipped. Does nothing unless both
     /// lists are available.
@@ -70,11 +70,20 @@ impl OsListStore {
             .as_array()
             .into_iter()
             .flatten()
+            .flat_map(unfolded)
             .filter(|os| !listed.iter().any(|known| known["name"] == os["name"]))
-            .cloned()
             .collect();
         os_list.extend(listed);
         current["os_list"] = Value::Array(os_list);
+    }
+}
+
+/// A loaded folder's images in its place, so each shows its own name and
+/// version ("Kura 0.3.0", not "Kura"); a folder whose sublist failed stays.
+fn unfolded(os: &Value) -> Vec<Value> {
+    match os["subitems"].as_array() {
+        Some(items) => items.iter().flat_map(unfolded).collect(),
+        None => vec![os.clone()],
     }
 }
 
