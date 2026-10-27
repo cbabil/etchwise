@@ -22,7 +22,7 @@ fn kura_fragment() -> Value {
             "name": name,
             "description": "Lightweight home-server OS",
             "icon": "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=",
-            "url": format!("https://github.com/cbabil/kura/releases/download/v0.3.0/{file}"),
+            "url": format!("https://github.com/cbabil/kura/releases/download/v0.4.0/{file}"),
             "extract_size": 2_147_483_648_u64,
             "extract_sha256": "b".repeat(64),
             "image_download_size": 400_000_000,
@@ -34,8 +34,9 @@ fn kura_fragment() -> Value {
         })
     };
     serde_json::json!({"os_list": [
-        image("Kura 0.3.0", "kura-0.3.0-rpi5-arm64.img.zst", "pi5-64bit"),
-        image("Kura 0.3.0 (PC)", "kura-0.3.0-x86_64-amd64.img.zst", "x86-64"),
+        image("Kura 0.4.0", "kura-0.4.0-rpi5-arm64.img.zst", "pi5-64bit"),
+        image("Kura 0.4.0 installer (PC)", "kura-0.4.0-x86_64-installer.img.zst", "x86-64"),
+        image("Kura 0.4.0 (PC)", "kura-0.4.0-x86_64-amd64.img.zst", "x86-64"),
     ]})
 }
 
@@ -183,24 +184,25 @@ fn image_names(folder: &Value) -> Vec<&str> {
 fn lists_each_device_its_own_kura_image() {
     let state = loaded_state();
     let pi5 = kura_for(&state, "pi5-64bit");
-    assert_eq!(image_names(&pi5), ["Kura 0.3.0"]);
+    assert_eq!(image_names(&pi5), ["Kura 0.4.0"]);
     assert!(
         pi5["icon"]
             .as_str()
             .unwrap_or_default()
             .starts_with("data:image/svg+xml;base64,")
     );
+    // The installer (ADR-017 in Kura) first: it puts Kura on the internal drive
     assert_eq!(
         image_names(&kura_for(&state, "x86-64")),
-        ["Kura 0.3.0 (PC)"]
+        ["Kura 0.4.0 installer (PC)", "Kura 0.4.0 (PC)"]
     );
 }
 
 #[test]
 fn kura_offers_first_boot_setup_without_autoinstall() {
     let mut state = loaded_state();
-    for tag in ["pi5-64bit", "x86-64"] {
-        let image = kura_for(&state, tag)["subitems"][0].clone();
+    for (tag, index) in [("pi5-64bit", 0), ("x86-64", 0), ("x86-64", 1)] {
+        let image = kura_for(&state, tag)["subitems"][index].clone();
         let source = serde_json::json!({
             "url": image["url"],
             "initFormat": image["init_format"],
