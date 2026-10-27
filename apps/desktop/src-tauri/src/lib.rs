@@ -145,4 +145,18 @@ mod tests {
         );
         assert!(api::dispatch(&mut state, "noSuchMethod", &[]).is_err());
     }
+
+    #[test]
+    fn the_window_may_do_what_the_ui_asks() {
+        let capability: Value =
+            serde_json::from_str(include_str!("../capabilities/default.json")).unwrap();
+        let granted = capability["permissions"].as_array().unwrap();
+        // Finish on the Done step closes the window (`getCurrentWindow().close()`)
+        for needed in ["core:window:allow-close", "dialog:allow-open"] {
+            assert!(
+                granted.contains(&Value::from(needed)),
+                "{needed} not granted"
+            );
+        }
+    }
 }
