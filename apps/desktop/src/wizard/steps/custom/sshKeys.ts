@@ -16,7 +16,7 @@ const OPENSSH_KEY = /^(?:ssh-|ecdsa-|sk-)[\w@.-]+ \S/
 export function splitKeys(text: string): string[] {
   const keys: string[] = []
   let block: string[] | null = null
-  for (const line of text.split(/\r?\n/).map((l) => l.trim())) {
+  for (const line of text.split(/\r?\n/).flatMap((l) => unflattened(l.trim()))) {
     if (block === null) {
       if (BEGIN_RFC4716.test(line)) block = []
       else if (line) keys.push(line)
@@ -33,6 +33,37 @@ export function splitKeys(text: string): string[] {
     }
   }
   return keys
+}
+
+const ONE_LINE_RFC4716 =
+  /^(.*?)---- BEGIN SSH2 PUBLIC KEY ----(.*?)---- END SSH2 PUBLIC KEY ----(.*)$/
+
+/**
+ * A block pasted into a one-line field arrives with its line breaks turned
+ * into spaces; give it back its lines (a quoted header value keeps its
+ * spaces). Any other line is returned as is.
+ */
+function unflattened(line: string): string[] {
+  const match = ONE_LINE_RFC4716.exec(line)
+  if (!match) return [line]
+  const [, before = '', inner = '', after = ''] = match
+  const tokens = inner.trim().split(/\s+/).filter(Boolean)
+  const lines: string[] = []
+  while (/^[\w-]+:$/.test(tokens[0] ?? '') && tokens.length > 1) {
+    const header = tokens.shift() ?? ''
+    const value = [tokens.shift() ?? '']
+    while (value[0]?.startsWith('"') && !value.at(-1)?.endsWith('"') && tokens.length > 0)
+      value.push(tokens.shift() ?? '')
+    lines.push(`${header} ${value.join(' ')}`)
+  }
+  return [
+    ...unflattened(before.trim()),
+    '---- BEGIN SSH2 PUBLIC KEY ----',
+    ...lines,
+    ...tokens,
+    '---- END SSH2 PUBLIC KEY ----',
+    ...unflattened(after.trim()),
+  ]
 }
 
 /**
@@ -86,11 +117,13 @@ export function dedupeKeys(keys: readonly string[]): string[] {
   return [...new Set(keys)]
 }
 
-/** Upstream `addKey`: appends the trimmed key unless empty or already present. */
-export function addKey(keys: readonly string[], key: string): readonly string[] {
-  const trimmed = key.trim()
-  if (trimmed.length === 0 || keys.includes(trimmed)) return keys
-  return [...keys, trimmed]
+/**
+ * Upstream `addKey`: appends the pasted key unless empty or already present;
+ * a pasted PuTTY block becomes its OpenSSH line, as from a file.
+ */
+export function addKey(keys: readonly string[], text: string): readonly string[] {
+  const added = splitKeys(text).filter((key) => !keys.includes(key))
+  return added.length === 0 ? keys : dedupeKeys([...keys, ...added])
 }
 
 interface KeyParts {

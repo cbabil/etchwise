@@ -61,6 +61,24 @@ describe('PuTTY / RFC 4716 key files', () => {
     ])
   })
 
+  it('reads a block pasted into one line (the Add field turns line breaks into spaces)', () => {
+    const pasted = [
+      '---- BEGIN SSH2 PUBLIC KEY ----',
+      'Comment: "rsa-key-20220329"',
+      RSA.slice(0, 64),
+      RSA.slice(64),
+      '---- END SSH2 PUBLIC KEY ----',
+    ].join(' ')
+    expect(splitKeys(pasted)).toEqual([`ssh-rsa ${RSA} rsa-key-20220329`])
+    expect(addKey([], pasted)).toEqual([`ssh-rsa ${RSA} rsa-key-20220329`])
+    expect(savedKeys({ sshAuthorizedKeys: pasted })).toEqual([`ssh-rsa ${RSA} rsa-key-20220329`])
+    expect(
+      splitKeys(
+        `---- BEGIN SSH2 PUBLIC KEY ---- Comment: me ${ED25519} ---- END SSH2 PUBLIC KEY ----`,
+      ),
+    ).toEqual([`ssh-ed25519 ${ED25519} me`])
+  })
+
   it('drops a block that never ends or holds no readable key, keeping the keys after it', () => {
     expect(splitKeys(['---- BEGIN SSH2 PUBLIC KEY ----', ED25519].join('\n'))).toEqual([])
     expect(
