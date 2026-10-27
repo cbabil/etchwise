@@ -12,6 +12,8 @@ import {
   useState,
 } from 'react'
 
+import { DeviceWordingProvider } from '@/i18n'
+
 import { lastCustomizationStep } from './navigation'
 import { initialState, type WizardState } from './state'
 import { TOTAL_STEPS } from './stepIds'
@@ -56,7 +58,13 @@ export function WizardProvider({ children, showLanguageSelection, initial }: Wiz
     }),
     [state, actions, ready],
   )
-  return <WizardContext.Provider value={value}>{children}</WizardContext.Provider>
+  return (
+    <WizardContext.Provider value={value}>
+      <DeviceWordingProvider device={state.selectedDeviceIsPi ? '' : state.selectedDeviceName}>
+        {children}
+      </DeviceWordingProvider>
+    </WizardContext.Provider>
+  )
 }
 
 /** The wizard state and navigation API; must be used inside `<WizardProvider>`. */

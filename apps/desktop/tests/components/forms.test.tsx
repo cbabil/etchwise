@@ -52,6 +52,33 @@ describe('ImTextField', () => {
     render(<ImTextField label="Hostname" defaultValue="pi" />)
     expect(screen.getByRole('textbox', { name: 'Hostname' })).toHaveValue('pi')
   })
+
+  it('drops control characters from what is typed or pasted (upstream 2.0.11)', () => {
+    const seen: string[] = []
+    render(<ImTextField label="Repository" onChange={(e) => seen.push(e.target.value)} />)
+    fireEvent.change(screen.getByRole('textbox', { name: 'Repository' }), {
+      target: { value: 'https://x/\tlist\u0001.json\u007f' },
+    })
+    expect(seen).toEqual(['https://x/list.json'])
+  })
+
+  it('keeps the caret where the paste ended, not at the end', () => {
+    render(<ImTextField label="Host" onChange={() => undefined} />)
+    const input = screen.getByRole('textbox', { name: 'Host' }) as HTMLInputElement
+    // Pasted "ab<tab>cd" before "ef": the caret sits after "cd"
+    fireEvent.change(input, { target: { value: 'ab\tcdef', selectionStart: 5, selectionEnd: 5 } })
+    expect(input.value).toBe('abcdef')
+    expect(input.selectionStart).toBe(4)
+  })
+})
+
+describe('ImPasswordField control characters', () => {
+  it('drops them too, keeping spaces (they can be part of a password)', () => {
+    const onChange = vi.fn()
+    render(<ImPasswordField label="Password" value="" onChange={onChange} />)
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: ' pa\tss\u0000 ' } })
+    expect(onChange).toHaveBeenCalledWith(' pass ')
+  })
 })
 
 describe('ImPasswordField', () => {

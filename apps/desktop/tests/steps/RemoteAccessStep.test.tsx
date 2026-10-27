@@ -41,6 +41,16 @@ describe('RemoteAccessStep', () => {
     expect(nextButton()).toBeEnabled()
   })
 
+  it('names a non-Pi device and drops the Raspberry Pi help link', async () => {
+    backend()
+    await renderStep(RemoteAccessStep, {
+      selectedDeviceName: 'Intel NUC',
+      selectedDeviceIsPi: false,
+    })
+    expect(screen.getByRole('switch', { name: /control of your Intel NUC$/ })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Learn about SSH' })).toBeNull()
+  })
+
   it('hides the help link in embedded mode', async () => {
     backend(true)
     await renderStep(RemoteAccessStep)

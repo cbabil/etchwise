@@ -63,6 +63,8 @@ export interface WizardState extends WizardFlags {
   hasNetworkConnectivity: boolean
   showLanguageSelection: boolean
   selectedDeviceName: string
+  /** False for devices from an extra repository (e.g. an Intel NUC). */
+  selectedDeviceIsPi: boolean
   selectedOsName: string
   selectedStorageName: string
   previousDeviceName: string
@@ -128,6 +130,7 @@ export const initialState: WizardState = {
   hasNetworkConnectivity: true,
   showLanguageSelection: false,
   selectedDeviceName: '',
+  selectedDeviceIsPi: true,
   selectedOsName: '',
   selectedStorageName: '',
   previousDeviceName: '',

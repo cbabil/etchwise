@@ -18,7 +18,8 @@ export interface WizardActions {
   jumpTo: (step: number) => void
   skipCustomisation: (extra?: Partial<WizardFlags>) => void
   update: (patch: Partial<WizardFlags>) => void
-  setSelectedDeviceName: (name: string) => void
+  /** `isPi` false for devices from an extra repository. */
+  setSelectedDeviceName: (name: string, isPi: boolean) => void
   setSelectedOsName: (name: string) => void
   setSelectedStorageName: (name: string) => void
   setCustomizationSettings: (settings: CustomizationSettings) => void
@@ -84,7 +85,8 @@ export function useWizardActions(ref: RefObject<WizardState>, commit: Commit): W
       skipCustomisation: (extra?: Partial<WizardFlags>) =>
         commit((s) => skipCustomisation(s, extra)),
       update: (patch: Partial<WizardFlags>) => commit((s) => ({ ...s, ...patch })),
-      setSelectedDeviceName: (name: string) => commit((s) => selectDevice(s, name)),
+      setSelectedDeviceName: (name: string, isPi: boolean) =>
+        commit((s) => selectDevice(s, name, isPi)),
       setSelectedOsName: (name: string) => commit((s) => selectOs(s, name)),
       setSelectedStorageName: (name: string) =>
         commit((s) => ({ ...s, selectedStorageName: name })),

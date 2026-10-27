@@ -60,8 +60,8 @@ function Header({ title, subtitle }: { title: string; subtitle: string | undefin
   )
 }
 
-/** Qt Layout min / max width: grows to fit its label up to 1.5x, shrinks to min when tight. */
-const capped = (min: number) => ({ minWidth: min, maxWidth: min * 1.5, flex: '0 1 auto' })
+/** Upstream 2.0.12 (05b61bb8): label width, at least `min`, shrinks only when the row is tight. */
+const footerButton = (min: number) => ({ minWidth: min, flex: '0 1 auto' })
 
 function StandardButtons(props: StepBaseProps) {
   const tr = useTr('WizardStepBase')
@@ -76,7 +76,7 @@ function StandardButtons(props: StepBaseProps) {
           {...(props.skipAccessibleDescription
             ? { accessibleDescription: props.skipAccessibleDescription }
             : {})}
-          sx={capped(sizes.buttonSkipWidth)}
+          sx={footerButton(sizes.buttonSkipWidth)}
         >
           {props.skipLabel ?? tr('Skip customisation')}
         </ImButton>
@@ -89,7 +89,7 @@ function StandardButtons(props: StepBaseProps) {
           {...(props.backAccessibleDescription
             ? { accessibleDescription: props.backAccessibleDescription }
             : {})}
-          sx={capped(sizes.buttonMinWidth)}
+          sx={footerButton(sizes.buttonMinWidth)}
         >
           {props.backLabel ?? common('Back')}
         </ImButton>
@@ -101,7 +101,7 @@ function StandardButtons(props: StepBaseProps) {
           {...(props.nextAccessibleDescription
             ? { accessibleDescription: props.nextAccessibleDescription }
             : {})}
-          sx={capped(sizes.buttonMinWidth)}
+          sx={footerButton(sizes.buttonMinWidth)}
         >
           {props.nextLabel ?? tr('Next')}
         </ImButtonRed>

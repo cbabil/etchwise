@@ -16,7 +16,7 @@ import { StepBase } from '../StepBase'
 import { useWizard } from '../WizardContext'
 import { DeviceOfflinePlaceholder } from './device/DeviceOfflinePlaceholder'
 import { DeviceTabs, OtherTabHint } from './device/DeviceTabs'
-import { useDeviceTab } from './device/useDeviceTab'
+import { isPiDevice, useDeviceTab } from './device/useDeviceTab'
 import { useHwList } from './device/useHwList'
 import { ListRow, MetaLine } from './os/ListRow'
 import type { HwDevice } from './os/types'
@@ -57,7 +57,7 @@ export function DeviceSelectionStep() {
   const choose = (index: number, device: HwDevice) => {
     setCurrent(index)
     void call('setHWIndex', index)
-    wizard.setSelectedDeviceName(device.name)
+    wizard.setSelectedDeviceName(device.name, isPiDevice(device))
   }
   return (
     <StepBase

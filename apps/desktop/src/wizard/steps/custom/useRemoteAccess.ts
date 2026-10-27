@@ -73,5 +73,13 @@ export function useRemoteAccess() {
       setBusy(false)
     }
   }
-  return { fields, set, embedded, submit, nextEnabled: !busy && remoteNextEnabled(fields) }
+  return {
+    fields,
+    set,
+    embedded,
+    /** Raspberry Pi's SSH help only fits a Raspberry Pi. */
+    deviceIsPi: wizard.selectedDeviceIsPi,
+    submit,
+    nextEnabled: !busy && remoteNextEnabled(fields),
+  }
 }

@@ -46,7 +46,7 @@ describe('TokenConflictDialog', () => {
 describe('RepositoryUrlDialog', () => {
   it('delays switching to a remote repository and ignores a second URL', async () => {
     const { wizard } = await setup()
-    act(() => wizard().setSelectedDeviceName('Raspberry Pi 5'))
+    act(() => wizard().setSelectedDeviceName('Raspberry Pi 5', true))
     emit('repositoryUrlReceived', 'https://example.com/repo.json')
     emit('repositoryUrlReceived', 'https://evil.example/other.json')
     const dialog = screen.getByRole('dialog', { name: 'Switch to a custom repository?' })

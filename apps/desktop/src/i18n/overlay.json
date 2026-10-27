@@ -8,6 +8,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "স্টিক থেকে NUC চালু করুন। ইনস্টলার \"Continue with autoinstall?\" জিজ্ঞাসা করলে yes লিখুন।"
+    },
+    "ImComboBox": {
+      "Type to search": "খুঁজতে টাইপ করুন"
     }
   },
   "ca": {
@@ -19,6 +22,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arrenqueu el NUC des del llapis. Quan l'instal·lador pregunti \"Continue with autoinstall?\", escriviu yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Escriviu per cercar"
     }
   },
   "cs": {
@@ -30,6 +36,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Spusťte NUC z flash disku. Až se instalátor zeptá „Continue with autoinstall?“, napište yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Zadejte pro vyhledávání"
     }
   },
   "de": {
@@ -41,6 +50,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Starten Sie den NUC vom Stick. Wenn das Installationsprogramm „Continue with autoinstall?“ fragt, geben Sie yes ein."
+    },
+    "ImComboBox": {
+      "Type to search": "Zum Suchen eingeben"
     }
   },
   "es": {
@@ -52,6 +64,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arranque el NUC desde la memoria USB. Cuando el instalador pregunte \"Continue with autoinstall?\", escriba yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Escriba para buscar"
     }
   },
   "fr": {
@@ -63,6 +78,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Démarrez le NUC depuis la clé. Quand l'installateur demande « Continue with autoinstall? », tapez yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Tapez pour rechercher"
     }
   },
   "ga": {
@@ -74,6 +92,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Tosaigh an NUC ón mbata. Nuair a fhiafraíonn an suiteálaí \"Continue with autoinstall?\", clóscríobh yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Clóscríobh chun cuardach a dhéanamh"
     }
   },
   "he": {
@@ -85,6 +106,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "נא להפעיל את ה־NUC מההתקן הנייד. כשתוכנית ההתקנה שואלת „Continue with autoinstall?”, יש להקליד yes."
+    },
+    "ImComboBox": {
+      "Type to search": "הקלידו לחיפוש"
     }
   },
   "hu": {
@@ -96,6 +120,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Indítsa a NUC-ot a pendrive-ról. Amikor a telepítő megkérdezi: „Continue with autoinstall?”, írja be: yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Írjon a kereséshez"
     }
   },
   "it": {
@@ -107,6 +134,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Avvia il NUC dalla chiavetta. Quando il programma di installazione chiede \"Continue with autoinstall?\", digita yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Digita per cercare"
     }
   },
   "ja": {
@@ -118,6 +148,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "スティックから NUC を起動します。インストーラーが「Continue with autoinstall?」と尋ねたら yes と入力します。"
+    },
+    "ImComboBox": {
+      "Type to search": "入力して検索"
     }
   },
   "ka": {
@@ -129,6 +162,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "ჩატვირთეთ NUC ფლეშკიდან. როცა ინსტალერი იკითხავს „Continue with autoinstall?“, აკრიფეთ yes."
+    },
+    "ImComboBox": {
+      "Type to search": "აკრიფეთ საძიებლად"
     }
   },
   "ko": {
@@ -140,6 +176,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "스틱으로 NUC를 부팅하세요. 설치 프로그램이 \"Continue with autoinstall?\"이라고 물으면 yes를 입력하세요."
+    },
+    "ImComboBox": {
+      "Type to search": "검색하려면 입력하세요"
     }
   },
   "nl": {
@@ -151,6 +190,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Start de NUC op vanaf de stick. Typ yes wanneer het installatieprogramma \"Continue with autoinstall?\" vraagt."
+    },
+    "ImComboBox": {
+      "Type to search": "Typ om te zoeken"
     }
   },
   "pl": {
@@ -162,6 +204,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Uruchom NUC z pendrive’a. Gdy instalator zapyta „Continue with autoinstall?”, wpisz yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Wpisz, aby wyszukać"
     }
   },
   "pt": {
@@ -173,6 +218,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Arranque o NUC a partir da pen. Quando o instalador perguntar \"Continue with autoinstall?\", escreva yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Escreva para pesquisar"
     }
   },
   "pt-BR": {
@@ -184,6 +232,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Inicie o NUC pelo pendrive. Quando o instalador perguntar \"Continue with autoinstall?\", digite yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Digite para pesquisar"
     }
   },
   "ro": {
@@ -195,6 +246,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Pornește NUC-ul de pe stick. Când programul de instalare întreabă „Continue with autoinstall?”, tastează yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Tastați pentru a căuta"
     }
   },
   "ru": {
@@ -206,6 +260,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Загрузите NUC с флешки. Когда установщик спросит «Continue with autoinstall?», введите yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Введите для поиска"
     }
   },
   "sk": {
@@ -217,6 +274,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Spustite NUC z kľúča USB. Keď sa inštalátor opýta „Continue with autoinstall?“, napíšte yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Píšte na vyhľadávanie"
     }
   },
   "sl": {
@@ -228,6 +288,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Zaženite NUC s ključka. Ko namestitveni program vpraša »Continue with autoinstall?«, vnesite yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Vnesite za iskanje"
     }
   },
   "tr": {
@@ -239,6 +302,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "NUC'yi bellekten başlatın. Yükleyici \"Continue with autoinstall?\" diye sorduğunda yes yazın."
+    },
+    "ImComboBox": {
+      "Type to search": "Aramak için yazın"
     }
   },
   "uk": {
@@ -250,6 +316,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "Завантажте NUC з флешки. Коли інсталятор запитає «Continue with autoinstall?», введіть yes."
+    },
+    "ImComboBox": {
+      "Type to search": "Введіть для пошуку"
     }
   },
   "zh": {
@@ -261,6 +330,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "从 U 盘启动 NUC。安装程序询问“Continue with autoinstall?”时，输入 yes。"
+    },
+    "ImComboBox": {
+      "Type to search": "输入以搜索"
     }
   },
   "zh-TW": {
@@ -272,6 +344,9 @@
     },
     "DoneStep": {
       "Boot the NUC from the stick. When the installer asks \"Continue with autoinstall?\", type yes.": "從隨身碟啟動 NUC。安裝程式詢問「Continue with autoinstall?」時，請輸入 yes。"
+    },
+    "ImComboBox": {
+      "Type to search": "輸入以搜尋"
     }
   }
 }

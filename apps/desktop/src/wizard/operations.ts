@@ -41,7 +41,7 @@ export function skipCustomisation(
 /** `resetWizard()`: back to the first step with every selection cleared. */
 export function resetWizard(state: WizardState): WizardState {
   const first = state.hasNetworkConnectivity ? Step.Device : Step.OS
-  const cleared = selectDevice(state, '')
+  const cleared = selectDevice(state, '', true)
   return {
     ...cleared,
     currentStep: first,

@@ -94,12 +94,12 @@ describe('WizardProvider navigation', () => {
 
   it('selection setters invalidate dependent steps', async () => {
     const { result } = await setup()
-    act(() => result.current.setSelectedDeviceName('Pi 5'))
+    act(() => result.current.setSelectedDeviceName('Pi 5', true))
     act(() => result.current.next())
     act(() => result.current.setSelectedOsName('RPi OS'))
     act(() => result.current.next())
     act(() => result.current.setSelectedStorageName('SD'))
-    act(() => result.current.setSelectedDeviceName('Pi 4'))
+    act(() => result.current.setSelectedDeviceName('Pi 4', true))
     expect(result.current).toMatchObject({ selectedOsName: '', selectedStorageName: '' })
     expect(result.current.isStepPermissible(Step.Storage)).toBe(false)
   })

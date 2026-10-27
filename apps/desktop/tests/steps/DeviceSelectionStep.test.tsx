@@ -133,6 +133,7 @@ describe('DeviceSelectionStep', () => {
       fireEvent.click(await screen.findByText('Intel NUC'))
       expect(await callsOf('setHWIndex')).toContainEqual([1])
       expect(wizard().selectedDeviceName).toBe('Intel NUC')
+      expect(wizard().selectedDeviceIsPi).toBe(false)
       expect(next()).toBeEnabled()
     })
 

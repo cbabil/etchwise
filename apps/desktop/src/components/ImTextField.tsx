@@ -27,13 +27,37 @@ export const textFieldSx: SxProps<Theme> = {
 
 export type ImTextFieldProps = Omit<TextFieldProps, 'variant' | 'size'>
 
-export function ImTextField({ sx, ...rest }: ImTextFieldProps) {
+/** Upstream 2.0.11 (38087f8c): pasting can bring control characters into a single-line field; drop them. */
+// eslint-disable-next-line no-control-regex -- matching control characters is the point
+const withoutControlChars = (text: string): string => text.replace(/[\u0000-\u001f\u007f]/g, '')
+
+type ChangeHandler = NonNullable<TextFieldProps['onChange']>
+
+/** `onChange` that sees the field's text with control characters removed. */
+function scrubbedChange(onChange: ChangeHandler | undefined): ChangeHandler | undefined {
+  if (!onChange) return undefined
+  return (event) => {
+    const input = event.target as HTMLInputElement
+    const text = input.value
+    const clean = withoutControlChars(text)
+    if (clean !== text) {
+      // Keep the caret where it was, less the characters removed before it
+      const caret = withoutControlChars(text.slice(0, input.selectionStart ?? text.length)).length
+      input.value = clean
+      input.setSelectionRange?.(caret, caret)
+    }
+    onChange(event)
+  }
+}
+
+export function ImTextField({ sx, onChange, ...rest }: ImTextFieldProps) {
   return (
     <TextField
       variant="outlined"
       size="small"
       autoComplete="off"
       {...rest}
+      onChange={scrubbedChange(onChange)}
       sx={[textFieldSx, ...(Array.isArray(sx) ? sx : sx ? [sx] : [])] as SxProps<Theme>}
     />
   )

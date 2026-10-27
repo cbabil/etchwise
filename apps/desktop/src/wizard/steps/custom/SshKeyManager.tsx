@@ -23,7 +23,9 @@ export interface SshKeyManagerProps {
   disabled?: boolean
 }
 
-const small = { minWidth: 80 } as const
+// Upstream: at least 80px, and never narrower than its label beside the
+// key field, which takes the rest of the row
+const small = { minWidth: 80, flexShrink: 0 } as const
 
 function AddKeyRow({ keys, onChange, disabled }: SshKeyManagerProps) {
   const tr = useTr('SshKeyManager')

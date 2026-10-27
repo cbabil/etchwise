@@ -88,9 +88,14 @@ const capabilityReset = {
 } as const
 
 /** Upstream `onSelectedDeviceNameChanged` + `invalidateDeviceDependentSteps`. */
-export function selectDevice(state: WizardState, name: string): WizardState {
+export function selectDevice(state: WizardState, name: string, isPi: boolean): WizardState {
   const changed = state.previousDeviceName !== '' && state.previousDeviceName !== name
-  const base = { ...state, selectedDeviceName: name, previousDeviceName: name }
+  const base = {
+    ...state,
+    selectedDeviceName: name,
+    selectedDeviceIsPi: isPi,
+    previousDeviceName: name,
+  }
   if (!changed) return base
   // Clearing the OS name re-triggers upstream's OS-change handler.
   return selectOs(

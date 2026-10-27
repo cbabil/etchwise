@@ -153,7 +153,7 @@ describe('selection changes', () => {
   })
 
   it('a new device clears OS, storage, customisation and later steps', () => {
-    const next = selectDevice(travelled, 'Pi 4')
+    const next = selectDevice(travelled, 'Pi 4', true)
     expect(next.permissibleStepsBitmap).toBe(1)
     expect(next).toMatchObject({
       selectedOsName: '',
@@ -169,8 +169,10 @@ describe('selection changes', () => {
   })
 
   it('the same or first device keeps everything', () => {
-    expect(selectDevice(travelled, 'Pi 5').permissibleStepsBitmap).toBe(0b1111111)
-    expect(selectDevice(initialState, 'Pi 5').previousDeviceName).toBe('Pi 5')
+    expect(selectDevice(travelled, 'Pi 5', true).permissibleStepsBitmap).toBe(0b1111111)
+    expect(selectDevice(initialState, 'Pi 5', true).previousDeviceName).toBe('Pi 5')
+    expect(selectDevice(initialState, 'Pi 5', true).selectedDeviceIsPi).toBe(true)
+    expect(selectDevice(initialState, 'Intel NUC', false).selectedDeviceIsPi).toBe(false)
   })
 
   it('a new OS clears storage and later steps', () => {

@@ -26,6 +26,56 @@ describe('ssh key helpers', () => {
   })
 })
 
+// Public key blobs whose first field names the key type (RFC 4253)
+const ED25519 = 'AAAAC3NzaC1lZDI1NTE5AAAAIAABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4f'
+const RSA =
+  'AAAAB3NzaC1yc2EAAAADAQABAAAAQQABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9A'
+
+describe('PuTTY / RFC 4716 key files', () => {
+  it('turns a multi-line block into one OpenSSH key, type read from the key data', () => {
+    const file = [
+      '---- BEGIN SSH2 PUBLIC KEY ----',
+      'Comment: "chris@laptop"',
+      ED25519.slice(0, 40),
+      ED25519.slice(40),
+      '---- END SSH2 PUBLIC KEY ----',
+    ].join('\r\n')
+    expect(splitKeys(file)).toEqual([`ssh-ed25519 ${ED25519} chris@laptop`])
+  })
+
+  it('handles RSA, a continued header, no comment, and plain keys around blocks', () => {
+    const file = [
+      'ssh-ed25519 AAAA plain@one',
+      '---- BEGIN SSH2 PUBLIC KEY ----',
+      'Subject: chris\\',
+      ' continued',
+      RSA.slice(0, 64),
+      RSA.slice(64),
+      '---- END SSH2 PUBLIC KEY ----',
+      'ssh-rsa BBBB plain@two',
+    ].join('\n')
+    expect(splitKeys(file)).toEqual([
+      'ssh-ed25519 AAAA plain@one',
+      `ssh-rsa ${RSA}`,
+      'ssh-rsa BBBB plain@two',
+    ])
+  })
+
+  it('drops a block that never ends or holds no readable key, keeping the keys after it', () => {
+    expect(splitKeys(['---- BEGIN SSH2 PUBLIC KEY ----', ED25519].join('\n'))).toEqual([])
+    expect(
+      splitKeys(
+        ['---- BEGIN SSH2 PUBLIC KEY ----', ED25519, 'ssh-ed25519 AAAA after@block'].join('\n'),
+      ),
+    ).toEqual(['ssh-ed25519 AAAA after@block'])
+    expect(
+      splitKeys(
+        ['---- BEGIN SSH2 PUBLIC KEY ----', '!!!', '---- END SSH2 PUBLIC KEY ----'].join('\n'),
+      ),
+    ).toEqual([])
+  })
+})
+
 describe('wifi validation', () => {
   const base = { mode: 'secure' as const, confirm: '', canKeep: false }
   it('accepts open, 64-hex and printable passphrases', () => {

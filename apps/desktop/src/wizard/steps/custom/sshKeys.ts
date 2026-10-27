@@ -4,13 +4,81 @@
  * and the per-key accessible names. Browsing uses the Tauri dialog plugin.
  */
 
-/** Upstream `splitKeys`: non-empty trimmed lines. */
+const BEGIN_RFC4716 = /^---- BEGIN SSH2 PUBLIC KEY ----$/
+const END_RFC4716 = /^---- END SSH2 PUBLIC KEY ----$/
+const OPENSSH_KEY = /^(?:ssh-|ecdsa-|sk-)[\w@.-]+ \S/
+
+/**
+ * Upstream `splitKeys`: one key per non-empty trimmed line, plus (upstream
+ * 2.0.8) the multi-line RFC 4716 blocks PuTTY saves, each turned into one
+ * OpenSSH line.
+ */
 export function splitKeys(text: string): string[] {
-  if (!text) return []
-  return text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0)
+  const keys: string[] = []
+  let block: string[] | null = null
+  for (const line of text.split(/\r?\n/).map((l) => l.trim())) {
+    if (block === null) {
+      if (BEGIN_RFC4716.test(line)) block = []
+      else if (line) keys.push(line)
+    } else if (OPENSSH_KEY.test(line)) {
+      // A block that never ended: drop it, keep this key and the rest
+      keys.push(line)
+      block = null
+    } else if (END_RFC4716.test(line)) {
+      const key = rfc4716Key(block)
+      if (key) keys.push(key)
+      block = null
+    } else {
+      block.push(line)
+    }
+  }
+  return keys
+}
+
+/**
+ * One RFC 4716 block's lines between BEGIN and END: "Tag: value" headers
+ * (continued while a line ends in a backslash), then the key data. The type
+ * comes from the data itself, so ed25519 keys are not mistaken for RSA
+ * (upstream always writes "ssh-rsa").
+ */
+function rfc4716Key(lines: readonly string[]): string | null {
+  let comment = ''
+  let i = 0
+  while (i < lines.length && /^[\w-]+:/.test(lines[i] ?? '')) {
+    let header = lines[i] ?? ''
+    while (header.endsWith('\\') && i + 1 < lines.length) header = header.slice(0, -1) + lines[++i]
+    const colon = header.indexOf(':')
+    if (header.slice(0, colon).toLowerCase() === 'comment') {
+      comment = header
+        .slice(colon + 1)
+        .trim()
+        .replace(/^"(.*)"$/, '$1')
+    }
+    i++
+  }
+  const data = lines.slice(i).join('')
+  const type = blobKeyType(data)
+  return type ? [type, data, comment].filter(Boolean).join(' ') : null
+}
+
+/** The key type a public key blob names first (RFC 4253: length, then name). */
+function blobKeyType(base64: string): string | null {
+  let bytes: string
+  try {
+    bytes = atob(base64)
+  } catch {
+    return null
+  }
+  if (bytes.length < 4) return null
+  const length =
+    ((bytes.charCodeAt(0) << 24) |
+      (bytes.charCodeAt(1) << 16) |
+      (bytes.charCodeAt(2) << 8) |
+      bytes.charCodeAt(3)) >>>
+    0
+  if (length < 1 || length > 64 || 4 + length > bytes.length) return null
+  const type = bytes.slice(4, 4 + length)
+  return /^[a-z0-9@.-]+$/.test(type) ? type : null
 }
 
 /** Upstream `deduplicateKeys`: first occurrence wins. */

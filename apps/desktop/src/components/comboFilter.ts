@@ -24,7 +24,8 @@ export function wordBoundaryMatch(text: string, search: string): boolean {
 
 /** Options matching `search`, keeping their original indices. */
 export function filterOptions(options: readonly string[], search: string): FilteredOption[] {
-  const needle = search.toLowerCase()
+  // Spaces before the text can't start a word: they would match nothing
+  const needle = search.trimStart().toLowerCase()
   return options
     .map((text, originalIndex) => ({ text, originalIndex }))
     .filter(
@@ -35,8 +36,14 @@ export function filterOptions(options: readonly string[], search: string): Filte
     )
 }
 
-/** Popup height: 40px rows, between 150 and 300px, never past the window. */
+/** Height of the search field at the top of the popup. */
+export const SEARCH_ROW_HEIGHT = 36
+
+/**
+ * Popup height: the search field plus 40px rows, between 150 and 300px,
+ * never past the window.
+ */
 export function popupHeight(count: number, available: number, itemHeight = 40): number {
-  const ideal = Math.min(300, Math.max(150, count * itemHeight))
+  const ideal = Math.min(300, Math.max(150, SEARCH_ROW_HEIGHT + count * itemHeight))
   return Math.max(itemHeight * 2, Math.min(ideal, available))
 }

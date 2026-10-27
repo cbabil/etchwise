@@ -1,6 +1,6 @@
 /**
- * Upstream `ImComboBox.qml`: a non-editable drop-down with type-to-filter
- * search in the open popup, wheel / arrow stepping while closed, and
+ * Upstream `ImComboBox.qml`: a non-editable drop-down with a search field
+ * in the open popup, wheel / arrow stepping while closed, and
  * Enter/Return/Space to open.
  */
 import { ArrowDropDown } from '@mui/icons-material'
@@ -86,6 +86,8 @@ function ComboPopover({
       slotProps={{
         paper: {
           elevation: 0,
+          // On the whole popup: clicking the list or its scrollbar moves
+          // focus off the search field, and the keys must still work
           onKeyDown: popup.onKeyDown,
           sx: {
             width: rect?.width || 200,
@@ -105,6 +107,7 @@ function ComboPopover({
         highlighted={popup.highlighted}
         indicateError={props.indicateError ?? false}
         onPick={popup.pick}
+        onSearch={popup.setSearchText}
       />
     </Popover>
   )

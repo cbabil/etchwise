@@ -16,8 +16,10 @@ interface TabRow {
   index: number
 }
 
-const tabOf = (device: HwDevice | undefined): DeviceTab =>
-  device?.group === 'other' ? 'other' : 'pi'
+/** Whether a device is a Raspberry Pi (the Raspberry Pi tab), not another board or PC. */
+export const isPiDevice = (device: HwDevice | undefined): boolean => device?.group !== 'other'
+
+const tabOf = (device: HwDevice | undefined): DeviceTab => (isPiDevice(device) ? 'pi' : 'other')
 
 export function useDeviceTab(devices: readonly HwDevice[], current: number) {
   const [chosen, setChosen] = useState<DeviceTab | null>(null)

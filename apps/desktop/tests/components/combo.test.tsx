@@ -1,7 +1,12 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { useState } from 'react'
 
-import { filterOptions, popupHeight, wordBoundaryMatch } from '@/components/comboFilter'
+import {
+  filterOptions,
+  popupHeight,
+  SEARCH_ROW_HEIGHT,
+  wordBoundaryMatch,
+} from '@/components/comboFilter'
 import { ImComboBox } from '@/components/ImComboBox'
 
 const cities = ['London (United Kingdom)', 'Paris (France)', 'New York', 'Bern']
@@ -40,41 +45,82 @@ describe('comboFilter', () => {
 })
 
 describe('ImComboBox', () => {
-  it('opens, filters by typing and picks with Enter', () => {
+  const search = () => screen.getByRole('searchbox', { name: 'Type to search' })
+
+  it('opens with a focused search field that filters as you type', () => {
     const onChange = vi.fn()
     render(<Combo onChange={onChange} />)
     const combo = screen.getByRole('combobox', { name: 'City' })
     expect(combo).toHaveTextContent('London (United Kingdom)')
     fireEvent.keyDown(combo, { key: 'Enter' })
-    const list = screen.getByRole('listbox')
-    fireEvent.keyDown(list, { key: 'f' })
-    fireEvent.keyDown(list, { key: 'r' })
-    expect(screen.getByText('Search: "fr"')).toBeInTheDocument()
+    expect(search()).toHaveFocus()
+    expect(search()).toHaveAttribute('placeholder', 'Type to search')
+    fireEvent.change(search(), { target: { value: 'fr' } })
+    expect(within(screen.getByRole('listbox')).getAllByRole('option')).toHaveLength(1)
     expect(screen.getByText('1 of 4')).toBeInTheDocument()
-    fireEvent.keyDown(list, { key: 'Enter' })
+    fireEvent.keyDown(search(), { key: 'Enter' })
     expect(onChange).toHaveBeenCalledWith(1)
     expect(combo).toHaveTextContent('Paris (France)')
   })
 
-  it('handles backspace, space, arrows, no matches and Escape', () => {
+  it('moves with arrows from the search field, shows no matches, closes with Escape', () => {
+    const onChange = vi.fn()
+    render(<Combo onChange={onChange} />)
+    fireEvent.click(screen.getByRole('combobox'))
+    fireEvent.change(search(), { target: { value: 'z' } })
+    expect(screen.getByText('No matches')).toBeInTheDocument()
+    fireEvent.change(search(), { target: { value: 'n' } })
+    fireEvent.keyDown(search(), { key: 'ArrowDown' })
+    fireEvent.keyDown(search(), { key: 'ArrowDown' })
+    fireEvent.keyDown(search(), { key: 'ArrowUp' })
+    fireEvent.keyDown(search(), { key: 'Enter' })
+    // only "New York" has a word starting with "n"
+    expect(onChange).toHaveBeenCalledWith(2)
+    fireEvent.click(screen.getByRole('combobox'))
+    fireEvent.keyDown(search(), { key: 'Escape' })
+    expect(screen.queryByRole('listbox')).toBeNull()
+    expect(onChange).toHaveBeenCalledTimes(1)
+  })
+
+  it('keeps the keyboard working after a click inside the list', () => {
     const onChange = vi.fn()
     render(<Combo onChange={onChange} />)
     fireEvent.click(screen.getByRole('combobox'))
     const list = screen.getByRole('listbox')
-    fireEvent.keyDown(list, { key: ' ' })
-    fireEvent.keyDown(list, { key: 'z' })
-    expect(screen.getByText('No matches')).toBeInTheDocument()
-    fireEvent.keyDown(list, { key: 'Backspace' })
-    fireEvent.keyDown(list, { key: 'Backspace' })
-    fireEvent.keyDown(list, { key: 'n' })
-    fireEvent.keyDown(list, { key: ' ' })
-    expect(screen.getByText('Search: "n "')).toBeInTheDocument()
     fireEvent.keyDown(list, { key: 'ArrowDown' })
-    fireEvent.keyDown(list, { key: 'ArrowUp' })
-    fireEvent.keyDown(list, { key: 'Tab' })
-    fireEvent.keyDown(list, { key: 'Shift' })
-    fireEvent.keyDown(list, { key: 'Escape' })
+    fireEvent.keyDown(list, { key: 'Enter' })
+    expect(onChange).toHaveBeenCalledWith(1)
+  })
+
+  it('leaves Enter and the arrows to an input method while it composes', () => {
+    const onChange = vi.fn()
+    render(<Combo onChange={onChange} />)
+    fireEvent.click(screen.getByRole('combobox'))
+    fireEvent.keyDown(search(), { key: 'Enter', isComposing: true })
+    fireEvent.keyDown(search(), { key: 'Enter', keyCode: 229 })
     expect(onChange).not.toHaveBeenCalled()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
+  })
+
+  it('ignores spaces before the search text', () => {
+    render(<Combo />)
+    fireEvent.click(screen.getByRole('combobox'))
+    fireEvent.change(search(), { target: { value: '  new' } })
+    expect(within(screen.getByRole('listbox')).getAllByRole('option')).toHaveLength(1)
+  })
+
+  it('tells assistive technology which row is highlighted', () => {
+    render(<Combo />)
+    fireEvent.click(screen.getByRole('combobox'))
+    const list = screen.getByRole('listbox')
+    expect(search()).toHaveAttribute('aria-controls', list.id)
+    fireEvent.keyDown(search(), { key: 'ArrowDown' })
+    const active = search().getAttribute('aria-activedescendant')
+    expect(document.getElementById(active ?? '')).toHaveTextContent('Paris (France)')
+  })
+
+  it('makes room for the search field in the popup height', () => {
+    expect(popupHeight(4, 1000)).toBeGreaterThanOrEqual(4 * 40 + SEARCH_ROW_HEIGHT)
   })
 
   it('picks with a click', () => {

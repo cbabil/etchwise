@@ -76,7 +76,9 @@ function SshFields({ ssh }: { ssh: Ssh }) {
         accessibleDescription={tr(
           'Enable secure shell access for remote command-line control of your Raspberry Pi',
         )}
-        {...(ssh.embedded ? {} : { helpLabel: tr('Learn about SSH'), helpUrl: SSH_HELP_URL })}
+        {...(ssh.embedded || !ssh.deviceIsPi
+          ? {}
+          : { helpLabel: tr('Learn about SSH'), helpUrl: SSH_HELP_URL })}
       />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: `${spacing.smallPlus}px` }}>
         <AuthMechanism ssh={ssh} />
