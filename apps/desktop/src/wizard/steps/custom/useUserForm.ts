@@ -10,7 +10,7 @@ import { call } from '@/api/imager'
 
 import { useWizard, type WizardApi } from '../../WizardContext'
 import { editSettings, persist, str, unpersist } from './settings'
-import { isValidUsername, usernameError } from './username'
+import { isReservedUsername, isValidUsername, usernameError } from './username'
 import { acceptsInput, USERNAME_RE } from './validation'
 
 export interface UserFields {
@@ -20,13 +20,12 @@ export interface UserFields {
   passwordlessSudo: boolean
 }
 
-/** Upstream `nextButtonEnabled`. */
+/** Upstream `nextButtonEnabled`, and never with a reserved name. */
 export function userNextEnabled(f: UserFields, hasSaved: boolean): boolean {
-  if (usernameError(f.username) !== null) return false
   const allEmpty = f.username.length === 0 && f.password.length === 0 && f.confirm.length === 0
   const newMatch = f.password.length > 0 && f.confirm.length > 0 && f.password === f.confirm
   const keepSaved = hasSaved && f.password.length === 0 && f.confirm.length === 0
-  return allEmpty || newMatch || keepSaved
+  return !isReservedUsername(f.username) && (allEmpty || newMatch || keepSaved)
 }
 
 /** A saved name the device would refuse loads as empty, as upstream does for names failing its rule. */

@@ -42,11 +42,10 @@ describe('UserCustomizationStep', () => {
     type(password(), 'secret')
     type(confirm(), 'secret')
     expect(username()).toHaveValue('root')
-    expect(username()).toHaveAccessibleDescription(message)
-    expect(screen.getByText(message)).toBeVisible()
+    expect(screen.getByRole('alert')).toHaveTextContent(message)
     expect(nextButton()).toBeDisabled()
     type(username(), 'rooted')
-    expect(screen.queryByText(message)).toBeNull()
+    expect(screen.queryByRole('alert')).toBeNull()
     expect(nextButton()).toBeEnabled()
   })
 

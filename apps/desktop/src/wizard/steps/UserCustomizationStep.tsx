@@ -4,9 +4,12 @@
  * supports it) the passwordless sudo option. A saved password hash is
  * kept when both password fields are left blank.
  */
+import { Box } from '@mui/material'
+
 import { ImPasswordField } from '@/components/ImPasswordField'
 import { ImTextField } from '@/components/ImTextField'
 import { useTr } from '@/i18n'
+import { colors, fontSize } from '@/theme/tokens'
 
 import { StepBase } from '../StepBase'
 import { useWizard } from '../WizardContext'
@@ -94,8 +97,15 @@ function UserFields({ form }: { form: Form }) {
           value={form.fields.username}
           onChange={(e) => form.setUsername(e.target.value)}
           error={form.error !== null}
-          helperText={form.error === null ? undefined : tr(form.error)}
         />
+        {form.error === null ? null : (
+          <>
+            <Box />
+            <Box role="alert" sx={{ fontSize: fontSize.xs, color: colors.formLabelError }}>
+              {tr(form.error)}
+            </Box>
+          </>
+        )}
         <PasswordRows form={form} />
       </FormGrid>
       <DescriptionText>
