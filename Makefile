@@ -15,7 +15,7 @@ COVERAGE_IGNORE := (src/main\.rs|src-tauri/src/lib\.rs|imager-platform/src/macos
 
 .DEFAULT_GOAL := help
 .PHONY: help install dev build dmg test test-rust test-ts lint lint-rust lint-ts format fmt-check \
-	coverage coverage-rust coverage-ts check clean
+	coverage coverage-rust coverage-ts check cross-check clean
 
 help:            ## List targets
 	@grep -E '^[a-z0-9-]+:.*## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*## "} {printf "  %-14s %s\n", $$1, $$2}'
@@ -69,6 +69,19 @@ coverage-ts:     ## UI coverage, fails under 90%
 	cd $(DESKTOP) && $(BUN) run coverage
 
 check: fmt-check lint test coverage ## Everything CI would run
+
+# Linux and Windows platform layers, checked from macOS with zig as the C
+# cross compiler (brew install zig; cargo install cargo-zigbuild;
+# rustup target add aarch64-unknown-linux-gnu x86_64-pc-windows-gnu).
+CROSS_TARGETS := aarch64-unknown-linux-gnu x86_64-pc-windows-gnu
+CROSS_DIR := target/cross
+
+cross-check:     ## Clippy the Linux and Windows layers and build their test binaries
+	@for t in $(CROSS_TARGETS); do \
+		echo "== $$t"; \
+		cargo-zigbuild clippy --target $$t -p imager-platform --all-targets --target-dir $(CROSS_DIR) -- -D warnings || exit 1; \
+		cargo-zigbuild test --no-run --target $$t -p imager-platform --target-dir $(CROSS_DIR) || exit 1; \
+	done
 
 clean:           ## Remove Rust and JS build output (the disk is tight)
 	$(CARGO) clean

@@ -51,22 +51,10 @@ fn system_timezone() -> String {
         .unwrap_or_default()
 }
 
-#[cfg(target_os = "macos")]
 fn wifi_ssid() -> String {
-    imager_platform::macos::wifi::current_ssid().unwrap_or_default()
+    imager_platform::os::wifi::current_ssid().unwrap_or_default()
 }
 
-#[cfg(target_os = "macos")]
 fn wifi_password(ssid: &str) -> String {
-    imager_platform::macos::wifi::saved_password(ssid).unwrap_or_default()
-}
-
-#[cfg(not(target_os = "macos"))]
-fn wifi_ssid() -> String {
-    String::new()
-}
-
-#[cfg(not(target_os = "macos"))]
-fn wifi_password(_ssid: &str) -> String {
-    String::new()
+    imager_platform::os::wifi::saved_password(ssid).unwrap_or_default()
 }

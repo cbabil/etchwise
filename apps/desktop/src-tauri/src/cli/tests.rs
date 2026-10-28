@@ -63,3 +63,25 @@ fn builds_customisation_plans() {
         "firstrun script file does not exists"
     );
 }
+
+#[test]
+fn only_removable_non_system_drives_are_targets() {
+    use imager_core::drives::DeviceDescriptor;
+    let disk = |device: &str, is_system: bool| DeviceDescriptor {
+        device: device.into(),
+        description: device.into(),
+        size: 32_000_000_000,
+        is_removable: !is_system,
+        is_system,
+        ..DeviceDescriptor::default()
+    };
+    let drives = visible_drives(&[disk("/dev/sdb", false), disk("/dev/nvme1n1", true)]);
+    let targets = removable_targets(&drives);
+    assert_eq!(
+        targets
+            .iter()
+            .map(|d| d.device.as_str())
+            .collect::<Vec<_>>(),
+        ["/dev/sdb"]
+    );
+}

@@ -5,7 +5,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use imager_core::customise::plan::CustomisationPlan;
-use imager_core::drives::visible_drives;
+use imager_core::drives::{DriveInfo, visible_drives};
 use imager_core::pipeline::job::{Job, Source};
 use imager_core::pipeline::{Progress, WriteOptions, WriteState};
 
@@ -128,12 +128,9 @@ fn check_destination(options: &Options, dst: &str) -> Result<(), String> {
         eprintln!("WARNING: writing to system drives is enabled.");
         return Ok(());
     }
-    #[cfg(target_os = "macos")]
-    let drives = visible_drives(
-        &imager_platform::macos::drivelist::list_drives().map_err(|e| e.to_string())?,
-    );
-    #[cfg(not(target_os = "macos"))]
-    let drives = visible_drives(&[]);
+    let all =
+        visible_drives(&imager_platform::os::drivelist::list_drives().map_err(|e| e.to_string())?);
+    let drives = removable_targets(&all);
     if drives.iter().any(|d| d.device == dst) {
         return Ok(());
     }
@@ -144,6 +141,12 @@ fn check_destination(options: &Options, dst: &str) -> Result<(), String> {
     Err(format!(
         "Destination drive is not in list of removable volumes. Choose one of the following:\n\n{listing}\nOr use --enable-writing-system-drives to overrule."
     ))
+}
+
+/// The drives the CLI may write without the override: shown ones that are
+/// not system drives (upstream `destinationIsRemovable`).
+fn removable_targets(drives: &[DriveInfo]) -> Vec<&DriveInfo> {
+    drives.iter().filter(|d| !d.is_system).collect()
 }
 
 fn write(job: &Job, dst: &str, quiet: bool, eject: bool) -> Result<(), String> {

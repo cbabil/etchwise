@@ -63,15 +63,9 @@ fn with_rpiboot(mut list: Value, state: &mut State) -> Value {
     list
 }
 
-#[cfg(target_os = "macos")]
 fn drive_list() -> Value {
-    match imager_platform::macos::drivelist::list_drives() {
+    match imager_platform::os::drivelist::list_drives() {
         Ok(devices) => json!({"drives": visible_drives(&devices), "error": ""}),
         Err(e) => json!({"drives": [], "error": e.to_string()}),
     }
-}
-
-#[cfg(not(target_os = "macos"))]
-fn drive_list() -> Value {
-    json!({"drives": [], "error": "Drive listing is only implemented on macOS"})
 }

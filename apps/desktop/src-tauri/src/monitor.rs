@@ -55,13 +55,7 @@ pub fn spawn(app: AppHandle, progress: Arc<Progress>, device: String) {
     });
 }
 
-#[cfg(target_os = "macos")]
 fn device_present(device: &str) -> bool {
-    imager_platform::macos::drivelist::list_drives()
+    imager_platform::os::drivelist::list_drives()
         .map_or(true, |drives| drives.iter().any(|d| d.device == device))
-}
-
-#[cfg(not(target_os = "macos"))]
-fn device_present(_device: &str) -> bool {
-    true
 }
