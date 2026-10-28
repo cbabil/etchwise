@@ -12,11 +12,19 @@ statistics.
 
 **Platforms.** Rust and Tauri run on macOS, Linux and Windows, and most of
 Etchwise is portable (image lists, download, decompress, verify, first-boot
-setup, the UI). The part that touches the drives is per operating system:
-listing them, unmounting and ejecting, and opening the raw device with the
-admin prompt. That layer (`crates/imager-platform`) exists for **macOS only**
-today, so Etchwise lists drives and writes them on macOS; on Linux and
-Windows it builds, but lists no drives and refuses to write.
+setup, the UI). The part that touches the drives is per operating system
+(`crates/imager-platform`), and there is one for each:
+
+| | Drive list | Unmount, eject | Raw access and password | Wi-Fi prefill |
+|---|---|---|---|---|
+| macOS | DiskArbitration | DiskArbitration | authopen (admin prompt) | CoreWLAN, keychain |
+| Linux | `lsblk` | udisks2 | udisks2 `OpenDevice` (polkit prompt; root opens directly) | NetworkManager |
+| Windows | storage IOCTLs | volume lock and dismount, eject IOCTL | `\\.\PhysicalDriveN` (app runs as administrator) | WLAN API |
+
+Only macOS has been run end to end. The Linux and Windows layers are unit
+tested where they are plain logic (drive list rules, mount matching,
+sector-aligned I/O) and type-checked with `make cross-check`, but have not
+yet written a real drive; there are no Linux or Windows packages yet.
 
 ## What it can write
 
@@ -69,14 +77,15 @@ make check     # formatting, lint, tests and the 90% coverage gates
 make clean     # remove build output
 ```
 
-There is no CI: run `make check` before pushing.
+There is no CI: run `make check` before pushing, and `make cross-check`
+(needs `zig` and `cargo-zigbuild`) after touching the Linux or Windows layer.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
 | `crates/imager-core` | OS lists, settings, first-boot setup generators, write pipeline (download, decompress, write, verify, customise), cache, erase, Secure Boot signing |
-| `crates/imager-platform` | macOS: drive list and unmount/eject (DiskArbitration), raw device access (authopen), Wi-Fi name, keychain, location |
+| `crates/imager-platform` | Drive list, unmount/eject, raw device access, sleep inhibition and Wi-Fi prefill for macOS (`macos/`), Linux (`linux/`) and Windows (`windows/`); the app calls `imager_platform::os` |
 | `crates/imager-rpiboot` | USB boot of Compute Modules (rpiboot, fastboot); off by default (App Options > Debug) |
 | `apps/desktop/src-tauri` | The Tauri app: one `imager` command and events, CLI mode, `etchwise://` links |
 | `apps/desktop/src` | The UI (React + MUI), with the upstream translations (27 languages) |
@@ -84,9 +93,9 @@ There is no CI: run `make check` before pushing.
 
 ## Known limits
 
-- Writes drives on macOS only (see Platforms): Linux (udisks2 or sysfs plus
-  polkit) and Windows (volume locks, raw disk handles) each need their own
-  `imager-platform` layer.
+- Linux and Windows writing is untested on real hardware (see Platforms), and
+  neither has a package (`.deb`, AppImage, installer) yet. Linux needs
+  udisks2 and a polkit agent (any desktop has both).
 - Raspberry Pi Connect's sign-in returns its token to `rpi-imager://`; paste
   the token by hand.
 - Compute Module USB boot is tested against mocked transports only.
