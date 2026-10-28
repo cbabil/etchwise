@@ -10,6 +10,7 @@ import { call } from '@/api/imager'
 
 import { useWizard, type WizardApi } from '../../WizardContext'
 import { editSettings, persist, str, unpersist } from './settings'
+import { isValidUsername, usernameError } from './username'
 import { acceptsInput, USERNAME_RE } from './validation'
 
 export interface UserFields {
@@ -21,11 +22,15 @@ export interface UserFields {
 
 /** Upstream `nextButtonEnabled`. */
 export function userNextEnabled(f: UserFields, hasSaved: boolean): boolean {
+  if (usernameError(f.username) !== null) return false
   const allEmpty = f.username.length === 0 && f.password.length === 0 && f.confirm.length === 0
   const newMatch = f.password.length > 0 && f.confirm.length > 0 && f.password === f.confirm
   const keepSaved = hasSaved && f.password.length === 0 && f.confirm.length === 0
   return allEmpty || newMatch || keepSaved
 }
+
+/** A saved name the device would refuse loads as empty, as upstream does for names failing its rule. */
+const savedUsername = (name: string): string => (isValidUsername(name) ? name : '')
 
 const sudoPatch = (wizard: WizardApi, on: boolean) =>
   on
@@ -62,7 +67,7 @@ export function useUserForm() {
   const wizard = useWizard()
   const [hasSaved] = useState(() => Boolean(wizard.customizationSettings.sshUserPassword))
   const [fields, setFields] = useState<UserFields>(() => ({
-    username: str(wizard.customizationSettings.sshUserName),
+    username: savedUsername(str(wizard.customizationSettings.sshUserName)),
     password: '',
     confirm: '',
     // Never restored: must be enabled explicitly every session.
@@ -82,5 +87,6 @@ export function useUserForm() {
     }
   }
   const nextEnabled = !busy && userNextEnabled(fields, hasSaved)
-  return { fields, hasSaved, set, setUsername, submit, nextEnabled }
+  const error = usernameError(fields.username)
+  return { fields, hasSaved, set, setUsername, submit, nextEnabled, error }
 }

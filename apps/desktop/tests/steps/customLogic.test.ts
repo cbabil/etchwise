@@ -1,6 +1,7 @@
 import { call } from '@/api/imager'
 import { browseKeyFile } from '@/wizard/steps/custom/browseKeyFile'
 import { addKey, dedupeKeys, displayKey, savedKeys, splitKeys } from '@/wizard/steps/custom/sshKeys'
+import { isValidUsername, usernameError } from '@/wizard/steps/custom/username'
 import {
   isValidWifiPassword,
   wifiNextEnabled,
@@ -106,6 +107,25 @@ describe('wifi validation', () => {
     ).toBeNull()
     expect(wifiNextEnabled('Net', { ...base, mode: 'open', password: '' })).toBe(true)
     expect(wifiNextEnabled('Net', { ...base, password: 'short', confirm: 'short' })).toBe(false)
+  })
+})
+
+describe('username rule', () => {
+  it('refuses system account and group names and names over 32 characters', () => {
+    for (const name of ['root', 'daemon', 'www-data', '_apt', 'nobody', 'sshd', 'docker']) {
+      expect(isValidUsername(name)).toBe(false)
+      expect(usernameError(name)).toBe('This name is used by the system; choose another.')
+    }
+    expect(isValidUsername('systemd-network')).toBe(false)
+    expect(isValidUsername('systemd-anything')).toBe(false)
+    expect(isValidUsername('a'.repeat(33))).toBe(false)
+    expect(isValidUsername('Bad Name')).toBe(false)
+    expect(isValidUsername('')).toBe(false)
+    for (const name of ['chris', 'admin', 'rooted', 'systemd', 'a'.repeat(32)]) {
+      expect(isValidUsername(name)).toBe(true)
+      expect(usernameError(name)).toBeNull()
+    }
+    expect(usernameError('')).toBeNull()
   })
 })
 

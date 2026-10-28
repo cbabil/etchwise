@@ -93,6 +93,8 @@ function UserFields({ form }: { form: Form }) {
           placeholder={tr('Enter your username')}
           value={form.fields.username}
           onChange={(e) => form.setUsername(e.target.value)}
+          error={form.error !== null}
+          helperText={form.error === null ? undefined : tr(form.error)}
         />
         <PasswordRows form={form} />
       </FormGrid>

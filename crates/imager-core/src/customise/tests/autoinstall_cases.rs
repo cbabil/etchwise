@@ -145,6 +145,15 @@ fn never_puts_an_unsafe_username_into_the_sudo_command() {
 }
 
 #[test]
+fn asks_on_the_nuc_instead_of_using_a_system_account_name() {
+    let y = user_data(&json!({
+        "sshUserName": "root", "sshUserPassword": "$5$x", "passwordlessSudo": true,
+    }));
+    lacks(&y, &["  identity:", "late-commands:"]);
+    has(&y, &["    - identity"]);
+}
+
+#[test]
 fn needs_a_seed_only_for_autoinstall_with_content() {
     use crate::customise::plan::{AUTOINSTALL_UBUNTU, CustomisationPlan};
     let plan = |init_format: &str, cloudinit: &str| CustomisationPlan {

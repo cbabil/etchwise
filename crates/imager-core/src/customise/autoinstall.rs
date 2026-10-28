@@ -4,7 +4,8 @@
 //! kernel command line has no `autoinstall` keyword.
 
 use super::cloudinit::Yaml;
-use super::text::{Settings, is_safe_username, ssh_keys, yaml_quoted as quoted};
+use super::text::{Settings, ssh_keys, yaml_quoted as quoted};
+use super::username::is_safe_username;
 
 /// Where passwordless sudo is granted on the installed system.
 const SUDOERS_FILE: &str = "/target/etc/sudoers.d/90-etchwise";

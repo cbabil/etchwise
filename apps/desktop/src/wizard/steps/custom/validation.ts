@@ -4,7 +4,8 @@
  */
 
 export const HOSTNAME_RE = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,62}$/
-export const USERNAME_RE = /^[a-z_][a-z0-9_-]*$/
+/** Upstream's pattern, capped at 32 characters (Kura's and useradd's limit). */
+export const USERNAME_RE = /^[a-z_][a-z0-9_-]{0,31}$/
 
 /**
  * Qt `RegularExpressionValidator` input restriction: an edit is accepted

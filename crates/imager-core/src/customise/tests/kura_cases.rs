@@ -76,6 +76,27 @@ fn an_unsafe_user_name_is_left_out() {
 }
 
 #[test]
+fn a_system_account_name_is_left_out() {
+    // Kura's first boot refuses a name taken by a system account or group
+    // and then ignores the whole file, keeping the default login
+    for name in [
+        "root",
+        "daemon",
+        "www-data",
+        "systemd-network",
+        "docker",
+        &"a".repeat(33),
+    ] {
+        let s =
+            setup(&json!({"hostname": "lab", "sshUserName": name, "sshUserPassword": "$y$x$y"}));
+        assert!(s.get("user").is_none(), "{name}");
+        assert_eq!(s["hostname"], "lab");
+    }
+    let s = setup(&json!({"sshUserName": "a".repeat(32)}));
+    assert_eq!(s["user"]["name"], "a".repeat(32));
+}
+
+#[test]
 fn a_user_without_a_password_only_renames() {
     let s = setup(&json!({"sshUserName": "chris"}));
     assert_eq!(s["user"], json!({"name": "chris"}));

@@ -11,6 +11,9 @@
     },
     "ImComboBox": {
       "Type to search": "খুঁজতে টাইপ করুন"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "এই নামটি সিস্টেম ব্যবহার করে; অন্য একটি বেছে নিন।"
     }
   },
   "ca": {
@@ -25,6 +28,9 @@
     },
     "ImComboBox": {
       "Type to search": "Escriviu per cercar"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "El sistema fa servir aquest nom; trieu-ne un altre."
     }
   },
   "cs": {
@@ -39,6 +45,9 @@
     },
     "ImComboBox": {
       "Type to search": "Zadejte pro vyhledávání"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Tento název používá systém; zvolte jiný."
     }
   },
   "de": {
@@ -53,6 +62,9 @@
     },
     "ImComboBox": {
       "Type to search": "Zum Suchen eingeben"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Dieser Name wird vom System verwendet; wählen Sie einen anderen."
     }
   },
   "es": {
@@ -67,6 +79,9 @@
     },
     "ImComboBox": {
       "Type to search": "Escriba para buscar"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "El sistema usa este nombre; elija otro."
     }
   },
   "fr": {
@@ -81,6 +96,9 @@
     },
     "ImComboBox": {
       "Type to search": "Tapez pour rechercher"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Ce nom est utilisé par le système ; choisissez-en un autre."
     }
   },
   "ga": {
@@ -95,6 +113,9 @@
     },
     "ImComboBox": {
       "Type to search": "Clóscríobh chun cuardach a dhéanamh"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Úsáideann an córas an t-ainm seo; roghnaigh ceann eile."
     }
   },
   "he": {
@@ -109,6 +130,9 @@
     },
     "ImComboBox": {
       "Type to search": "הקלידו לחיפוש"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "השם הזה נמצא בשימוש המערכת; בחרו שם אחר."
     }
   },
   "hu": {
@@ -123,6 +147,9 @@
     },
     "ImComboBox": {
       "Type to search": "Írjon a kereséshez"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Ezt a nevet a rendszer használja; válasszon másikat."
     }
   },
   "it": {
@@ -137,6 +164,9 @@
     },
     "ImComboBox": {
       "Type to search": "Digita per cercare"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Questo nome è usato dal sistema; scegline un altro."
     }
   },
   "ja": {
@@ -151,6 +181,9 @@
     },
     "ImComboBox": {
       "Type to search": "入力して検索"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "この名前はシステムで使用されています。別の名前を選んでください。"
     }
   },
   "ka": {
@@ -165,6 +198,9 @@
     },
     "ImComboBox": {
       "Type to search": "აკრიფეთ საძიებლად"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "ამ სახელს სისტემა იყენებს; აირჩიეთ სხვა."
     }
   },
   "ko": {
@@ -179,6 +215,9 @@
     },
     "ImComboBox": {
       "Type to search": "검색하려면 입력하세요"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "이 이름은 시스템에서 사용 중입니다. 다른 이름을 선택하세요."
     }
   },
   "nl": {
@@ -193,6 +232,9 @@
     },
     "ImComboBox": {
       "Type to search": "Typ om te zoeken"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Deze naam wordt door het systeem gebruikt; kies een andere."
     }
   },
   "pl": {
@@ -207,6 +249,9 @@
     },
     "ImComboBox": {
       "Type to search": "Wpisz, aby wyszukać"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Ta nazwa jest używana przez system; wybierz inną."
     }
   },
   "pt": {
@@ -221,6 +266,9 @@
     },
     "ImComboBox": {
       "Type to search": "Escreva para pesquisar"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Este nome é utilizado pelo sistema; escolha outro."
     }
   },
   "pt-BR": {
@@ -235,6 +283,9 @@
     },
     "ImComboBox": {
       "Type to search": "Digite para pesquisar"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Este nome é usado pelo sistema; escolha outro."
     }
   },
   "ro": {
@@ -249,6 +300,9 @@
     },
     "ImComboBox": {
       "Type to search": "Tastați pentru a căuta"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Acest nume este folosit de sistem; alegeți altul."
     }
   },
   "ru": {
@@ -263,6 +317,9 @@
     },
     "ImComboBox": {
       "Type to search": "Введите для поиска"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Это имя используется системой; выберите другое."
     }
   },
   "sk": {
@@ -277,6 +334,9 @@
     },
     "ImComboBox": {
       "Type to search": "Píšte na vyhľadávanie"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Tento názov používa systém; zvoľte iný."
     }
   },
   "sl": {
@@ -291,6 +351,9 @@
     },
     "ImComboBox": {
       "Type to search": "Vnesite za iskanje"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "To ime uporablja sistem; izberite drugo."
     }
   },
   "tr": {
@@ -305,6 +368,9 @@
     },
     "ImComboBox": {
       "Type to search": "Aramak için yazın"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Bu ad sistem tarafından kullanılıyor; başka bir ad seçin."
     }
   },
   "uk": {
@@ -319,6 +385,9 @@
     },
     "ImComboBox": {
       "Type to search": "Введіть для пошуку"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "Це ім’я використовує система; виберіть інше."
     }
   },
   "zh": {
@@ -333,6 +402,9 @@
     },
     "ImComboBox": {
       "Type to search": "输入以搜索"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "此名称已被系统使用，请选择其他名称。"
     }
   },
   "zh-TW": {
@@ -347,6 +419,9 @@
     },
     "ImComboBox": {
       "Type to search": "輸入以搜尋"
+    },
+    "UserCustomizationStep": {
+      "This name is used by the system; choose another.": "此名稱已被系統使用，請選擇其他名稱。"
     }
   }
 }

@@ -34,6 +34,38 @@ describe('UserCustomizationStep', () => {
     expect(screen.queryByRole('checkbox', { name: /passwordless sudo/ })).toBeNull()
   })
 
+  it('refuses a name the device keeps for a system account, with a message', async () => {
+    answer({ crypt: () => '$y$h' })
+    await renderStep(UserCustomizationStep)
+    const message = 'This name is used by the system; choose another.'
+    type(username(), 'root')
+    type(password(), 'secret')
+    type(confirm(), 'secret')
+    expect(username()).toHaveValue('root')
+    expect(username()).toHaveAccessibleDescription(message)
+    expect(screen.getByText(message)).toBeVisible()
+    expect(nextButton()).toBeDisabled()
+    type(username(), 'rooted')
+    expect(screen.queryByText(message)).toBeNull()
+    expect(nextButton()).toBeEnabled()
+  })
+
+  it('caps the username at 32 characters', async () => {
+    answer({})
+    await renderStep(UserCustomizationStep)
+    type(username(), 'a'.repeat(32))
+    type(username(), 'a'.repeat(33))
+    expect(username()).toHaveValue('a'.repeat(32))
+  })
+
+  it('loads a saved system account name as empty', async () => {
+    answer({
+      getSavedCustomisationSettings: () => ({ sshUserName: 'root', sshUserPassword: '$y$saved' }),
+    })
+    await renderStep(UserCustomizationStep, { currentStep: Step.User })
+    expect(username()).toHaveValue('')
+  })
+
   it('hashes a new password on Next and never stores plaintext', async () => {
     answer({ crypt: (pw) => `$y$hash-of-${String(pw).length}` })
     const { wizard } = await renderStep(UserCustomizationStep, { currentStep: Step.User })

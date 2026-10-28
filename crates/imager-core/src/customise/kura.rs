@@ -5,7 +5,8 @@
 
 use serde_json::{Map, Value, json};
 
-use super::text::{Settings, is_safe_username, ssh_keys};
+use super::text::{Settings, ssh_keys};
+use super::username::is_safe_username;
 
 /// The setup file's version this generator writes.
 const VERSION: u64 = 1;

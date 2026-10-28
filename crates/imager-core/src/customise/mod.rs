@@ -13,6 +13,7 @@ mod systemd;
 mod systemd_extras;
 mod systemd_wifi;
 mod text;
+mod username;
 
 pub use autoinstall::autoinstall_user_data;
 pub use cloudinit::{UserDataOptions, cloudinit_user_data};

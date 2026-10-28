@@ -125,16 +125,6 @@ pub fn ssh_keys(s: Settings<'_>) -> Vec<String> {
     }
 }
 
-/// The UI's username rule (`[a-z_][a-z0-9_-]*`), checked again because the
-/// name reaches commands run as root on the device.
-pub fn is_safe_username(user: &str) -> bool {
-    let mut chars = user.chars();
-    chars
-        .next()
-        .is_some_and(|c| c.is_ascii_lowercase() || c == '_')
-        && chars.all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_' || c == '-')
-}
-
 /// Groups the first user is added to.
 pub const USER_GROUPS: &str =
     "users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo";
