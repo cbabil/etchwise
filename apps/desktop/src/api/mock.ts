@@ -55,6 +55,7 @@ const answers: Record<string, (args: unknown[]) => unknown> = {
   setSrc: ([src]) => void (source = { ...(src as object) }),
   imageSupportsCustomization: () => Boolean(source['initFormat']),
   imageSupportsCcRpi: () => source['initFormat'] === 'cloudinit-rpi',
+  imageIsKura: () => source['initFormat'] === 'kura',
   srcFileName: () =>
     String(source['url'] ?? '')
       .split('/')

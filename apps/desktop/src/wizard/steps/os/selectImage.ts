@@ -62,19 +62,22 @@ export async function selectErase(
     ccRpiAvailable: false,
     ifAndFeaturesAvailable: false,
     autoinstall: false,
+    kura: false,
   })
 }
 
 async function capabilityFlags(): Promise<Partial<WizardFlags>> {
-  const [customization, connect, secure, forced, sudo, ccRpi, autoinstall] = await Promise.all([
-    ask('imageSupportsCustomization'),
-    ask('checkSWCapability', 'rpi_connect'),
-    ask('checkSWCapability', 'secure_boot'),
-    ask('isSecureBootForcedByCliFlag'),
-    ask('checkSWCapability', 'passwordless_sudo'),
-    ask('imageSupportsCcRpi'),
-    ask('imageUsesAutoinstall'),
-  ])
+  const [customization, connect, secure, forced, sudo, ccRpi, autoinstall, kura] =
+    await Promise.all([
+      ask('imageSupportsCustomization'),
+      ask('checkSWCapability', 'rpi_connect'),
+      ask('checkSWCapability', 'secure_boot'),
+      ask('isSecureBootForcedByCliFlag'),
+      ask('checkSWCapability', 'passwordless_sudo'),
+      ask('imageSupportsCcRpi'),
+      ask('imageUsesAutoinstall'),
+      ask('imageIsKura'),
+    ])
   const features = ccRpi
     ? (await Promise.all(IF_CAPABILITIES.map((c) => ask('checkHWAndSWCapability', c)))).some(
         Boolean,
@@ -88,6 +91,7 @@ async function capabilityFlags(): Promise<Partial<WizardFlags>> {
     ccRpiAvailable: Boolean(ccRpi),
     ifAndFeaturesAvailable: features,
     autoinstall: Boolean(autoinstall),
+    kura: Boolean(kura),
   }
 }
 

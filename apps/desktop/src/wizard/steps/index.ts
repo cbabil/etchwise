@@ -6,6 +6,7 @@ import type { ComponentType } from 'react'
 
 import { Step } from '../stepIds'
 import { DeviceSelectionStep } from './DeviceSelectionStep'
+import { DiskLayoutStep } from './DiskLayoutStep'
 import { DoneStep } from './DoneStep'
 import { HostnameCustomizationStep } from './HostnameCustomizationStep'
 import { IfAndFeaturesCustomizationStep } from './IfAndFeaturesCustomizationStep'
@@ -33,6 +34,7 @@ export const stepComponents: Readonly<Record<number, ComponentType>> = {
   [Step.SecureBoot]: SecureBootCustomizationStep,
   [Step.PiConnect]: PiConnectCustomizationStep,
   [Step.IfAndFeatures]: IfAndFeaturesCustomizationStep,
+  [Step.DiskLayout]: DiskLayoutStep,
   [Step.Writing]: WritingStep,
   [Step.Done]: DoneStep,
 }

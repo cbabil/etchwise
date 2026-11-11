@@ -1,4 +1,4 @@
-/** Wizard step indices, exactly as upstream `WizardContainer.qml`. */
+/** Wizard step indices: upstream `WizardContainer.qml`, plus Etchwise's DiskLayout. */
 export const Step = {
   Language: -1,
   Device: 0,
@@ -12,11 +12,13 @@ export const Step = {
   SecureBoot: 8,
   PiConnect: 9,
   IfAndFeatures: 10,
-  Writing: 11,
-  Done: 12,
+  /** Etchwise: Kura's disk layout (only for Kura images). */
+  DiskLayout: 11,
+  Writing: 12,
+  Done: 13,
 } as const
 
 export type StepId = (typeof Step)[keyof typeof Step]
 
-export const TOTAL_STEPS = 13
+export const TOTAL_STEPS = 14
 export const FIRST_CUSTOMIZATION_STEP = Step.Hostname

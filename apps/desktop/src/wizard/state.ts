@@ -27,6 +27,8 @@ export interface WizardFlags {
   ccRpiAvailable: boolean
   /** The image sets itself up through Ubuntu autoinstall (`init_format`). */
   autoinstall: boolean
+  /** A Kura image: the Disk layout step is offered (`init_format`). */
+  kura: boolean
   ifAndFeaturesAvailable: boolean
   ifI2cEnabled: boolean
   ifSpiEnabled: boolean
@@ -100,6 +102,7 @@ export const initialFlags: WizardFlags = {
   secureBootKeyConfigured: false,
   ccRpiAvailable: false,
   autoinstall: false,
+  kura: false,
   ifAndFeaturesAvailable: false,
   disableWarnings: false,
   customizationSupported: true,

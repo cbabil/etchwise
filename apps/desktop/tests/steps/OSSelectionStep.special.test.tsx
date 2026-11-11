@@ -97,7 +97,11 @@ describe('Use custom', () => {
       removeCustomizationSetting: vi.fn(),
     }
     await expect(applyCustomImage(wizard, '/a.img')).resolves.toBe(0)
-    expect(wizard.update).toHaveBeenCalledWith({ customizationSupported: true, autoinstall: false })
+    expect(wizard.update).toHaveBeenCalledWith({
+      customizationSupported: true,
+      autoinstall: false,
+      kura: false,
+    })
   })
 })
 

@@ -48,6 +48,14 @@ describe('nextStepIndex', () => {
     ).toBe(Step.IfAndFeatures)
   })
 
+  it('offers the Disk layout step for Kura images only', () => {
+    expect(nextStepIndex(at(Step.RemoteAccess, { kura: true }))).toBe(Step.DiskLayout)
+    expect(nextStepIndex(at(Step.DiskLayout, { kura: true }))).toBe(Step.Writing)
+    expect(previousStepIndex(at(Step.Writing, { kura: true }))).toBe(Step.DiskLayout)
+    expect(previousStepIndex(at(Step.Writing))).toBe(Step.RemoteAccess)
+    expect(lastCustomizationStep({ ...at(Step.OS), kura: true })).toBe(Step.DiskLayout)
+  })
+
   it('skips customisation when unsupported and honours Write Another', () => {
     expect(nextStepIndex(at(Step.Storage, { customizationSupported: false }))).toBe(Step.Writing)
     expect(nextStepIndex(at(Step.Storage, { writeAnotherMode: true }))).toBe(Step.Writing)
@@ -109,9 +117,9 @@ describe('previousStepIndex', () => {
 })
 
 describe('jumps', () => {
-  it('allows 0..12 and blocks Device while offline', () => {
+  it('allows 0..13 and blocks Device while offline', () => {
     expect(canJumpTo(at(Step.OS), Step.Language)).toBe(false)
-    expect(canJumpTo(at(Step.OS), 13)).toBe(false)
+    expect(canJumpTo(at(Step.OS), 14)).toBe(false)
     expect(canJumpTo(at(Step.OS, { hasNetworkConnectivity: false }), Step.Device)).toBe(false)
     expect(jump(at(Step.OS), Step.Done).currentStep).toBe(Step.Done)
     expect(jump(at(Step.OS, { hasNetworkConnectivity: false }), Step.Device).currentStep).toBe(

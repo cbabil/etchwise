@@ -95,6 +95,14 @@ describe('customisation sub-steps', () => {
     expect(subSteps({ ...initialState, customizationSupported: false })).toEqual([])
   })
 
+  it('lists the Kura disk layout, configured once a layout is chosen', () => {
+    const kura = { ...initialState, kura: true }
+    expect(subSteps(kura).at(-1)).toMatchObject({ label: 'Disk layout', configured: false })
+    const chosen = { ...kura, customizationSettings: { kuraStorage: { rootGiB: 16 } } }
+    expect(subSteps(chosen).at(-1)?.configured).toBe(true)
+    expect(rowForStep(Step.DiskLayout, kura)).toBe(3)
+  })
+
   it('marks configured sub-steps', () => {
     const state = {
       ...initialState,

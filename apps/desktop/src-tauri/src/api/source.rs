@@ -8,7 +8,7 @@ use serde_json::Value;
 
 use super::args::{Args, Handled, done, ok};
 use crate::state::{Source, State};
-use imager_core::customise::plan::AUTOINSTALL_UBUNTU;
+use imager_core::customise::plan::{AUTOINSTALL_UBUNTU, KURA};
 
 pub fn handle(state: &mut State, method: &str, args: &Args<'_>) -> Handled {
     match method {
@@ -48,6 +48,8 @@ pub fn handle(state: &mut State, method: &str, args: &Args<'_>) -> Handled {
             .src
             .as_ref()
             .is_some_and(|s| s.init_format == AUTOINSTALL_UBUNTU)),
+        // Etchwise: Kura images get the Disk layout step.
+        "imageIsKura" => ok(state.src.as_ref().is_some_and(|s| s.init_format == KURA)),
         "localSourceInfo" => ok(serde_json::json!(local_info(&args.str(0)))),
         "readFileContents" => done(std::fs::read_to_string(args.str(0))),
         _ => None,

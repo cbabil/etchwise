@@ -135,6 +135,7 @@ fn shows_the_x86_images_with_setup_for_ubuntu_server_only() {
             setup,
             "{name} autoinstall"
         );
+        assert_eq!(call(&mut state, "imageIsKura", &[]), false, "{name} kura");
         let icon = image["icon"].as_str().unwrap_or_default();
         assert!(icon.starts_with("https://"), "{name} icon: {icon}");
         let sha = image["extract_sha256"].as_str().unwrap_or_default();
@@ -219,5 +220,6 @@ fn kura_offers_first_boot_setup_without_autoinstall() {
             false,
             "{tag}"
         );
+        assert_eq!(call(&mut state, "imageIsKura", &[]), true, "{tag}");
     }
 }

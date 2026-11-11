@@ -57,6 +57,7 @@ export async function applyCustomImage(wizard: SelectionWizard, path: string): P
   wizard.setSelectedOsName(name ?? '')
   wizard.update({
     autoinstall: false,
+    kura: false,
     ...(customization
       ? { customizationSupported: true }
       : {

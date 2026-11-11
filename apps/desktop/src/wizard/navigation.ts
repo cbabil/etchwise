@@ -12,10 +12,15 @@ export const invalidateFrom = (bitmap: number, from: number): number => bitmap &
 
 type Availability = Pick<
   WizardFlags,
-  'ccRpiAvailable' | 'ifAndFeaturesAvailable' | 'piConnectAvailable' | 'secureBootAvailable'
+  | 'ccRpiAvailable'
+  | 'ifAndFeaturesAvailable'
+  | 'piConnectAvailable'
+  | 'secureBootAvailable'
+  | 'kura'
 >
 
 export function lastCustomizationStep(f: Availability): number {
+  if (f.kura) return Step.DiskLayout
   if (f.ccRpiAvailable && f.ifAndFeaturesAvailable) return Step.IfAndFeatures
   if (f.piConnectAvailable) return Step.PiConnect
   if (f.secureBootAvailable) return Step.SecureBoot
@@ -41,6 +46,7 @@ export function nextStepIndex(state: WizardState): number | null {
   if (!state.piConnectAvailable && next === Step.PiConnect) next++
   if ((!state.ccRpiAvailable || !state.ifAndFeaturesAvailable) && next === Step.IfAndFeatures)
     next++
+  if (!state.kura && next === Step.DiskLayout) next++
   return next
 }
 
@@ -67,6 +73,7 @@ export function previousStepIndex(state: WizardState): number | null {
   if (state.currentStep <= 0) return null
   let prev = state.currentStep - 1
   if (state.currentStep === Step.Writing && !state.customizationSupported) return Step.Storage
+  if (prev === Step.DiskLayout && !state.kura) prev--
   if (prev === Step.IfAndFeatures && (!state.ccRpiAvailable || !state.ifAndFeaturesAvailable))
     prev--
   if (prev === Step.PiConnect && !state.piConnectAvailable) prev--
@@ -75,13 +82,14 @@ export function previousStepIndex(state: WizardState): number | null {
   return prev
 }
 
-/** Upstream `jumpToStep` guard: 0…12 and never Device while offline. */
+/** Upstream `jumpToStep` guard: 0…13 and never Device while offline. */
 export function canJumpTo(state: WizardState, step: number): boolean {
   if (step < 0 || step >= TOTAL_STEPS) return false
   return !(step === Step.Device && !state.hasNetworkConnectivity)
 }
 
 const capabilityReset = {
+  kura: false,
   piConnectAvailable: false,
   secureBootAvailable: false,
   ccRpiAvailable: false,

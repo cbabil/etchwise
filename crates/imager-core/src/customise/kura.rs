@@ -25,6 +25,7 @@ pub fn kura_setup(settings: Settings<'_>) -> String {
     put("wifi", wifi(settings));
     put("timezone", non_empty(settings.trimmed("timezone")));
     put("keyboard", non_empty(settings.trimmed("keyboard")));
+    put("storage", storage(settings));
     if out.is_empty() {
         return String::new();
     }
@@ -32,6 +33,15 @@ pub fn kura_setup(settings: Settings<'_>) -> String {
     file.insert("version".into(), json!(VERSION));
     file.extend(out);
     Value::Object(file).to_string()
+}
+
+/// The Disk layout step's layout (setting `kuraStorage`), as Kura reads it:
+/// Kura checks it against its rules and the real disk, and the login screen
+/// says why when it is not built.
+fn storage(s: Settings<'_>) -> Option<Value> {
+    s.0.get("kuraStorage")
+        .filter(|v| v.as_object().is_some_and(|o| !o.is_empty()))
+        .cloned()
 }
 
 fn non_empty(value: String) -> Option<Value> {

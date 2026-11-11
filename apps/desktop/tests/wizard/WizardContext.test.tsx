@@ -32,7 +32,7 @@ describe('WizardProvider start-up', () => {
     expect(result.current.customizationSettings).toEqual({ hostname: 'pi' })
     expect(result.current.sidebarWidth).toBe(350)
     expect(result.current.secureBootKeyConfigured).toBe(true)
-    expect(result.current.totalSteps).toBe(13)
+    expect(result.current.totalSteps).toBe(14)
     expect(result.current.lastCustomizationStep).toBe(Step.RemoteAccess)
   })
 

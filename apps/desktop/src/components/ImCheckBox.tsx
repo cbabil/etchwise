@@ -14,6 +14,16 @@ export interface ImCheckBoxProps {
   onChange: (checked: boolean) => void
   disabled?: boolean
   accessibleDescription?: string
+  /** A name for the box itself when the visible label is not enough. */
+  ariaLabel?: string
+}
+
+/** The input's description and name, when given. */
+function inputAria(description: string | undefined, label: string | undefined) {
+  return {
+    ...(description ? { 'aria-description': description } : {}),
+    ...(label ? { 'aria-label': label } : {}),
+  }
 }
 
 export function ImCheckBox({
@@ -22,6 +32,7 @@ export function ImCheckBox({
   onChange,
   disabled,
   accessibleDescription,
+  ariaLabel,
 }: ImCheckBoxProps) {
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
@@ -53,9 +64,7 @@ export function ImCheckBox({
           disableRipple
           onChange={(_, value) => onChange(value)}
           onKeyDown={onKeyDown}
-          slotProps={{
-            input: accessibleDescription ? { 'aria-description': accessibleDescription } : {},
-          }}
+          slotProps={{ input: inputAria(accessibleDescription, ariaLabel) }}
           sx={{
             p: 1,
             color: colors.textMetadata,

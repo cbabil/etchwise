@@ -119,3 +119,37 @@ fn wifi_switched_off_is_not_sent() {
     }));
     assert!(s.get("wifi").is_none());
 }
+
+// ---- storage (the Disk layout step) ----
+
+fn server() -> Value {
+    json!({"rootGiB": 16, "tmpGiB": 1, "volumes": [
+        {"mount": "/var/log", "sizeGiB": 4}, {"mount": "/var/tmp", "sizeGiB": 2},
+        {"mount": "/home", "sizeGiB": 8}, {"mount": "/var/lib/docker"}]})
+}
+
+#[test]
+fn sends_the_disk_layout_as_kuras_storage_key() {
+    let s = setup(&json!({"kuraStorage": server()}));
+    assert_eq!(s, json!({"version": 1, "storage": server()}));
+}
+
+#[test]
+fn no_layout_keeps_kuras_single_root() {
+    assert_eq!(kura_setup(Settings(&map(json!({"kuraStorage": null})))), "");
+    assert_eq!(kura_setup(Settings(&map(json!({"kuraStorage": {}})))), "");
+    assert_eq!(kura_setup(Settings(&map(json!({"kuraStorage": "16"})))), "");
+}
+
+#[test]
+fn a_tmp_size_alone_is_sent() {
+    let s = setup(&json!({"kuraStorage": {"tmpGiB": 2}}));
+    assert_eq!(s["storage"], json!({"tmpGiB": 2}));
+}
+
+#[test]
+fn the_layout_goes_as_is_for_kura_to_check() {
+    let layout = json!({"rootGiB": 3, "volumes": [{"mount": "/var"}]});
+    let s = setup(&json!({"kuraStorage": layout.clone()}));
+    assert_eq!(s["storage"], layout);
+}

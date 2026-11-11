@@ -93,10 +93,17 @@ function optionalSubSteps(s: WizardState): SubStep[] {
     currentFor: Step.IfAndFeatures,
     configured: interfaces,
   }
+  const disk: SubStep = {
+    label: 'Disk layout',
+    target: Step.DiskLayout,
+    currentFor: Step.DiskLayout,
+    configured: Boolean(s.customizationSettings.kuraStorage),
+  }
   return [
     ...(s.secureBootAvailable ? [secureBoot] : []),
     ...(s.piConnectAvailable ? [connect] : []),
     ...(s.ccRpiAvailable && s.ifAndFeaturesAvailable ? [features] : []),
+    ...(s.kura ? [disk] : []),
   ]
 }
 
@@ -132,6 +139,7 @@ const CUSTOMISATION_STEPS = [
   Step.RemoteAccess,
   Step.PiConnect,
   Step.IfAndFeatures,
+  Step.DiskLayout,
 ]
 
 export function subStepClickable(s: WizardState): boolean {
