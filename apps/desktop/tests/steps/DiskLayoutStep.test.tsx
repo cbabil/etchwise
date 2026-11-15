@@ -64,7 +64,7 @@ describe('DiskLayoutStep', () => {
     expect(nextButton()).toBeEnabled()
     fireEvent.click(screen.getByRole('button', { name: 'Add a folder' }))
     fireEvent.click(screen.getByRole('button', { name: 'Remove /home' }))
-    fireEvent.change(size('/srv size in GiB'), { target: { value: '50' } })
+    fireEvent.change(size('/var size in GiB'), { target: { value: '50' } })
     fireEvent.click(nextButton())
     expect(wizard().customizationSettings.kuraStorage).toEqual({
       rootGiB: 20,
@@ -73,9 +73,65 @@ describe('DiskLayoutStep', () => {
         { mount: '/var/log', sizeGiB: 4 },
         { mount: '/var/tmp', sizeGiB: 2 },
         { mount: '/var/lib/docker' },
-        { mount: '/srv', sizeGiB: 50 },
+        { mount: '/var', sizeGiB: 50 },
       ],
     })
+  })
+
+  const folders = () => screen.getAllByRole('combobox', { name: 'Folder' })
+  const typeFolder = (text: string) => {
+    fireEvent.click(screen.getByRole('button', { name: 'Add a folder' }))
+    fireEvent.change(folders().at(-1)!, { target: { value: text } })
+  }
+
+  it('custom takes any folder typed in', async () => {
+    answer({})
+    const { wizard } = await renderStep(DiskLayoutStep, kura)
+    fireEvent.click(radio(/Custom/))
+    typeFolder('/srv/media')
+    expect(folders().at(-1)).toHaveValue('/srv/media')
+    fireEvent.change(size('/srv/media size in GiB'), { target: { value: '20' } })
+    expect(nextButton()).toBeEnabled()
+    fireEvent.click(nextButton())
+    const storage = wizard().customizationSettings.kuraStorage as { volumes: unknown[] }
+    expect(storage.volumes).toContainEqual({ mount: '/srv/media', sizeGiB: 20 })
+  })
+
+  it('an invalid folder says why and blocks Next', async () => {
+    answer({})
+    await renderStep(DiskLayoutStep, kura)
+    fireEvent.click(radio(/Custom/))
+    typeFolder('/etc/ssh')
+    expect(screen.getAllByText('/etc stays on the system disk.').length).toBeGreaterThan(0)
+    expect(nextButton()).toBeDisabled()
+    fireEvent.change(folders().at(-1)!, { target: { value: 'srv' } })
+    expect(screen.getAllByText('Use a folder such as /srv/media.').length).toBeGreaterThan(0)
+    expect(nextButton()).toBeDisabled()
+  })
+
+  it('saves swap with the layout; empty means none', async () => {
+    answer({})
+    const { wizard } = await renderStep(DiskLayoutStep, kura)
+    fireEvent.click(radio(/Custom/))
+    expect(size('Swap size in GiB')).toHaveValue('')
+    fireEvent.change(size('Swap size in GiB'), { target: { value: '8' } })
+    fireEvent.click(nextButton())
+    const storage = wizard().customizationSettings.kuraStorage as { swapGiB: number }
+    expect(storage.swapGiB).toBe(8)
+    expect(callsTo('setPersistedCustomisationSetting')).toContainEqual(['kuraStorage', storage])
+  })
+
+  it('hides the /tmp RAM size while /tmp has its own volume', async () => {
+    answer({})
+    const { wizard } = await renderStep(DiskLayoutStep, kura)
+    fireEvent.click(radio(/Custom/))
+    expect(screen.getByText('/tmp (in RAM)')).toBeInTheDocument()
+    typeFolder('/tmp')
+    expect(screen.queryByText('/tmp (in RAM)')).toBeNull()
+    expect(screen.getByText('/tmp is on its own volume.')).toBeInTheDocument()
+    expect(screen.getAllByRole('textbox', { name: '/tmp size in GiB' })).toHaveLength(1)
+    fireEvent.click(nextButton())
+    expect(wizard().customizationSettings.kuraStorage).not.toHaveProperty('tmpGiB')
   })
 
   it('lets another folder take the rest of the disk', async () => {
