@@ -1,0 +1,66 @@
+name: Bug report
+description: Something does not work as it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting. Do not report security problems here: use
+        [Report a vulnerability](https://github.com/cbabil/etchwise/security/advisories/new).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you got. Include the exact error text if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Choose device ...
+        2. Choose OS ...
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Etchwise version
+      description: Shown in the window title.
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Your computer
+      options:
+        - macOS (Apple silicon)
+        - macOS (Intel, built from source)
+        - Linux (built from source)
+        - Windows (built from source)
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: Operating system version
+      placeholder: macOS 26.1
+  - type: input
+    id: image
+    attributes:
+      label: Image being written
+      placeholder: Kura 0.6.1 for the Raspberry Pi 5, or a custom image
+  - type: input
+    id: drive
+    attributes:
+      label: Drive
+      description: Kind and size of the SD card, USB drive or SSD, and the reader or adapter if any.
+      placeholder: 32 GB SD card in the built-in reader
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots or other details. Remove passwords, Wi-Fi names and keys first.

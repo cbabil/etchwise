@@ -41,6 +41,7 @@ second list of images for PCs and no usage statistics.
 - [Build from source](#build-from-source)
 - [Project layout](#project-layout)
 - [Known limits](#known-limits)
+- [Contributing and security](#contributing-and-security)
 - [Licence](#licence)
 
 ## Features
@@ -184,6 +185,12 @@ module.
   link scheme; paste the token by hand.
 - Compute Module USB boot is tested against mocked devices only.
 - The app does not check for its own updates yet.
+
+## Contributing and security
+
+Bug reports, fixes and tests on real hardware are welcome: see
+[CONTRIBUTING.md](CONTRIBUTING.md). Report security problems privately, as
+described in [SECURITY.md](SECURITY.md).
 
 ## Licence
 
