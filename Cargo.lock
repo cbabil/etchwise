@@ -1060,7 +1060,7 @@ dependencies = [
 
 [[package]]
 name = "etchwise"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "dirs 6.0.0",
  "imager-core",
@@ -1920,7 +1920,7 @@ dependencies = [
 
 [[package]]
 name = "imager-core"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "bzip2",
  "cc",
@@ -1946,7 +1946,7 @@ dependencies = [
 
 [[package]]
 name = "imager-platform"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "core-foundation 0.10.1",
  "core-foundation-sys",
@@ -1966,7 +1966,7 @@ dependencies = [
 
 [[package]]
 name = "imager-rpiboot"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "hex",
  "imager-core",

@@ -125,7 +125,7 @@ mod tests {
 
     #[test]
     fn title_names_the_app_and_its_version() {
-        assert_eq!(window_title(), "Etchwise v1.0.0");
+        assert_eq!(window_title(), "Etchwise v1.0.1");
     }
 
     #[test]
@@ -137,7 +137,7 @@ mod tests {
         );
         assert_eq!(
             api::dispatch(&mut state, "constantVersion", &[]),
-            Ok(Value::String("v1.0.0".into()))
+            Ok(Value::String("v1.0.1".into()))
         );
         assert_eq!(
             api::dispatch(&mut state, "isOsListUnavailable", &[]),
