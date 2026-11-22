@@ -85,8 +85,10 @@ fn extract_entries<R: Read>(
 
 /// libarchive's `SECURE_NOABSOLUTEPATHS | SECURE_NODOTDOT`.
 fn safe_path(entry: &zip::read::ZipFile<'_, impl Read>) -> Result<String, WriteError> {
-    let unsafe_path =
-        || WriteError::Decompress(format!("refusing unsafe path in archive: {}", entry.name()));
+    let unsafe_path = || {
+        let name = entry.name().unwrap_or_default();
+        WriteError::Decompress(format!("refusing unsafe path in archive: {name}"))
+    };
     let path = entry.enclosed_name().ok_or_else(unsafe_path)?;
     let text: Vec<String> = path
         .components()
